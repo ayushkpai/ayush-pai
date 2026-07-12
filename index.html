@@ -158,47 +158,58 @@
     </div>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-10">
-      <section
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10 sm:mt-14"
-      >
-        <div class="glass rounded-3xl p-6 card">
-          <h2 class="text-xl font-semibold">Projects</h2>
-
-          <p class="text-gray-400 mt-3">
-            Code for all projects in
-
-            <a
-              href="https://github.com/ayushkpai"
-              target="_blank"
-              class="text-violet-400 hover:underline"
+      <div class="grid lg:grid-cols-3 gap-6 items-start mt-10">
+        <section class="lg:col-span-2 grid grid-cols-2 gap-5">
+          <div
+            class="glass rounded-3xl p-6 card group cursor-pointer transition-all duration-500 hover:-translate-y-3 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(139,92,246,0.35)] hover:border-violet-400/50"
+          >
+            <h2
+              class="text-xl font-semibold group-hover:text-violet-300 transition"
             >
-              GitHub
-            </a>
-          </p>
+              Projects
+            </h2>
 
-          <button
-            onclick="openModal('projects')"
-            class="mt-6 text-violet-400 hover:text-violet-300"
+            <p class="text-gray-400 mt-3 leading-7">
+              Code for all projects in
+              <a
+                href="https://github.com/ayushkpai"
+                target="_blank"
+                class="text-violet-400 hover:underline"
+              >
+                GitHub
+              </a>
+            </p>
+
+            <button
+              onclick="openModal('projects')"
+              class="mt-6 text-violet-400 group-hover:text-pink-400 transition"
+            >
+              Open →
+            </button>
+          </div>
+
+          <div
+            class="glass rounded-3xl p-6 card group cursor-pointer transition-all duration-500 hover:-translate-y-3 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(139,92,246,0.35)] hover:border-violet-400/50"
           >
-            Open
-          </button>
-        </div>
+            <h2
+              class="text-xl font-semibold group-hover:text-violet-300 transition"
+            >
+              Languages
+            </h2>
 
-        <div class="glass rounded-3xl p-6 card">
-          <h2 class="text-xl font-semibold">Languages</h2>
+            <p class="text-gray-400 mt-3 leading-7">
+              Programming languages and technologies.
+            </p>
 
-          <p class="text-gray-400 mt-3">
-            Programming languages and technologies.
-          </p>
-
-          <button
-            onclick="openModal('languages')"
-            class="mt-6 text-violet-400 hover:text-violet-300"
-          >
-            Open
-          </button>
-        </div>
-      </section>
+            <button
+              onclick="openModal('languages')"
+              class="mt-6 text-violet-400 group-hover:text-pink-400 transition"
+            >
+              Open →
+            </button>
+          </div>
+        </section>
+      </div>
     </main>
 
     <div
