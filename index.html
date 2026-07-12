@@ -2,50 +2,472 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-    <script src="https://cdn.tailwindcss.com"></script>
+
     <title>Ayush Pai</title>
+
+    <link rel="icon" href="images/favicon.ico" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      body {
+        background: #030712;
+        color: white;
+        font-family: system-ui, sans-serif;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.06);
+
+        backdrop-filter: blur(20px);
+
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .card {
+        transition: 0.35s;
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+
+        box-shadow: 0 20px 50px rgba(124, 58, 237, 0.3);
+      }
+
+      .blob {
+        position: fixed;
+
+        width: 320px;
+
+        height: 320px;
+
+        border-radius: 50%;
+
+        filter: blur(90px);
+
+        z-index: -1;
+      }
+
+      .blob.one {
+        background: #7c3aed;
+
+        top: -120px;
+
+        left: -120px;
+      }
+
+      .blob.two {
+        background: #ec4899;
+
+        right: -120px;
+
+        bottom: -120px;
+      }
+
+      @media (min-width: 768px) {
+        .blob {
+          width: 500px;
+
+          height: 500px;
+
+          filter: blur(120px);
+        }
+      }
+
+      #modalBox {
+        opacity: 0;
+
+        transform: scale(0.95);
+
+        transition: 0.25s ease;
+
+        -webkit-overflow-scrolling: touch;
+      }
+
+      #modalBox.active {
+        opacity: 1;
+
+        transform: scale(1);
+      }
+
+      @media (max-width: 640px) {
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        p {
+          font-size: 0.95rem;
+
+          line-height: 1.7;
+        }
+      }
+    </style>
   </head>
 
-  <body class="bg-black">
-    <header class="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
+  <body>
+    <div class="blob one"></div>
+
+    <div class="blob two"></div>
+
+    <header class="fixed top-4 left-0 right-0 z-50 px-4">
       <div
-        class="max-w-7xl mx-auto h-16 rounded-3xl bg-[#080b14]/85 backdrop-blur-2xl border border-white/10 shadow-2xl flex items-center justify-between px-5"
+        class="max-w-7xl mx-auto h-14 sm:h-16 glass rounded-2xl sm:rounded-3xl flex items-center justify-between px-4 sm:px-5"
       >
-        <a href="" class="flex items-center gap-3">
+        <div class="flex items-center gap-3">
           <div
-            class="h-10 w-10 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center"
+            class="h-10 w-10 rounded-xl bg-gradient-to-br from-violet-500 to-pink-500 flex items-center justify-center"
           >
-            <img src="images/logo.png" alt="Logo" class="h-6 w-6" />
+            <img src="images/logo.png" class="h-6 w-6" />
           </div>
 
-          <div>
-            <p class="text-white font-semibold">Ayush Pai</p>
-          </div>
-        </a>
+          <p class="font-semibold">Ayush Pai</p>
+        </div>
+
+        <button onclick="openMenu()" class="text-2xl">☰</button>
       </div>
     </header>
+    <!-- Mobile Menu -->
 
-    <main class="max-w-7xl mx-auto px-6 pt-28 pb-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="rounded-xl bg-gray-900 border border-white/10 shadow-lg">
-          <div class="p-5 border-b border-white/10">
-            <h2 class="text-lg font-semibold text-white">GitHub</h2>
+    <div id="menu" class="hidden fixed inset-0 z-50">
+      <!-- Background overlay -->
+
+      <div
+        onclick="closeMenu()"
+        class="absolute inset-0 bg-black/70 backdrop-blur-sm"
+      ></div>
+
+      <!-- Menu panel -->
+
+      <div
+        class="absolute right-0 top-0 h-full w-full sm:w-96 bg-[#080b14] border-l border-white/10 p-6 sm:p-8 overflow-y-auto"
+      >
+        <button onclick="closeMenu()" class="text-3xl hover:text-violet-400">
+          ×
+        </button>
+
+        <div class="text-center mt-8 sm:mt-10">
+          <img
+            src="images/logo.png"
+            class="h-20 w-20 sm:h-24 sm:w-24 mx-auto rounded-3xl bg-gradient-to-br from-violet-500 to-pink-500 p-3"
+          />
+
+          <h2 class="text-2xl sm:text-3xl font-bold mt-5">Ayush Pai</h2>
+
+          <p class="text-gray-400 mt-2">Developer</p>
+        </div>
+
+        <!-- Github Card -->
+
+        <div class="glass rounded-3xl p-6 mt-8">
+          <h3 class="text-xl font-semibold">GitHub Profile</h3>
+
+          <p class="text-gray-400 mt-3">
+            Explore repositories, coding activity and open source work.
+          </p>
+
+          <a
+            href="https://github.com/ayushkpai"
+            target="_blank"
+            class="block w-full text-center mt-6 px-5 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600"
+          >
+            Open GitHub
+          </a>
+        </div>
+
+        <!-- Github Stats -->
+
+        <div class="grid grid-cols-2 gap-3 sm:gap-4 mt-6">
+          <div class="glass rounded-2xl p-5 text-center">
+            <h3 id="repoCount" class="text-3xl font-bold">0</h3>
+
+            <p class="text-gray-400">Repositories</p>
           </div>
 
-          <div class="p-5">
+          <div class="glass rounded-2xl p-5 text-center">
+            <h3 id="followers" class="text-3xl font-bold">0</h3>
+
+            <p class="text-gray-400">Followers</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 sm:gap-4 mt-4">
+          <div class="glass rounded-2xl p-5 text-center">
+            <h3 id="following" class="text-3xl font-bold">0</h3>
+
+            <p class="text-gray-400">Following</p>
+          </div>
+
+          <div class="glass rounded-2xl p-5 text-center">
+            <h3 id="stars" class="text-3xl font-bold">0</h3>
+
+            <p class="text-gray-400">Stars</p>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+
+        <div class="glass rounded-3xl p-6 mt-6">
+          <h3 class="text-xl font-semibold">Quick Links</h3>
+
+          <div class="flex flex-col gap-4 mt-5">
             <a
-              href="https://github.com/ayushkpai"
-              class="text-blue-400 hover:text-blue-300 hover:underline"
+              href="https://github.com/ayushkpai?tab=repositories"
               target="_blank"
-              rel="noopener noreferrer"
+              class="hover:text-violet-400"
             >
-              Visit GitHub
+              📁 Repositories
+            </a>
+
+            <a
+              href="https://github.com/ayushkpai?tab=followers"
+              target="_blank"
+              class="hover:text-violet-400"
+            >
+              👥 Followers
+            </a>
+
+            <a
+              href="https://github.com/ayushkpai?tab=following"
+              target="_blank"
+              class="hover:text-violet-400"
+            >
+              ➕ Following
+            </a>
+
+            <a
+              href="https://github.com/ayushkpai?tab=stars"
+              target="_blank"
+              class="hover:text-violet-400"
+            >
+              ⭐ Starred
+            </a>
+
+            <a
+              href="https://github.com/ayushkpai?tab=overview"
+              target="_blank"
+              class="hover:text-violet-400"
+            >
+              📊 Overview
             </a>
           </div>
         </div>
       </div>
+    </div>
+    <!-- Main Content -->
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-10">
+      <section
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10 sm:mt-14"
+      >
+        <!-- Projects Card -->
+
+        <div class="glass rounded-3xl p-6 card">
+          <h2 class="text-xl font-semibold">Projects</h2>
+
+          <p class="text-gray-400 mt-3">
+            Code for all projects in
+
+            <a
+              href="https://github.com/ayushkpai"
+              target="_blank"
+              class="text-violet-400 hover:underline"
+            >
+              GitHub
+            </a>
+          </p>
+
+          <button
+            onclick="openModal('projects')"
+            class="mt-6 text-violet-400 hover:text-violet-300"
+          >
+            Open
+          </button>
+        </div>
+
+        <!-- Languages Card -->
+
+        <div class="glass rounded-3xl p-6 card">
+          <h2 class="text-xl font-semibold">Languages</h2>
+
+          <p class="text-gray-400 mt-3">
+            Programming languages and technologies.
+          </p>
+
+          <button
+            onclick="openModal('languages')"
+            class="mt-6 text-violet-400 hover:text-violet-300"
+          >
+            Open
+          </button>
+        </div>
+      </section>
     </main>
+
+    <!-- Mobile Friendly Modal -->
+
+    <div
+      id="modal"
+      class="hidden fixed inset-0 z-[60] bg-black/80 backdrop-blur overflow-y-auto flex justify-center items-start sm:items-center p-4"
+    >
+      <div
+        id="modalBox"
+        class="glass rounded-3xl w-full max-w-lg my-6 max-h-[90vh] overflow-y-auto p-5 sm:p-8"
+      >
+        <div class="flex justify-end">
+          <button onclick="closeModal()" class="text-3xl hover:text-violet-400">
+            ×
+          </button>
+        </div>
+
+        <h2 id="modalTitle" class="text-2xl sm:text-3xl font-bold mb-5"></h2>
+
+        <div
+          id="modalText"
+          class="text-gray-400 leading-7 whitespace-pre-wrap break-words"
+        ></div>
+      </div>
+    </div>
+    <script>
+      const modalData = {
+        projects: {
+          title: "Projects",
+
+          text: "Loading projects...",
+        },
+
+        languages: {
+          title: "Languages",
+
+          text: "Python\nJavaScript\nTypeScript\nHTML\nCSS\nC++\nRuby",
+        },
+      };
+
+      // Open Menu
+
+      function openMenu() {
+        document.getElementById("menu").classList.remove("hidden");
+
+        document.body.style.overflow = "hidden";
+      }
+
+      // Close Menu
+
+      function closeMenu() {
+        document.getElementById("menu").classList.add("hidden");
+
+        document.body.style.overflow = "";
+      }
+
+      // Open Modal
+
+      function openModal(type) {
+        const modal = document.getElementById("modal");
+
+        const box = document.getElementById("modalBox");
+
+        document.getElementById("modalTitle").textContent =
+          modalData[type].title;
+
+        document.getElementById("modalText").textContent = modalData[type].text;
+
+        modal.classList.remove("hidden");
+
+        document.body.style.overflow = "hidden";
+
+        setTimeout(() => {
+          box.classList.add("active");
+        }, 10);
+      }
+
+      // Close Modal
+
+      function closeModal() {
+        const modal = document.getElementById("modal");
+
+        const box = document.getElementById("modalBox");
+
+        box.classList.remove("active");
+
+        setTimeout(() => {
+          modal.classList.add("hidden");
+
+          document.body.style.overflow = "";
+        }, 250);
+      }
+
+      // Close modal when clicking outside
+
+      document.getElementById("modal").addEventListener("click", function (e) {
+        if (e.target === this) {
+          closeModal();
+        }
+      });
+
+      // Keyboard support
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeModal();
+
+          closeMenu();
+        }
+      });
+
+      // GitHub User Data
+
+      fetch("https://api.github.com/users/ayushkpai")
+        .then((response) => response.json())
+
+        .then((user) => {
+          document.getElementById("followers").textContent = user.followers;
+
+          document.getElementById("following").textContent = user.following;
+
+          document.getElementById("repoCount").textContent = user.public_repos;
+        })
+
+        .catch(() => {});
+
+      // GitHub Repositories
+
+      fetch("https://api.github.com/users/ayushkpai/repos")
+        .then((response) => response.json())
+
+        .then((repos) => {
+          let totalStars = 0;
+
+          repos.forEach((repo) => {
+            totalStars += repo.stargazers_count;
+          });
+
+          document.getElementById("stars").textContent = totalStars;
+
+          // Add repositories to project modal
+
+          if (repos.length) {
+            modalData.projects.text = repos
+              .map((repo) => "• " + repo.name)
+              .join("\n");
+          }
+        })
+
+        .catch(() => {
+          modalData.projects.text = "Unable to load projects.";
+        });
+    </script>
   </body>
 </html>
