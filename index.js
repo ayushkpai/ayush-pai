@@ -1,17 +1,3 @@
-const modalData = {
-  projects: {
-    title: "Projects",
-
-    text: "Loading projects...",
-  },
-
-  languages: {
-    title: "Languages",
-
-    text: "Python\nJavaScript\nTypeScript\nHTML\nCSS\nC++\nRuby",
-  },
-};
-
 function openMenu() {
   document.getElementById("menu").classList.remove("hidden");
 
@@ -82,26 +68,3 @@ fetch("https://api.github.com/users/ayushkpai")
   })
 
   .catch(() => {});
-
-fetch("https://api.github.com/users/ayushkpai/repos")
-  .then((response) => response.json())
-
-  .then((repos) => {
-    let totalStars = 0;
-
-    repos.forEach((repo) => {
-      totalStars += repo.stargazers_count;
-    });
-
-    document.getElementById("stars").textContent = totalStars;
-
-    if (repos.length) {
-      modalData.projects.text = repos
-        .map((repo) => "• " + repo.name)
-        .join("\n");
-    }
-  })
-
-  .catch(() => {
-    modalData.projects.text = "Unable to load projects.";
-  });
