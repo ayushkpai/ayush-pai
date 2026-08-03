@@ -8,7 +8,112 @@
     <title>Ayush Pai</title>
 
     <link rel="icon" href="images/favicon.ico" />
-    <link rel="stylesheet" href="index.css" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      body {
+        background: #030712;
+        color: white;
+        font-family: system-ui, sans-serif;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.06);
+
+        backdrop-filter: blur(20px);
+
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .card {
+        transition: 0.35s;
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+
+        box-shadow: 0 20px 50px rgba(124, 58, 237, 0.3);
+      }
+
+      .blob {
+        position: fixed;
+
+        width: 320px;
+
+        height: 320px;
+
+        border-radius: 50%;
+
+        filter: blur(90px);
+
+        z-index: -1;
+      }
+
+      .blob.one {
+        background: #7c3aed;
+
+        top: -120px;
+
+        left: -120px;
+      }
+
+      .blob.two {
+        background: #ec4899;
+
+        right: -120px;
+
+        bottom: -120px;
+      }
+
+      @media (min-width: 768px) {
+        .blob {
+          width: 500px;
+
+          height: 500px;
+
+          filter: blur(120px);
+        }
+      }
+
+      #modalBox {
+        opacity: 0;
+
+        transform: scale(0.95);
+
+        transition: 0.25s ease;
+
+        -webkit-overflow-scrolling: touch;
+      }
+
+      #modalBox.active {
+        opacity: 1;
+
+        transform: scale(1);
+      }
+
+      @media (max-width: 640px) {
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        p {
+          font-size: 0.95rem;
+
+          line-height: 1.7;
+        }
+      }
+    </style>
 
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
@@ -203,6 +308,53 @@
         ></div>
       </div>
     </div>
-    <script src="index.js"></script>
+    <script>
+      function openMenu() {
+        document.getElementById("menu").classList.remove("hidden");
+
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMenu() {
+        document.getElementById("menu").classList.add("hidden");
+
+        document.body.style.overflow = "";
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("modal");
+
+        const box = document.getElementById("modalBox");
+
+        box.classList.remove("active");
+
+        setTimeout(() => {
+          modal.classList.add("hidden");
+
+          document.body.style.overflow = "";
+        }, 250);
+      }
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeModal();
+
+          closeMenu();
+        }
+      });
+
+      fetch("https://api.github.com/users/ayushkpai")
+        .then((response) => response.json())
+
+        .then((user) => {
+          document.getElementById("followers").textContent = user.followers;
+
+          document.getElementById("following").textContent = user.following;
+
+          document.getElementById("repoCount").textContent = user.public_repos;
+        })
+
+        .catch(() => {});
+    </script>
   </body>
 </html>
