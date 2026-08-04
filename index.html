@@ -186,34 +186,6 @@
           </a>
         </div>
 
-        <div class="grid grid-cols-2 gap-3 sm:gap-4 mt-6">
-          <div class="glass rounded-2xl p-5 text-center">
-            <h3 id="repoCount" class="text-3xl font-bold">0</h3>
-
-            <p class="text-gray-400">Repositories</p>
-          </div>
-
-          <div class="glass rounded-2xl p-5 text-center">
-            <h3 id="followers" class="text-3xl font-bold">0</h3>
-
-            <p class="text-gray-400">Followers</p>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-3 sm:gap-4 mt-4">
-          <div class="glass rounded-2xl p-5 text-center">
-            <h3 id="following" class="text-3xl font-bold">0</h3>
-
-            <p class="text-gray-400">Following</p>
-          </div>
-
-          <div class="glass rounded-2xl p-5 text-center">
-            <h3 id="stars" class="text-3xl font-bold">0</h3>
-
-            <p class="text-gray-400">Stars</p>
-          </div>
-        </div>
-
         <div class="glass rounded-3xl p-6 mt-6">
           <h3 class="text-xl font-semibold">Quick Links</h3>
 
@@ -248,14 +220,6 @@
               class="hover:text-violet-400"
             >
               ⭐ Starred
-            </a>
-
-            <a
-              href="https://github.com/ayushkpai?tab=overview"
-              target="_blank"
-              class="hover:text-violet-400"
-            >
-              📊 Overview
             </a>
           </div>
         </div>
@@ -342,19 +306,6 @@
           closeMenu();
         }
       });
-
-      fetch("https://api.github.com/users/ayushkpai")
-        .then((response) => response.json())
-
-        .then((user) => {
-          document.getElementById("followers").textContent = user.followers;
-
-          document.getElementById("following").textContent = user.following;
-
-          document.getElementById("repoCount").textContent = user.public_repos;
-        })
-
-        .catch(() => {});
     </script>
   </body>
 </html>
