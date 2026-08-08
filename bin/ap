@@ -1,0 +1,68 @@
+#!/usr/bin/env ruby
+
+require "io/console"
+
+WEBSITES = [
+  ["Website", "https://ayushpai.com"],
+  ["GitHub", "https://github.com/ayushkpai"]
+]
+
+selected = 0
+
+CYAN  = "\e[36m"
+GREEN = "\e[32m"
+GRAY  = "\e[90m"
+RESET = "\e[0m"
+
+print "\e[?25l"
+
+at_exit do
+  print "\e[?25h"
+  print RESET
+end
+
+begin
+  loop do
+    print "\e[2J\e[H"
+    puts "#{CYAN}◇ Select a website:#{RESET}"
+
+    WEBSITES.each_with_index do |(name, _url), index|
+      if index == selected
+        puts "#{CYAN}❯ #{name}#{RESET}"
+      else
+        puts "  #{name}"
+      end
+    end
+
+    puts "\n#{GRAY}↑↓ to navigate • Enter to select#{RESET}"
+
+    key = STDIN.getch
+
+    case key
+    when "\x03"
+      break
+    when "\r", "\n"
+      name, url = WEBSITES[selected]
+      print "\e[2J\e[H"
+      puts "#{GREEN}✔ Opening #{name}...#{RESET}"
+      system("open", url)
+
+      break
+    when "\e"
+      next_char = STDIN.getch
+
+      if next_char == "["
+        direction = STDIN.getch
+
+        case direction
+        when "A"
+          selected = (selected - 1) % WEBSITES.length
+        when "B"
+          selected = (selected + 1) % WEBSITES.length
+        end
+      end
+    end
+  end
+
+rescue Interrupt
+end
