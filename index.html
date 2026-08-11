@@ -2,311 +2,97 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Ayush Pai</title>
 
     <link rel="icon" href="images/favicon.ico" />
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        scroll-behavior: smooth;
-      }
-
-      html,
-      body {
-        overflow-x: hidden;
-      }
-
-      body {
-        background: #030712;
-        color: white;
-        font-family: system-ui, sans-serif;
-      }
-
-      .glass {
-        background: rgba(255, 255, 255, 0.06);
-
-        backdrop-filter: blur(20px);
-
-        border: 1px solid rgba(255, 255, 255, 0.12);
-      }
-
-      .card {
-        transition: 0.35s;
-      }
-
-      .card:hover {
-        transform: translateY(-8px);
-
-        box-shadow: 0 20px 50px rgba(124, 58, 237, 0.3);
-      }
-
-      .blob {
-        position: fixed;
-
-        width: 320px;
-
-        height: 320px;
-
-        border-radius: 50%;
-
-        filter: blur(90px);
-
-        z-index: -1;
-      }
-
-      .blob.one {
-        background: #7c3aed;
-
-        top: -120px;
-
-        left: -120px;
-      }
-
-      .blob.two {
-        background: #ec4899;
-
-        right: -120px;
-
-        bottom: -120px;
-      }
-
-      @media (min-width: 768px) {
-        .blob {
-          width: 500px;
-
-          height: 500px;
-
-          filter: blur(120px);
-        }
-      }
-
-      #modalBox {
-        opacity: 0;
-
-        transform: scale(0.95);
-
-        transition: 0.25s ease;
-
-        -webkit-overflow-scrolling: touch;
-      }
-
-      #modalBox.active {
-        opacity: 1;
-
-        transform: scale(1);
-      }
-
-      @media (max-width: 640px) {
-        h2 {
-          font-size: 1.5rem;
-        }
-
-        p {
-          font-size: 0.95rem;
-
-          line-height: 1.7;
-        }
-      }
-    </style>
-
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body>
-    <div class="blob one"></div>
+  <body
+    class="min-h-screen overflow-x-hidden bg-[#030712] font-sans text-white"
+  >
+    <div
+      class="fixed -left-32 -top-32 z-[-1] h-80 w-80 rounded-full bg-violet-600 blur-[90px] md:h-[500px] md:w-[500px] md:blur-[120px]"
+    ></div>
 
-    <div class="blob two"></div>
+    <div
+      class="fixed -bottom-32 -right-32 z-[-1] h-80 w-80 rounded-full bg-pink-500 blur-[90px] md:h-[500px] md:w-[500px] md:blur-[120px]"
+    ></div>
 
-    <header class="fixed top-4 left-0 right-0 z-50 px-4">
+    <header class="fixed left-0 right-0 top-4 z-50 px-4">
       <div
-        class="max-w-7xl mx-auto h-14 sm:h-16 glass rounded-2xl sm:rounded-3xl flex items-center justify-between px-4 sm:px-5"
+        class="mx-auto flex h-14 max-w-7xl items-center rounded-2xl border border-white/10 bg-white/[0.06] px-4 backdrop-blur-xl sm:h-16 sm:rounded-3xl sm:px-5"
       >
         <div class="flex items-center gap-3">
-          <div class="text-center mt-4">
-            <img
-              src="images/logo.png"
-              class="h-10 w-10 sm:h-12 sm:w-12 mx-auto rounded-2xl bg-gradient-to-br from-violet-500 to-pink-500 p-2"
-            />
-          </div>
+          <img
+            src="images/logo.png"
+            alt="Ayush Pai"
+            class="h-10 w-10 rounded-2xl bg-gradient-to-br from-violet-500 to-pink-500 p-2 sm:h-12 sm:w-12"
+          />
 
           <p class="font-semibold">Ayush Pai</p>
         </div>
-
-        <button
-          onclick="openMenu()"
-          class="rounded-full border border-violet-400/40 bg-white/5 px-7 py-3.5 font-semibold text-violet-200 transition hover:border-violet-300 hover:bg-violet-500/10"
-        >
-          GitHub
-        </button>
       </div>
     </header>
 
-    <div id="menu" class="hidden fixed inset-0 z-50">
-      <div
-        onclick="closeMenu()"
-        class="absolute inset-0 bg-black/70 backdrop-blur-sm"
-      ></div>
-
-      <div
-        class="absolute right-0 top-0 h-full w-full sm:w-96 bg-[#080b14] border-l border-white/10 p-6 sm:p-8 overflow-y-auto"
-      >
-        <button onclick="closeMenu()" class="text-3xl hover:text-violet-400">
-          ×
-        </button>
-
-        <div class="text-center mt-8 sm:mt-10">
-          <img
-            src="images/logo.png"
-            class="h-20 w-20 sm:h-24 sm:w-24 mx-auto rounded-3xl bg-gradient-to-br from-violet-500 to-pink-500 p-3"
-          />
-
-          <h2 class="text-2xl sm:text-3xl font-bold mt-5">Ayush Pai</h2>
-
-          <p class="text-gray-400 mt-2">ayushkpai</p>
-        </div>
-
-        <div class="glass rounded-3xl p-6 mt-8">
-          <h3 class="text-xl font-semibold">GitHub Profile</h3>
-
-          <p class="text-gray-400 mt-3">
-            Explore repositories, coding activity and open source work.
-          </p>
-
+    <main class="mx-auto max-w-7xl px-4 pb-10 pt-24 sm:px-6 sm:pt-32">
+      <div class="mt-10 grid items-start gap-6 lg:grid-cols-3">
+        <section class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-2">
           <a
             href="https://github.com/ayushkpai"
             target="_blank"
-            class="block w-full text-center mt-6 px-5 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600"
+            class="group relative block overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-violet-400/40 hover:bg-white/[0.09] hover:shadow-[0_20px_60px_rgba(139,92,246,0.25)] focus:outline-none focus:ring-2 focus:ring-violet-400/70"
           >
-            Open GitHub
+            <div
+              class="pointer-events-none absolute -right-16 -top-16 h-32 w-32 rounded-full bg-violet-500/20 blur-3xl transition-all duration-500 group-hover:bg-violet-500/30"
+            ></div>
+
+            <div class="relative flex items-center justify-between gap-4">
+              <div class="flex items-center gap-4">
+                <div
+                  class="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-black/20 text-white transition-all duration-500 group-hover:scale-110 group-hover:border-violet-400/30 group-hover:bg-violet-500/10"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="h-6 w-6"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.49.5.092.682-.217.682-.482
+            0-.237-.009-.866-.014-1.7-2.782.604-3.369-1.342-3.369-1.342-.455-1.157-1.11-1.466-1.11-1.466
+            -.908-.62.069-.608.069-.608 1.004.07 1.532 1.03 1.532 1.03.892 1.53 2.341 1.088 2.91.832
+            .092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.683
+            -.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.56 9.56 0 0 1 12 6.844
+            a9.56 9.56 0 0 1 2.504.337c1.91-1.294 2.75-1.025 2.75-1.025.544 1.377.201 2.394.098 2.647
+            .64.699 1.03 1.592 1.03 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.92.678 1.855
+            0 1.338-.012 2.419-.012 2.748 0 .268.18.579.688.481A10.001 10.001 0 0 0 22 12
+            C22 6.477 17.523 2 12 2Z"
+                    />
+                  </svg>
+                </div>
+
+                <div>
+                  <h2
+                    class="mt-1 text-xl font-semibold text-white transition-colors duration-300 group-hover:text-violet-300"
+                  >
+                    GitHub
+                  </h2>
+                </div>
+              </div>
+
+              <div
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 transition-all duration-300 group-hover:border-violet-400/40 group-hover:bg-violet-500/10 group-hover:text-violet-300 group-hover:translate-x-1"
+              >
+                <span class="text-lg">→</span>
+              </div>
+            </div>
           </a>
-        </div>
-
-        <div class="glass rounded-3xl p-6 mt-6">
-          <h3 class="text-xl font-semibold">Quick Links</h3>
-
-          <div class="flex flex-col gap-4 mt-5">
-            <a
-              href="https://github.com/ayushkpai?tab=repositories"
-              target="_blank"
-              class="hover:text-violet-400"
-            >
-              📁 Repositories
-            </a>
-
-            <a
-              href="https://github.com/ayushkpai?tab=followers"
-              target="_blank"
-              class="hover:text-violet-400"
-            >
-              👥 Followers
-            </a>
-
-            <a
-              href="https://github.com/ayushkpai?tab=following"
-              target="_blank"
-              class="hover:text-violet-400"
-            >
-              ➕ Following
-            </a>
-
-            <a
-              href="https://github.com/ayushkpai?tab=stars"
-              target="_blank"
-              class="hover:text-violet-400"
-            >
-              ⭐ Starred
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-10">
-      <div class="grid lg:grid-cols-3 gap-6 items-start mt-10">
-        <section class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div
-            class="glass rounded-3xl p-6 card group cursor-pointer transition-all duration-500 hover:-translate-y-3 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(139,92,246,0.35)] hover:border-violet-400/50"
-          >
-            <h2
-              class="text-xl font-semibold group-hover:text-violet-300 transition"
-            ></h2>
-
-            <p class="text-gray-400 mt-3 leading-7"></p>
-
-            <a
-              href="https://"
-              target="_blank"
-              class="mt-6 text-violet-400 group-hover:text-pink-400 transition"
-            >
-              Open →
-            </a>
-          </div>
         </section>
       </div>
     </main>
-
-    <div
-      id="modal"
-      class="hidden fixed inset-0 z-[60] bg-black/80 backdrop-blur overflow-y-auto flex justify-center items-start sm:items-center p-4"
-    >
-      <div
-        id="modalBox"
-        class="glass rounded-3xl w-full max-w-lg my-6 max-h-[90vh] overflow-y-auto p-5 sm:p-8"
-      >
-        <div class="flex justify-end">
-          <button onclick="closeModal()" class="text-3xl hover:text-violet-400">
-            ×
-          </button>
-        </div>
-
-        <h2 id="modalTitle" class="text-2xl sm:text-3xl font-bold mb-5"></h2>
-
-        <div
-          id="modalText"
-          class="text-gray-400 leading-7 whitespace-pre-wrap break-words"
-        ></div>
-      </div>
-    </div>
-    <script>
-      function openMenu() {
-        document.getElementById("menu").classList.remove("hidden");
-
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeMenu() {
-        document.getElementById("menu").classList.add("hidden");
-
-        document.body.style.overflow = "";
-      }
-
-      function closeModal() {
-        const modal = document.getElementById("modal");
-
-        const box = document.getElementById("modalBox");
-
-        box.classList.remove("active");
-
-        setTimeout(() => {
-          modal.classList.add("hidden");
-
-          document.body.style.overflow = "";
-        }, 250);
-      }
-
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
-          closeModal();
-
-          closeMenu();
-        }
-      });
-    </script>
   </body>
 </html>
