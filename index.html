@@ -11,58 +11,101 @@
   </head>
 
   <body
-    class="min-h-screen overflow-x-hidden bg-[#030712] font-sans text-white antialiased selection:bg-violet-500/30 selection:text-white"
+    class="min-h-screen overflow-x-hidden bg-[#02040a] font-sans text-white antialiased selection:bg-violet-500/30 selection:text-white"
   >
     <div
-      class="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_75%_5%,rgba(139,92,246,0.09),transparent_32%),radial-gradient(circle_at_10%_90%,rgba(59,130,246,0.06),transparent_30%)]"
+      class="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_75%_0%,rgba(124,58,237,0.13),transparent_30%),radial-gradient(circle_at_15%_85%,rgba(37,99,235,0.08),transparent_28%),linear-gradient(180deg,#02040a_0%,#030711_100%)]"
+    ></div>
+
+    <div
+      class="pointer-events-none fixed inset-0 -z-10 opacity-[0.025] bg-[linear-gradient(rgba(255,255,255,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.5)_1px,transparent_1px)] bg-[size:48px_48px]"
     ></div>
 
     <header class="fixed inset-x-0 top-4 z-50 px-4">
       <div
-        class="mx-auto flex h-16 max-w-7xl items-center rounded-2xl border border-white/[0.08] bg-[#0b101b]/75 px-4 shadow-[0_10px_40px_rgba(0,0,0,0.25)] backdrop-blur-2xl sm:rounded-3xl sm:px-5"
+        class="mx-auto flex h-[4.25rem] max-w-7xl items-center justify-between rounded-[1.4rem] border border-white/[0.08] bg-[#080d17]/75 px-4 shadow-[0_18px_60px_rgba(0,0,0,0.32)] backdrop-blur-2xl sm:rounded-[1.6rem] sm:px-5"
       >
-        <div class="flex items-center gap-3">
-          <img
-            src="images/logo.png"
-            alt="Ayush Pai"
-            class="h-11 w-11 rounded-2xl bg-gradient-to-br from-violet-500 to-pink-500 p-2 ring-1 ring-white/10"
-          />
+        <button
+          type="button"
+          data-open-offcanvas
+          aria-label="Open menu"
+          class="group flex items-center gap-3 text-left"
+        >
+          <span
+            class="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 p-[1px] shadow-lg shadow-violet-500/10 transition duration-500 group-hover:scale-105 group-hover:shadow-violet-500/20"
+          >
+            <span
+              class="flex h-full w-full items-center justify-center rounded-[0.95rem] bg-[#090d17]"
+            >
+              <img
+                src="images/logo.png"
+                alt="Ayush Pai"
+                class="h-8 w-8 object-contain"
+              />
+            </span>
+          </span>
 
-          <p class="text-sm font-semibold tracking-tight text-white">
-            Ayush Pai
-          </p>
-        </div>
+          <div>
+            <p
+              class="text-sm font-semibold tracking-[-0.02em] text-white transition-colors group-hover:text-violet-100"
+            >
+              Ayush Pai
+            </p>
+            <p
+              class="mt-0.5 hidden text-[9px] font-medium uppercase tracking-[0.28em] text-slate-500 sm:block"
+            >
+              Software Developer
+            </p>
+          </div>
+        </button>
+
+        <button
+          type="button"
+          data-open-offcanvas
+          aria-label="Open menu"
+          class="group flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.025] text-slate-400 transition duration-300 hover:border-white/20 hover:bg-white/[0.07] hover:text-white"
+        >
+          <span class="flex flex-col gap-1">
+            <span
+              class="h-px w-4 bg-current transition-transform duration-300 group-hover:translate-x-1"
+            ></span>
+            <span class="h-px w-3 bg-current"></span>
+            <span
+              class="h-px w-4 bg-current transition-transform duration-300 group-hover:-translate-x-1"
+            ></span>
+          </span>
+        </button>
       </div>
     </header>
 
-    <main class="mx-auto max-w-7xl px-4 pb-16 pt-28 sm:px-6 sm:pt-32">
-      <section class="mx-auto max-w-6xl pt-10 sm:pt-16">
+    <main class="mx-auto max-w-7xl px-4 pb-20 pt-28 sm:px-6 sm:pt-32">
+      <section class="mx-auto max-w-6xl">
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           <a
             href="https://github.com/ayushkpai"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit Ayush Pai on GitHub"
-            class="group relative isolate min-h-[255px] overflow-hidden rounded-[1.75rem] border border-white/[0.10] bg-[#090a0c] p-6 shadow-[0_20px_70px_rgba(0,0,0,0.40)] transition-all duration-700 hover:-translate-y-1.5 hover:border-white/[0.18] hover:shadow-[0_28px_85px_rgba(0,0,0,0.52)] focus:outline-none focus:ring-2 focus:ring-white/20"
+            class="group relative isolate min-h-[275px] overflow-hidden rounded-[1.8rem] border border-white/[0.09] bg-[#080b11] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.38)] transition-all duration-700 hover:-translate-y-2 hover:border-white/[0.18] hover:shadow-[0_30px_90px_rgba(0,0,0,0.55)] focus:outline-none focus:ring-2 focus:ring-violet-400/30"
           >
             <div
-              class="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle_at_100%_0%,rgba(255,255,255,0.10),transparent_28%),radial-gradient(circle_at_75%_5%,rgba(99,102,241,0.13),transparent_30%),linear-gradient(145deg,#141518_0%,#0a0b0e_48%,#070809_100%)]"
+              class="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle_at_100%_0%,rgba(255,255,255,0.09),transparent_28%),radial-gradient(circle_at_75%_5%,rgba(99,102,241,0.14),transparent_32%),linear-gradient(145deg,#12151c_0%,#090b10_52%,#05070a_100%)]"
             ></div>
 
             <div
-              class="pointer-events-none absolute -right-24 -top-24 -z-10 h-60 w-60 rounded-full bg-indigo-500/[0.10] blur-[85px] transition-all duration-1000 group-hover:scale-150 group-hover:bg-violet-400/[0.17]"
+              class="pointer-events-none absolute -right-24 -top-24 -z-10 h-64 w-64 rounded-full bg-indigo-500/[0.10] blur-[90px] transition-all duration-1000 group-hover:scale-150 group-hover:bg-violet-400/[0.18]"
             ></div>
 
             <div
-              class="pointer-events-none absolute -bottom-28 -left-20 -z-10 h-52 w-52 rounded-full bg-blue-500/[0.06] blur-[85px] transition-all duration-1000 group-hover:bg-indigo-400/[0.12]"
+              class="pointer-events-none absolute -bottom-28 -left-20 -z-10 h-56 w-56 rounded-full bg-blue-500/[0.06] blur-[90px] transition-all duration-1000 group-hover:bg-indigo-400/[0.13]"
             ></div>
 
             <div
-              class="pointer-events-none absolute inset-[1px] -z-10 rounded-[calc(1.75rem-1px)] border border-white/[0.035]"
+              class="pointer-events-none absolute inset-[1px] -z-10 rounded-[calc(1.8rem-1px)] border border-white/[0.035]"
             ></div>
 
             <div
-              class="pointer-events-none absolute inset-x-7 top-0 h-px bg-gradient-to-r from-transparent via-white/0 to-transparent transition-all duration-700 group-hover:via-white/45"
+              class="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/0 to-transparent transition-all duration-700 group-hover:via-white/50"
             ></div>
 
             <div
@@ -98,7 +141,7 @@
                 </div>
               </div>
 
-              <div class="mt-auto pt-8">
+              <div class="mt-auto pt-10">
                 <div class="flex items-center gap-2">
                   <span
                     class="h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.8)]"
@@ -112,7 +155,7 @@
                 </div>
 
                 <h2
-                  class="mt-1.5 text-[1.65rem] font-semibold tracking-[-0.04em] text-white transition-colors duration-500 group-hover:text-slate-100"
+                  class="mt-2 text-[1.7rem] font-semibold tracking-[-0.045em] text-white"
                 >
                   GitHub
                 </h2>
@@ -133,26 +176,26 @@
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit Pai And Co on GitHub"
-            class="group relative isolate min-h-[255px] overflow-hidden rounded-[1.75rem] border border-emerald-400/[0.10] bg-[#090d0b] p-6 shadow-[0_20px_70px_rgba(0,0,0,0.40)] transition-all duration-700 hover:-translate-y-1.5 hover:border-emerald-300/25 hover:shadow-[0_28px_85px_rgba(16,185,129,0.12)] focus:outline-none focus:ring-2 focus:ring-emerald-400/30"
+            class="group relative isolate min-h-[275px] overflow-hidden rounded-[1.8rem] border border-emerald-400/[0.10] bg-[#080d0b] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.38)] transition-all duration-700 hover:-translate-y-2 hover:border-emerald-300/25 hover:shadow-[0_30px_90px_rgba(16,185,129,0.14)] focus:outline-none focus:ring-2 focus:ring-emerald-400/30"
           >
             <div
-              class="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle_at_100%_0%,rgba(52,211,153,0.16),transparent_30%),radial-gradient(circle_at_10%_90%,rgba(16,185,129,0.07),transparent_35%),linear-gradient(145deg,#111916_0%,#0a0e0c_48%,#070908_100%)]"
+              class="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle_at_100%_0%,rgba(52,211,153,0.17),transparent_30%),radial-gradient(circle_at_10%_90%,rgba(16,185,129,0.07),transparent_35%),linear-gradient(145deg,#101815_0%,#090e0c_52%,#050807_100%)]"
             ></div>
 
             <div
-              class="pointer-events-none absolute -right-24 -top-24 -z-10 h-60 w-60 rounded-full bg-emerald-500/[0.10] blur-[85px] transition-all duration-1000 group-hover:scale-150 group-hover:bg-emerald-400/[0.18]"
+              class="pointer-events-none absolute -right-24 -top-24 -z-10 h-64 w-64 rounded-full bg-emerald-500/[0.10] blur-[90px] transition-all duration-1000 group-hover:scale-150 group-hover:bg-emerald-400/[0.19]"
             ></div>
 
             <div
-              class="pointer-events-none absolute -bottom-28 -left-20 -z-10 h-52 w-52 rounded-full bg-teal-500/[0.07] blur-[85px] transition-all duration-1000 group-hover:bg-teal-400/[0.13]"
+              class="pointer-events-none absolute -bottom-28 -left-20 -z-10 h-56 w-56 rounded-full bg-teal-500/[0.07] blur-[90px] transition-all duration-1000 group-hover:bg-teal-400/[0.14]"
             ></div>
 
             <div
-              class="pointer-events-none absolute inset-[1px] -z-10 rounded-[calc(1.75rem-1px)] border border-white/[0.035]"
+              class="pointer-events-none absolute inset-[1px] -z-10 rounded-[calc(1.8rem-1px)] border border-white/[0.035]"
             ></div>
 
             <div
-              class="pointer-events-none absolute inset-x-7 top-0 h-px bg-gradient-to-r from-transparent via-emerald-200/0 to-transparent transition-all duration-700 group-hover:via-emerald-200/50"
+              class="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-emerald-200/0 to-transparent transition-all duration-700 group-hover:via-emerald-200/55"
             ></div>
 
             <div
@@ -188,7 +231,7 @@
                 </div>
               </div>
 
-              <div class="mt-auto pt-8">
+              <div class="mt-auto pt-10">
                 <div class="flex items-center gap-2">
                   <span
                     class="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_14px_rgba(110,231,183,0.9)]"
@@ -202,7 +245,7 @@
                 </div>
 
                 <h2
-                  class="mt-1.5 text-[1.65rem] font-semibold tracking-[-0.04em] text-white transition-colors duration-500 group-hover:text-emerald-50"
+                  class="mt-2 text-[1.7rem] font-semibold tracking-[-0.045em] text-white"
                 >
                   Pai & Co
                 </h2>
@@ -218,23 +261,22 @@
             </div>
           </a>
 
-          <a
-            href="/retro-grand-prix"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            data-open-grand-prix
             aria-label="Visit Retro Grand Prix"
-            class="group relative isolate min-h-[255px] overflow-hidden rounded-[1.75rem] border border-red-500/[0.13] bg-[#100908] p-6 shadow-[0_20px_70px_rgba(0,0,0,0.44)] transition-all duration-700 hover:-translate-y-1.5 hover:border-red-400/35 hover:shadow-[0_28px_85px_rgba(239,68,68,0.15)] focus:outline-none focus:ring-2 focus:ring-red-400/30"
+            class="group relative isolate min-h-[275px] overflow-hidden rounded-[1.8rem] border border-red-500/[0.13] bg-[#100908] p-6 text-left shadow-[0_24px_80px_rgba(0,0,0,0.42)] transition-all duration-700 hover:-translate-y-2 hover:border-red-400/35 hover:shadow-[0_30px_90px_rgba(239,68,68,0.17)] focus:outline-none focus:ring-2 focus:ring-red-400/30"
           >
             <div
-              class="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle_at_100%_0%,rgba(239,68,68,0.20),transparent_30%),radial-gradient(circle_at_15%_90%,rgba(249,115,22,0.12),transparent_34%),radial-gradient(circle_at_80%_75%,rgba(37,99,235,0.08),transparent_28%),linear-gradient(145deg,#1a0c0b_0%,#100908_48%,#080606_100%)]"
+              class="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle_at_100%_0%,rgba(239,68,68,0.20),transparent_30%),radial-gradient(circle_at_15%_90%,rgba(249,115,22,0.12),transparent_34%),radial-gradient(circle_at_80%_75%,rgba(37,99,235,0.08),transparent_28%),linear-gradient(145deg,#1a0c0b_0%,#100908_50%,#080606_100%)]"
             ></div>
 
             <div
-              class="pointer-events-none absolute -right-24 -top-24 -z-10 h-60 w-60 rounded-full bg-red-500/[0.14] blur-[85px] transition-all duration-1000 group-hover:scale-150 group-hover:bg-red-400/[0.23]"
+              class="pointer-events-none absolute -right-24 -top-24 -z-10 h-64 w-64 rounded-full bg-red-500/[0.14] blur-[90px] transition-all duration-1000 group-hover:scale-150 group-hover:bg-red-400/[0.24]"
             ></div>
 
             <div
-              class="pointer-events-none absolute -bottom-28 -left-20 -z-10 h-52 w-52 rounded-full bg-orange-500/[0.08] blur-[85px] transition-all duration-1000 group-hover:bg-orange-400/[0.16]"
+              class="pointer-events-none absolute -bottom-28 -left-20 -z-10 h-56 w-56 rounded-full bg-orange-500/[0.08] blur-[90px] transition-all duration-1000 group-hover:bg-orange-400/[0.17]"
             ></div>
 
             <div
@@ -242,11 +284,11 @@
             ></div>
 
             <div
-              class="pointer-events-none absolute inset-[1px] -z-10 rounded-[calc(1.75rem-1px)] border border-white/[0.035]"
+              class="pointer-events-none absolute inset-[1px] -z-10 rounded-[calc(1.8rem-1px)] border border-white/[0.035]"
             ></div>
 
             <div
-              class="pointer-events-none absolute inset-x-7 top-0 h-px bg-gradient-to-r from-transparent via-red-200/0 to-transparent transition-all duration-700 group-hover:via-red-200/60"
+              class="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-red-200/0 to-transparent transition-all duration-700 group-hover:via-red-200/60"
             ></div>
 
             <div
@@ -276,7 +318,7 @@
                 </div>
               </div>
 
-              <div class="mt-auto pt-8">
+              <div class="mt-auto pt-10">
                 <div class="flex items-center gap-2">
                   <span class="relative flex h-1.5 w-1.5">
                     <span
@@ -295,7 +337,7 @@
                 </div>
 
                 <h2
-                  class="mt-1.5 text-[1.65rem] font-semibold tracking-[-0.04em] text-white transition-colors duration-500 group-hover:text-red-50"
+                  class="mt-2 text-[1.7rem] font-semibold tracking-[-0.045em] text-white"
                 >
                   Retro Grand Prix
                 </h2>
@@ -309,9 +351,390 @@
                 </div>
               </div>
             </div>
-          </a>
+          </button>
         </div>
       </section>
     </main>
+
+    <div
+      id="offcanvas"
+      class="pointer-events-none fixed inset-0 z-[100] invisible"
+      aria-hidden="true"
+    >
+      <button
+        type="button"
+        data-close-offcanvas
+        class="absolute inset-0 bg-black/70 opacity-0 backdrop-blur-md transition-opacity duration-500"
+        aria-label="Close menu"
+      ></button>
+
+      <aside
+        class="absolute right-0 top-0 flex h-full w-[min(420px,92vw)] translate-x-full flex-col border-l border-white/[0.08] bg-[#070b13]/95 p-6 shadow-[-30px_0_120px_rgba(0,0,0,0.65)] backdrop-blur-2xl transition-transform duration-500 ease-out sm:p-8"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation"
+      >
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div
+              class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 p-[1px]"
+            >
+              <div
+                class="flex h-full w-full items-center justify-center rounded-[0.95rem] bg-[#090d17]"
+              >
+                <img
+                  src="images/logo.png"
+                  alt="Ayush Pai"
+                  class="h-8 w-8 object-contain"
+                />
+              </div>
+            </div>
+
+            <div>
+              <p class="text-sm font-semibold text-white">Ayush Pai</p>
+              <p
+                class="mt-1 text-[9px] font-semibold uppercase tracking-[0.3em] text-slate-500"
+              >
+                Navigation
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            data-close-offcanvas
+            aria-label="Close menu"
+            class="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-xl text-slate-400 transition duration-300 hover:border-white/20 hover:bg-white/[0.07] hover:text-white"
+          >
+            ×
+          </button>
+        </div>
+
+        <div
+          class="my-8 h-px bg-gradient-to-r from-white/[0.10] via-white/[0.04] to-transparent"
+        ></div>
+
+        <div class="space-y-3">
+          <a
+            href="https://github.com/ayushkpai"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center justify-between rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.06]"
+          >
+            <div>
+              <p
+                class="text-sm font-medium text-white transition-colors group-hover:text-violet-100"
+              >
+                GitHub
+              </p>
+              <p class="mt-1 text-[11px] text-slate-500">ayushkpai</p>
+            </div>
+
+            <span
+              class="text-slate-500 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white"
+            >
+              ↗
+            </span>
+          </a>
+
+          <a
+            href="https://github.com/paiandco"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center justify-between rounded-2xl border border-emerald-400/[0.08] bg-emerald-400/[0.025] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-300/25 hover:bg-emerald-400/[0.06]"
+          >
+            <div>
+              <p
+                class="text-sm font-medium text-white transition-colors group-hover:text-emerald-100"
+              >
+                Pai & Co
+              </p>
+              <p class="mt-1 text-[11px] text-slate-500">paiandco</p>
+            </div>
+
+            <span
+              class="text-emerald-300/70 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-emerald-200"
+            >
+              ↗
+            </span>
+          </a>
+
+          <button
+            type="button"
+            data-open-grand-prix
+            class="group flex w-full items-center justify-between rounded-2xl border border-red-400/[0.08] bg-red-400/[0.025] p-4 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-red-300/25 hover:bg-red-400/[0.06]"
+          >
+            <div>
+              <p
+                class="text-sm font-medium text-white transition-colors group-hover:text-red-100"
+              >
+                Retro Grand Prix
+              </p>
+              <p class="mt-1 text-[11px] text-slate-500">F1 Racing</p>
+            </div>
+
+            <span
+              class="text-red-300/70 transition-all duration-300 group-hover:translate-x-1 group-hover:text-red-200"
+            >
+              →
+            </span>
+          </button>
+        </div>
+
+        <div class="mt-auto">
+          <div
+            class="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4"
+          >
+            <div class="flex items-center gap-2">
+              <span
+                class="h-1.5 w-1.5 rounded-full bg-violet-400 shadow-[0_0_12px_rgba(167,139,250,0.8)]"
+              ></span>
+
+              <p
+                class="text-[9px] font-semibold uppercase tracking-[0.3em] text-slate-500"
+              >
+                Ayush Pai
+              </p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div
+      id="grandPrixModal"
+      class="pointer-events-none fixed inset-0 z-[110] flex invisible items-center justify-center p-4 opacity-0 transition-opacity duration-300"
+      aria-hidden="true"
+    >
+      <button
+        type="button"
+        data-close-grand-prix
+        class="absolute inset-0 bg-black/80 backdrop-blur-lg"
+        aria-label="Close modal"
+      ></button>
+
+      <div
+        class="relative w-full max-w-xl scale-95 overflow-hidden rounded-[1.8rem] border border-red-400/[0.14] bg-[#100908] shadow-[0_35px_120px_rgba(0,0,0,0.72)] transition-transform duration-300"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="grandPrixTitle"
+      >
+        <div
+          class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(239,68,68,0.22),transparent_32%),radial-gradient(circle_at_10%_100%,rgba(249,115,22,0.12),transparent_34%),linear-gradient(145deg,#1a0c0b,#100908_50%,#080606)]"
+        ></div>
+
+        <div
+          class="pointer-events-none absolute inset-0 opacity-[0.035] bg-[repeating-linear-gradient(135deg,transparent_0px,transparent_5px,rgba(255,255,255,0.8)_5px,rgba(255,255,255,0.8)_6px)]"
+        ></div>
+
+        <div class="relative p-6 sm:p-8">
+          <div class="flex items-start justify-between">
+            <div
+              class="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl border border-red-400/[0.16] bg-[#090606] shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_18px_40px_rgba(0,0,0,0.45)]"
+            >
+              <div
+                class="absolute inset-0 bg-[radial-gradient(circle_at_30%_15%,rgba(255,255,255,0.14),transparent_32%),linear-gradient(145deg,rgba(239,68,68,0.15),transparent_65%)]"
+              ></div>
+
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23090808'/%3E%3Cpath d='M6,20 L8,14 L12,12 L20,12 L24,14 L26,20 Z' fill='%23ef4444'/%3E%3Cellipse cx='16' cy='13' rx='3' ry='2' fill='%23111'/%3E%3Ccircle cx='16' cy='12.5' r='1.5' fill='%23facc15'/%3E%3Crect x='4' y='18' width='3' height='5' rx='1' fill='%23111'/%3E%3Crect x='25' y='18' width='3' height='5' rx='1' fill='%23111'/%3E%3Crect x='5' y='10' width='22' height='2' rx='1' fill='%23ef4444'/%3E%3C/svg%3E"
+                alt="Retro Grand Prix racing logo"
+                class="relative h-11 w-11 object-contain transition-transform duration-500 hover:scale-110"
+              />
+            </div>
+
+            <button
+              type="button"
+              data-close-grand-prix
+              aria-label="Close modal"
+              class="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-xl text-slate-400 transition duration-300 hover:border-red-400/30 hover:bg-red-500/10 hover:text-red-200"
+            >
+              ×
+            </button>
+          </div>
+
+          <div class="mt-7">
+            <div class="flex items-center gap-2">
+              <span
+                class="relative flex h-1.5 w-1.5 rounded-full bg-red-400 shadow-[0_0_14px_rgba(248,113,113,0.95)]"
+              >
+                <span
+                  class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-50"
+                ></span>
+              </span>
+
+              <span
+                class="text-[9px] font-semibold uppercase tracking-[0.3em] text-red-300/70"
+              >
+                F1 Racing
+              </span>
+            </div>
+
+            <h2
+              id="grandPrixTitle"
+              class="mt-2 text-3xl font-semibold tracking-[-0.05em] text-white sm:text-4xl"
+            >
+              Retro Grand Prix
+            </h2>
+
+            <p class="mt-4 max-w-lg text-sm leading-6 text-slate-400">
+              Ready to enter the grid? Launch Retro Grand Prix and start racing.
+            </p>
+          </div>
+
+          <div class="mt-7 grid grid-cols-2 gap-3">
+            <div
+              class="rounded-2xl border border-white/[0.06] bg-white/[0.025] p-4 transition-colors hover:border-white/[0.10] hover:bg-white/[0.04]"
+            >
+              <p
+                class="text-[9px] font-semibold uppercase tracking-[0.25em] text-slate-600"
+              >
+                Category
+              </p>
+
+              <p class="mt-2 text-sm font-medium text-white">F1 Racing</p>
+            </div>
+
+            <div
+              class="rounded-2xl border border-white/[0.06] bg-white/[0.025] p-4 transition-colors hover:border-red-400/[0.12] hover:bg-red-400/[0.03]"
+            >
+              <p
+                class="text-[9px] font-semibold uppercase tracking-[0.25em] text-slate-600"
+              >
+                Status
+              </p>
+
+              <p
+                class="mt-2 flex items-center gap-2 text-sm font-medium text-red-300"
+              >
+                <span
+                  class="h-1.5 w-1.5 rounded-full bg-red-400 shadow-[0_0_10px_rgba(248,113,113,0.8)]"
+                ></span>
+                Ready
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+            <a
+              href="/retro-grand-prix"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex flex-1 items-center justify-center gap-2 rounded-2xl bg-red-500 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-red-500/10 transition-all duration-300 hover:bg-red-400 hover:shadow-red-500/20"
+            >
+              <span>Enter the Grid</span>
+
+              <span
+                class="transition-transform duration-300 group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </a>
+
+            <button
+              type="button"
+              data-close-grand-prix
+              class="rounded-2xl border border-white/[0.08] bg-white/[0.025] px-5 py-3.5 text-sm font-medium text-slate-400 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.06] hover:text-white"
+            >
+              Maybe Later
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="h-[2px] w-full bg-gradient-to-r from-red-500 via-orange-400 to-blue-500"
+        ></div>
+      </div>
+    </div>
+
+    <script>
+      const offcanvas = document.getElementById("offcanvas");
+      const offcanvasPanel = offcanvas.querySelector("aside");
+      const grandPrixModal = document.getElementById("grandPrixModal");
+      const grandPrixDialog = grandPrixModal.querySelector("[role='dialog']");
+
+      function openOffcanvas() {
+        offcanvas.classList.remove("invisible", "pointer-events-none");
+        offcanvas.setAttribute("aria-hidden", "false");
+
+        requestAnimationFrame(() => {
+          offcanvas
+            .querySelector("button.absolute")
+            .classList.remove("opacity-0");
+
+          offcanvasPanel.classList.remove("translate-x-full");
+        });
+
+        document.body.classList.add("overflow-hidden");
+      }
+
+      function closeOffcanvas() {
+        offcanvas.querySelector("button.absolute").classList.add("opacity-0");
+        offcanvasPanel.classList.add("translate-x-full");
+        offcanvas.setAttribute("aria-hidden", "true");
+
+        setTimeout(() => {
+          offcanvas.classList.add("invisible", "pointer-events-none");
+        }, 500);
+
+        if (grandPrixModal.getAttribute("aria-hidden") === "true") {
+          document.body.classList.remove("overflow-hidden");
+        }
+      }
+
+      function openGrandPrix() {
+        closeOffcanvas();
+
+        grandPrixModal.classList.remove("invisible", "pointer-events-none");
+        grandPrixModal.setAttribute("aria-hidden", "false");
+
+        requestAnimationFrame(() => {
+          grandPrixModal.classList.remove("opacity-0");
+          grandPrixDialog.classList.remove("scale-95");
+        });
+
+        document.body.classList.add("overflow-hidden");
+      }
+
+      function closeGrandPrix() {
+        grandPrixModal.classList.add("opacity-0");
+        grandPrixDialog.classList.add("scale-95");
+        grandPrixModal.setAttribute("aria-hidden", "true");
+
+        setTimeout(() => {
+          grandPrixModal.classList.add("invisible", "pointer-events-none");
+        }, 300);
+
+        if (offcanvas.getAttribute("aria-hidden") === "true") {
+          document.body.classList.remove("overflow-hidden");
+        }
+      }
+
+      document.querySelectorAll("[data-open-offcanvas]").forEach((button) => {
+        button.addEventListener("click", openOffcanvas);
+      });
+
+      document.querySelectorAll("[data-close-offcanvas]").forEach((button) => {
+        button.addEventListener("click", closeOffcanvas);
+      });
+
+      document.querySelectorAll("[data-open-grand-prix]").forEach((button) => {
+        button.addEventListener("click", openGrandPrix);
+      });
+
+      document.querySelectorAll("[data-close-grand-prix]").forEach((button) => {
+        button.addEventListener("click", closeGrandPrix);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+
+        if (grandPrixModal.getAttribute("aria-hidden") === "false") {
+          closeGrandPrix();
+        } else if (offcanvas.getAttribute("aria-hidden") === "false") {
+          closeOffcanvas();
+        }
+      });
+    </script>
   </body>
 </html>
