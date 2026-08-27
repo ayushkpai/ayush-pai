@@ -141,6 +141,7 @@
           >
             Building things
             <br />
+
             <span
               class="bg-gradient-to-r from-violet-200 via-white to-fuchsia-200 bg-clip-text text-transparent"
             >
@@ -185,29 +186,79 @@
               </span>
             </a>
           </div>
-        </div>
 
-        <div class="mx-auto mt-20 flex max-w-xl items-center justify-center">
-          <div
-            class="h-px flex-1 bg-gradient-to-r from-transparent to-white/[0.08]"
-          ></div>
+          <div class="mx-auto mt-20 flex max-w-xl items-center justify-center">
+            <div
+              class="h-px flex-1 bg-gradient-to-r from-transparent to-white/[0.08]"
+            ></div>
 
-          <div
-            class="mx-5 flex items-center gap-3 text-[9px] font-medium uppercase tracking-[0.3em] text-slate-700"
-          >
-            <span>Design</span>
-            <span class="h-1 w-1 rounded-full bg-slate-700"></span>
-            <span>Code</span>
-            <span class="h-1 w-1 rounded-full bg-slate-700"></span>
-            <span>Ideas</span>
+            <div
+              class="mx-5 flex items-center gap-3 text-[9px] font-medium uppercase tracking-[0.3em] text-slate-700"
+            >
+              <span>Design</span>
+              <span class="h-1 w-1 rounded-full bg-slate-700"></span>
+              <span>Code</span>
+              <span class="h-1 w-1 rounded-full bg-slate-700"></span>
+              <span>Ideas</span>
+            </div>
+
+            <div
+              class="h-px flex-1 bg-gradient-to-l from-transparent to-white/[0.08]"
+            ></div>
           </div>
-
-          <div
-            class="h-px flex-1 bg-gradient-to-l from-transparent to-white/[0.08]"
-          ></div>
         </div>
       </section>
     </main>
+
+    <div
+      id="toast"
+      class="pointer-events-none fixed bottom-6 left-1/2 z-[200] w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 translate-y-8 rounded-[1.35rem] border border-white/[0.09] bg-[#090d17]/90 p-1 opacity-0 shadow-[0_25px_80px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl transition-all duration-500 ease-out"
+      role="status"
+      aria-live="polite"
+    >
+      <div
+        class="relative overflow-hidden rounded-[1.05rem] bg-gradient-to-br from-white/[0.055] to-white/[0.015] px-4 py-3.5"
+      >
+        <div
+          class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-400/50 to-transparent"
+        ></div>
+
+        <div class="flex items-center gap-3">
+          <div
+            class="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-violet-400/[0.12] bg-violet-500/[0.08] shadow-[0_0_25px_rgba(139,92,246,0.08)]"
+          >
+            <span
+              class="absolute inset-0 animate-ping rounded-xl bg-violet-400/[0.06]"
+            ></span>
+
+            <span class="relative text-base">✦</span>
+          </div>
+
+          <div class="min-w-0">
+            <div class="flex items-center gap-2">
+              <p class="text-xs font-semibold tracking-[-0.01em] text-white">
+                Nice choice.
+              </p>
+
+              <span
+                class="h-1 w-1 rounded-full bg-violet-400 shadow-[0_0_8px_rgba(167,139,250,0.8)]"
+              ></span>
+            </div>
+
+            <p class="mt-1 text-[11px] leading-5 text-slate-500">
+              Menu unlocked.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-3 h-px overflow-hidden rounded-full bg-white/[0.04]">
+          <div
+            id="toastProgress"
+            class="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-violet-500 via-fuchsia-400 to-transparent transition-transform duration-[3500ms] ease-linear"
+          ></div>
+        </div>
+      </div>
+    </div>
 
     <div
       id="offcanvas"
@@ -217,8 +268,8 @@
       <button
         type="button"
         data-close-offcanvas
-        aria-label="Close menu"
         class="absolute inset-0 bg-black/75 opacity-0 backdrop-blur-xl transition-opacity duration-500"
+        aria-label="Close menu"
       ></button>
 
       <aside
@@ -268,7 +319,9 @@
             aria-label="Close menu"
             class="group flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-xl text-slate-400 transition duration-300 hover:border-white/20 hover:bg-white/[0.07] hover:text-white"
           >
-            <span class="transition duration-300 group-hover:rotate-90">×</span>
+            <span class="transition duration-300 group-hover:rotate-90">
+              ×
+            </span>
           </button>
         </div>
 
@@ -440,9 +493,9 @@
               aria-label="Close modal"
               class="group flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-xl text-slate-400 transition duration-300 hover:border-red-400/30 hover:bg-red-500/10 hover:text-red-200"
             >
-              <span class="transition duration-300 group-hover:rotate-90"
-                >×</span
-              >
+              <span class="transition duration-300 group-hover:rotate-90">
+                ×
+              </span>
             </button>
           </div>
 
@@ -516,7 +569,39 @@
       const grandPrixModal = document.getElementById("grandPrixModal");
       const grandPrixDialog = grandPrixModal.querySelector("[role='dialog']");
 
+      const toast = document.getElementById("toast");
+      const toastProgress = document.getElementById("toastProgress");
+
+      let toastTimer;
+
+      function showToast() {
+        clearTimeout(toastTimer);
+
+        toastProgress.classList.remove("scale-x-100");
+        toastProgress.classList.add("scale-x-0");
+
+        toast.classList.remove("opacity-0", "translate-y-8");
+        toast.classList.add("opacity-100", "translate-y-0");
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            toastProgress.classList.remove("scale-x-0");
+            toastProgress.classList.add("scale-x-100");
+          });
+        });
+
+        toastTimer = setTimeout(() => {
+          toast.classList.add("opacity-0", "translate-y-8");
+          toast.classList.remove("opacity-100", "translate-y-0");
+
+          toastProgress.classList.remove("scale-x-100");
+          toastProgress.classList.add("scale-x-0");
+        }, 3500);
+      }
+
       function openOffcanvas() {
+        showToast();
+
         offcanvas.classList.remove("invisible", "pointer-events-none");
         offcanvas.setAttribute("aria-hidden", "false");
 
