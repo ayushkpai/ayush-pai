@@ -13,47 +13,61 @@
   <body
     class="min-h-screen overflow-x-hidden bg-[#02040a] font-sans text-white antialiased selection:bg-violet-500/30 selection:text-white"
   >
+    <div class="pointer-events-none fixed inset-0 -z-20 bg-[#02040a]"></div>
+
     <div
-      class="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_75%_0%,rgba(124,58,237,0.13),transparent_30%),radial-gradient(circle_at_15%_85%,rgba(37,99,235,0.08),transparent_28%),linear-gradient(180deg,#02040a_0%,#030711_100%)]"
+      class="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_-10%,rgba(124,58,237,0.2),transparent_32%),radial-gradient(circle_at_100%_45%,rgba(99,102,241,0.08),transparent_30%),radial-gradient(circle_at_0%_90%,rgba(37,99,235,0.09),transparent_28%)]"
     ></div>
 
     <div
-      class="pointer-events-none fixed inset-0 -z-10 opacity-[0.025] bg-[linear-gradient(rgba(255,255,255,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.5)_1px,transparent_1px)] bg-[size:48px_48px]"
+      class="pointer-events-none fixed left-1/2 top-0 -z-10 h-[32rem] w-[32rem] -translate-x-1/2 rounded-full bg-violet-600/[0.045] blur-[120px]"
+    ></div>
+
+    <div
+      class="pointer-events-none fixed inset-0 -z-10 opacity-[0.025] bg-[linear-gradient(rgba(255,255,255,0.6)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.6)_1px,transparent_1px)] bg-[size:48px_48px]"
     ></div>
 
     <header class="fixed inset-x-0 top-4 z-50 px-4">
       <div
-        class="mx-auto flex h-[4.25rem] max-w-7xl items-center justify-between rounded-[1.4rem] border border-white/[0.08] bg-[#080d17]/75 px-4 shadow-[0_18px_60px_rgba(0,0,0,0.32)] backdrop-blur-2xl sm:rounded-[1.6rem] sm:px-5"
+        class="group mx-auto flex h-[4.4rem] max-w-7xl items-center justify-between rounded-[1.45rem] border border-white/[0.09] bg-[#080d17]/70 px-4 shadow-[0_20px_80px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-2xl transition duration-500 hover:border-white/[0.13] sm:px-5"
       >
+        <div
+          class="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-violet-400/30 to-transparent"
+        ></div>
+
         <button
           type="button"
           data-open-offcanvas
           aria-label="Open menu"
-          class="group flex items-center gap-3 text-left"
+          class="group/logo flex items-center gap-3 text-left"
         >
           <span
-            class="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 p-[1px] shadow-lg shadow-violet-500/10 transition duration-500 group-hover:scale-105 group-hover:shadow-violet-500/20"
+            class="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-violet-500 p-[1px] shadow-[0_0_35px_rgba(139,92,246,0.12)] transition duration-500 group-hover/logo:scale-105 group-hover/logo:shadow-[0_0_45px_rgba(139,92,246,0.24)]"
           >
             <span
-              class="flex h-full w-full items-center justify-center rounded-[0.95rem] bg-[#090d17]"
+              class="absolute inset-0 animate-pulse rounded-2xl bg-violet-400/20 blur-xl"
+            ></span>
+
+            <span
+              class="relative flex h-full w-full items-center justify-center rounded-[0.95rem] bg-[#090d17]"
             >
               <img
                 src="images/logo.png"
                 alt="Ayush Pai"
-                class="h-8 w-8 object-contain"
+                class="h-8 w-8 object-contain transition duration-500 group-hover/logo:scale-110"
               />
             </span>
           </span>
 
           <div>
             <p
-              class="text-sm font-semibold tracking-[-0.02em] text-white transition-colors group-hover:text-violet-100"
+              class="text-sm font-semibold tracking-[-0.02em] text-white transition-colors duration-300 group-hover/logo:text-violet-100"
             >
               Ayush Pai
             </p>
 
             <p
-              class="mt-0.5 hidden text-[9px] font-medium uppercase tracking-[0.28em] text-slate-500 sm:block"
+              class="mt-0.5 hidden text-[9px] font-medium uppercase tracking-[0.3em] text-slate-500 sm:block"
             >
               Software Developer
             </p>
@@ -64,15 +78,17 @@
           type="button"
           data-open-offcanvas
           aria-label="Open menu"
-          class="group flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.025] text-slate-400 transition duration-300 hover:border-white/20 hover:bg-white/[0.07] hover:text-white"
+          class="group flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.025] text-slate-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition duration-300 hover:border-violet-300/20 hover:bg-white/[0.07] hover:text-white"
         >
           <span class="flex flex-col gap-1">
             <span
-              class="h-px w-4 bg-current transition-transform duration-300 group-hover:translate-x-1"
+              class="h-px w-4 bg-current transition duration-300 group-hover:translate-x-1"
             ></span>
-            <span class="h-px w-3 bg-current"></span>
             <span
-              class="h-px w-4 bg-current transition-transform duration-300 group-hover:-translate-x-1"
+              class="h-px w-3 bg-current transition duration-300 group-hover:w-4"
+            ></span>
+            <span
+              class="h-px w-4 bg-current transition duration-300 group-hover:-translate-x-1"
             ></span>
           </span>
         </button>
@@ -82,72 +98,147 @@
     <main
       class="flex min-h-screen items-center justify-center px-4 pb-16 pt-28"
     >
-      <section class="text-center">
+      <section class="relative w-full max-w-4xl py-16 text-center sm:py-24">
         <div
-          class="mx-auto flex h-20 w-20 items-center justify-center rounded-[1.7rem] border border-white/[0.08] bg-white/[0.025] shadow-[0_25px_80px_rgba(0,0,0,0.45)]"
+          class="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500/[0.07] blur-[100px]"
+        ></div>
+
+        <div
+          class="group relative mx-auto flex h-24 w-24 items-center justify-center rounded-[2rem] border border-white/[0.09] bg-white/[0.025] shadow-[0_30px_100px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.05)] transition duration-700 hover:scale-105 hover:border-violet-400/20 hover:bg-white/[0.04]"
         >
-          <div class="relative flex h-10 w-10 items-center justify-center">
+          <span
+            class="absolute inset-[-1px] rounded-[2rem] bg-gradient-to-br from-violet-400/20 via-transparent to-fuchsia-400/20 opacity-0 blur-sm transition duration-700 group-hover:opacity-100"
+          ></span>
+
+          <div class="relative flex h-11 w-11 items-center justify-center">
             <span
-              class="absolute inset-0 animate-spin rounded-full border-2 border-white/10 border-t-violet-400"
+              class="absolute inset-0 animate-spin rounded-full border-2 border-white/[0.06] border-t-violet-400 border-r-fuchsia-400"
             ></span>
 
             <span
-              class="h-2 w-2 rounded-full bg-violet-400 shadow-[0_0_18px_rgba(167,139,250,0.9)]"
+              class="h-2 w-2 rounded-full bg-violet-300 shadow-[0_0_20px_rgba(167,139,250,1)]"
             ></span>
           </div>
         </div>
 
-        <p class="mx-auto mt-4 max-w-md text-sm leading-6 text-slate-500">
-          Try the little <span class="text-slate-300">☰</span> button.
-        </p>
+        <div class="mt-10">
+          <div
+            class="mx-auto inline-flex items-center gap-2 rounded-full border border-white/[0.07] bg-white/[0.025] px-3 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+          >
+            <span
+              class="h-1.5 w-1.5 rounded-full bg-violet-400 shadow-[0_0_12px_rgba(167,139,250,0.9)]"
+            ></span>
+
+            <span
+              class="text-[9px] font-semibold uppercase tracking-[0.32em] text-slate-400"
+            >
+              Software Developer
+            </span>
+          </div>
+
+          <h1
+            class="mx-auto mt-6 max-w-4xl text-5xl font-semibold leading-[0.98] tracking-[-0.065em] text-white sm:text-6xl md:text-7xl lg:text-[5.25rem]"
+          >
+            Building things
+            <br />
+            <span
+              class="bg-gradient-to-r from-violet-200 via-white to-fuchsia-200 bg-clip-text text-transparent"
+            >
+              worth using.
+            </span>
+          </h1>
+
+          <p
+            class="mx-auto mt-7 max-w-xl text-sm leading-7 text-slate-500 sm:text-base"
+          >
+            Software, interfaces, and experiments crafted with simplicity,
+            precision, and attention to detail.
+          </p>
+
+          <div
+            class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          >
+            <button
+              type="button"
+              data-open-offcanvas
+              class="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-2xl bg-white px-6 py-3.5 text-sm font-semibold text-[#05070c] shadow-[0_10px_40px_rgba(255,255,255,0.06)] transition duration-300 hover:-translate-y-0.5 hover:bg-violet-100 hover:shadow-[0_15px_50px_rgba(139,92,246,0.16)]"
+            >
+              <span>Explore</span>
+
+              <span class="transition duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </button>
+
+            <a
+              href="https://github.com/ayushkpai"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group inline-flex items-center justify-center gap-2 rounded-2xl border border-white/[0.09] bg-white/[0.025] px-6 py-3.5 text-sm font-medium text-slate-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
+            >
+              GitHub
+
+              <span
+                class="text-slate-500 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet-300"
+              >
+                ↗
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="mx-auto mt-20 flex max-w-xl items-center justify-center">
+          <div
+            class="h-px flex-1 bg-gradient-to-r from-transparent to-white/[0.08]"
+          ></div>
+
+          <div
+            class="mx-5 flex items-center gap-3 text-[9px] font-medium uppercase tracking-[0.3em] text-slate-700"
+          >
+            <span>Design</span>
+            <span class="h-1 w-1 rounded-full bg-slate-700"></span>
+            <span>Code</span>
+            <span class="h-1 w-1 rounded-full bg-slate-700"></span>
+            <span>Ideas</span>
+          </div>
+
+          <div
+            class="h-px flex-1 bg-gradient-to-l from-transparent to-white/[0.08]"
+          ></div>
+        </div>
       </section>
     </main>
 
     <div
-      id="toast"
-      class="pointer-events-none fixed bottom-6 left-1/2 z-[200] w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 translate-y-6 rounded-2xl border border-violet-400/[0.14] bg-[#0a0e18]/95 px-4 py-3.5 opacity-0 shadow-[0_20px_70px_rgba(0,0,0,0.5)] backdrop-blur-2xl transition-all duration-500"
-      role="status"
-      aria-live="polite"
-    >
-      <div class="flex items-center gap-3">
-        <div
-          class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-violet-500/10 text-lg"
-        >
-          👀
-        </div>
-
-        <div>
-          <p class="text-xs font-semibold text-white">Excellent choice.</p>
-
-          <p class="mt-0.5 text-[11px] text-slate-500">
-            You found the button. Your developer instincts are intact.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div
       id="offcanvas"
-      class="pointer-events-none fixed inset-0 z-[100] invisible"
+      class="pointer-events-none invisible fixed inset-0 z-[100]"
       aria-hidden="true"
     >
       <button
         type="button"
         data-close-offcanvas
-        class="absolute inset-0 bg-black/70 opacity-0 backdrop-blur-md transition-opacity duration-500"
         aria-label="Close menu"
+        class="absolute inset-0 bg-black/75 opacity-0 backdrop-blur-xl transition-opacity duration-500"
       ></button>
 
       <aside
-        class="absolute right-0 top-0 flex h-full w-[min(420px,92vw)] translate-x-full flex-col border-l border-white/[0.08] bg-[#070b13]/95 p-6 shadow-[-30px_0_120px_rgba(0,0,0,0.65)] backdrop-blur-2xl transition-transform duration-500 ease-out sm:p-8"
+        class="absolute right-0 top-0 flex h-full w-[min(430px,92vw)] translate-x-full flex-col overflow-hidden border-l border-white/[0.08] bg-[#060a12]/95 p-6 shadow-[-40px_0_140px_rgba(0,0,0,0.7)] backdrop-blur-3xl transition-transform duration-500 ease-out sm:p-8"
         role="dialog"
         aria-modal="true"
         aria-label="Navigation"
       >
-        <div class="flex items-center justify-between">
+        <div
+          class="pointer-events-none absolute right-[-10rem] top-[-10rem] h-72 w-72 rounded-full bg-violet-500/[0.08] blur-[100px]"
+        ></div>
+
+        <div
+          class="pointer-events-none absolute bottom-[-12rem] left-[-10rem] h-80 w-80 rounded-full bg-blue-500/[0.06] blur-[110px]"
+        ></div>
+
+        <div class="relative flex items-center justify-between">
           <div class="flex items-center gap-3">
             <div
-              class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 p-[1px]"
+              class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 p-[1px] shadow-[0_0_30px_rgba(139,92,246,0.12)]"
             >
               <div
                 class="flex h-full w-full items-center justify-center rounded-[0.95rem] bg-[#090d17]"
@@ -175,23 +266,27 @@
             type="button"
             data-close-offcanvas
             aria-label="Close menu"
-            class="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-xl text-slate-400 transition duration-300 hover:border-white/20 hover:bg-white/[0.07] hover:text-white"
+            class="group flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-xl text-slate-400 transition duration-300 hover:border-white/20 hover:bg-white/[0.07] hover:text-white"
           >
-            ×
+            <span class="transition duration-300 group-hover:rotate-90">×</span>
           </button>
         </div>
 
         <div
-          class="my-8 h-px bg-gradient-to-r from-white/[0.10] via-white/[0.04] to-transparent"
+          class="relative my-8 h-px bg-gradient-to-r from-white/[0.1] via-white/[0.04] to-transparent"
         ></div>
 
-        <div class="space-y-3">
+        <div class="relative space-y-3">
           <a
             href="https://github.com/ayushkpai"
             target="_blank"
             rel="noopener noreferrer"
-            class="group flex items-center justify-between rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.06]"
+            class="group relative flex items-center justify-between overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-400/20 hover:bg-violet-500/[0.05]"
           >
+            <div
+              class="absolute inset-y-0 left-0 w-1 bg-violet-400 opacity-0 transition duration-300 group-hover:opacity-100"
+            ></div>
+
             <div>
               <p
                 class="text-sm font-medium text-white transition-colors group-hover:text-violet-100"
@@ -199,11 +294,13 @@
                 GitHub
               </p>
 
-              <p class="mt-1 text-[11px] text-slate-500">ayushkpai</p>
+              <p class="mt-1 text-[11px] text-slate-500">
+                Projects and open-source work
+              </p>
             </div>
 
             <span
-              class="text-slate-500 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white"
+              class="text-slate-500 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet-300"
             >
               ↗
             </span>
@@ -213,8 +310,12 @@
             href="https://github.com/paiandco"
             target="_blank"
             rel="noopener noreferrer"
-            class="group flex items-center justify-between rounded-2xl border border-emerald-400/[0.08] bg-emerald-400/[0.025] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-300/25 hover:bg-emerald-400/[0.06]"
+            class="group relative flex items-center justify-between overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-400/20 hover:bg-emerald-400/[0.05]"
           >
+            <div
+              class="absolute inset-y-0 left-0 w-1 bg-emerald-400 opacity-0 transition duration-300 group-hover:opacity-100"
+            ></div>
+
             <div>
               <p
                 class="text-sm font-medium text-white transition-colors group-hover:text-emerald-100"
@@ -222,11 +323,13 @@
                 Pai & Co
               </p>
 
-              <p class="mt-1 text-[11px] text-slate-500">paiandco</p>
+              <p class="mt-1 text-[11px] text-slate-500">
+                Independent projects and ideas
+              </p>
             </div>
 
             <span
-              class="text-emerald-300/70 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-emerald-200"
+              class="text-emerald-300/60 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-emerald-200"
             >
               ↗
             </span>
@@ -235,8 +338,12 @@
           <button
             type="button"
             data-open-grand-prix
-            class="group flex w-full items-center justify-between rounded-2xl border border-red-400/[0.08] bg-red-400/[0.025] p-4 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-red-300/25 hover:bg-red-400/[0.06]"
+            class="group relative flex w-full items-center justify-between overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:-translate-y-0.5 hover:border-red-400/20 hover:bg-red-400/[0.05]"
           >
+            <div
+              class="absolute inset-y-0 left-0 w-1 bg-red-400 opacity-0 transition duration-300 group-hover:opacity-100"
+            ></div>
+
             <div>
               <p
                 class="text-sm font-medium text-white transition-colors group-hover:text-red-100"
@@ -244,25 +351,31 @@
                 Retro Grand Prix
               </p>
 
-              <p class="mt-1 text-[11px] text-slate-500">F1 Racing</p>
+              <p class="mt-1 text-[11px] text-slate-500">
+                F1 racing experience
+              </p>
             </div>
 
             <span
-              class="text-red-300/70 transition-all duration-300 group-hover:translate-x-1 group-hover:text-red-200"
+              class="text-red-300/60 transition-all duration-300 group-hover:translate-x-1 group-hover:text-red-200"
             >
               →
             </span>
           </button>
         </div>
 
-        <div class="mt-auto">
+        <div class="relative mt-auto">
           <div
-            class="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4"
+            class="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
           >
             <div class="flex items-center gap-2">
               <span
-                class="h-1.5 w-1.5 rounded-full bg-violet-400 shadow-[0_0_12px_rgba(167,139,250,0.8)]"
-              ></span>
+                class="relative h-1.5 w-1.5 rounded-full bg-violet-400 shadow-[0_0_12px_rgba(167,139,250,0.8)]"
+              >
+                <span
+                  class="absolute inset-0 animate-ping rounded-full bg-violet-400 opacity-50"
+                ></span>
+              </span>
 
               <p
                 class="text-[9px] font-semibold uppercase tracking-[0.3em] text-slate-500"
@@ -270,6 +383,10 @@
                 Ayush Pai
               </p>
             </div>
+
+            <p class="mt-2 text-xs leading-5 text-slate-500">
+              Software developer building thoughtful digital experiences.
+            </p>
           </div>
         </div>
       </aside>
@@ -277,34 +394,34 @@
 
     <div
       id="grandPrixModal"
-      class="pointer-events-none fixed inset-0 z-[110] flex invisible items-center justify-center p-4 opacity-0 transition-opacity duration-300"
+      class="pointer-events-none invisible fixed inset-0 z-[110] flex items-center justify-center p-4 opacity-0 transition-opacity duration-300"
       aria-hidden="true"
     >
       <button
         type="button"
         data-close-grand-prix
-        class="absolute inset-0 bg-black/80 backdrop-blur-lg"
+        class="absolute inset-0 bg-black/85 backdrop-blur-xl"
         aria-label="Close modal"
       ></button>
 
       <div
-        class="relative w-full max-w-xl scale-95 overflow-hidden rounded-[1.8rem] border border-red-400/[0.14] bg-[#100908] shadow-[0_35px_120px_rgba(0,0,0,0.72)] transition-transform duration-300"
+        class="relative w-full max-w-xl scale-95 overflow-hidden rounded-[2rem] border border-red-400/[0.14] bg-[#100908] shadow-[0_40px_140px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.04)] transition-transform duration-300"
         role="dialog"
         aria-modal="true"
         aria-labelledby="grandPrixTitle"
       >
         <div
-          class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(239,68,68,0.22),transparent_32%),radial-gradient(circle_at_10%_100%,rgba(249,115,22,0.12),transparent_34%),linear-gradient(145deg,#1a0c0b,#100908_50%,#080606)]"
+          class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(239,68,68,0.24),transparent_34%),radial-gradient(circle_at_0%_100%,rgba(249,115,22,0.12),transparent_34%),linear-gradient(145deg,#1a0c0b,#100908_50%,#080606)]"
         ></div>
 
         <div
-          class="pointer-events-none absolute inset-0 opacity-[0.035] bg-[repeating-linear-gradient(135deg,transparent_0px,transparent_5px,rgba(255,255,255,0.8)_5px,rgba(255,255,255,0.8)_6px)]"
+          class="pointer-events-none absolute right-[-6rem] top-[-6rem] h-48 w-48 rounded-full bg-red-500/[0.08] blur-[70px]"
         ></div>
 
         <div class="relative p-6 sm:p-8">
           <div class="flex items-start justify-between">
             <div
-              class="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl border border-red-400/[0.16] bg-[#090606] shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_18px_40px_rgba(0,0,0,0.45)]"
+              class="group relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl border border-red-400/[0.16] bg-[#090606] shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_18px_40px_rgba(0,0,0,0.45)]"
             >
               <div
                 class="absolute inset-0 bg-[radial-gradient(circle_at_30%_15%,rgba(255,255,255,0.14),transparent_32%),linear-gradient(145deg,rgba(239,68,68,0.15),transparent_65%)]"
@@ -313,7 +430,7 @@
               <img
                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23090808'/%3E%3Cpath d='M6,20 L8,14 L12,12 L20,12 L24,14 L26,20 Z' fill='%23ef4444'/%3E%3Cellipse cx='16' cy='13' rx='3' ry='2' fill='%23111'/%3E%3Ccircle cx='16' cy='12.5' r='1.5' fill='%23facc15'/%3E%3Crect x='4' y='18' width='3' height='5' rx='1' fill='%23111'/%3E%3Crect x='25' y='18' width='3' height='5' rx='1' fill='%23111'/%3E%3Crect x='5' y='10' width='22' height='2' rx='1' fill='%23ef4444'/%3E%3C/svg%3E"
                 alt="Retro Grand Prix racing logo"
-                class="relative h-11 w-11 object-contain transition-transform duration-500 hover:scale-110"
+                class="relative h-11 w-11 object-contain transition duration-500 group-hover:scale-110"
               />
             </div>
 
@@ -321,19 +438,21 @@
               type="button"
               data-close-grand-prix
               aria-label="Close modal"
-              class="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-xl text-slate-400 transition duration-300 hover:border-red-400/30 hover:bg-red-500/10 hover:text-red-200"
+              class="group flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-xl text-slate-400 transition duration-300 hover:border-red-400/30 hover:bg-red-500/10 hover:text-red-200"
             >
-              ×
+              <span class="transition duration-300 group-hover:rotate-90"
+                >×</span
+              >
             </button>
           </div>
 
-          <div class="mt-7">
+          <div class="mt-8">
             <div class="flex items-center gap-2">
               <span
-                class="relative flex h-1.5 w-1.5 rounded-full bg-red-400 shadow-[0_0_14px_rgba(248,113,113,0.95)]"
+                class="relative h-1.5 w-1.5 rounded-full bg-red-400 shadow-[0_0_14px_rgba(248,113,113,0.95)]"
               >
                 <span
-                  class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-50"
+                  class="absolute inset-0 animate-ping rounded-full bg-red-400 opacity-50"
                 ></span>
               </span>
 
@@ -346,22 +465,23 @@
 
             <h2
               id="grandPrixTitle"
-              class="mt-2 text-3xl font-semibold tracking-[-0.05em] text-white sm:text-4xl"
+              class="mt-3 text-3xl font-semibold tracking-[-0.05em] text-white sm:text-4xl"
             >
               Retro Grand Prix
             </h2>
 
-            <p class="mt-4 max-w-lg text-sm leading-6 text-slate-400">
-              Ready to enter the grid? Launch Retro Grand Prix and start racing.
+            <p class="mt-4 max-w-lg text-sm leading-7 text-slate-400">
+              A retro-inspired racing experience built around fast gameplay,
+              nostalgic visuals, and a focused interface.
             </p>
           </div>
 
-          <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
               href="/retro-grand-prix"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex flex-1 items-center justify-center gap-2 rounded-2xl bg-red-500 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-red-500/10 transition-all duration-300 hover:bg-red-400 hover:shadow-red-500/20"
+              class="group flex flex-1 items-center justify-center gap-2 rounded-2xl bg-red-500 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_10px_40px_rgba(239,68,68,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-red-400 hover:shadow-[0_15px_50px_rgba(239,68,68,0.2)]"
             >
               <span>Enter the Grid</span>
 
@@ -377,7 +497,7 @@
               data-close-grand-prix
               class="rounded-2xl border border-white/[0.08] bg-white/[0.025] px-5 py-3.5 text-sm font-medium text-slate-400 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.06] hover:text-white"
             >
-              Maybe Later
+              Close
             </button>
           </div>
         </div>
@@ -391,35 +511,17 @@
     <script>
       const offcanvas = document.getElementById("offcanvas");
       const offcanvasPanel = offcanvas.querySelector("aside");
+      const offcanvasBackdrop = offcanvas.querySelector("button.absolute");
+
       const grandPrixModal = document.getElementById("grandPrixModal");
       const grandPrixDialog = grandPrixModal.querySelector("[role='dialog']");
-      const toast = document.getElementById("toast");
-
-      let toastTimer;
-
-      function showToast() {
-        clearTimeout(toastTimer);
-
-        toast.classList.remove("opacity-0", "translate-y-6");
-        toast.classList.add("opacity-100", "translate-y-0");
-
-        toastTimer = setTimeout(() => {
-          toast.classList.add("opacity-0", "translate-y-6");
-          toast.classList.remove("opacity-100", "translate-y-0");
-        }, 3500);
-      }
 
       function openOffcanvas() {
-        showToast();
-
         offcanvas.classList.remove("invisible", "pointer-events-none");
         offcanvas.setAttribute("aria-hidden", "false");
 
         requestAnimationFrame(() => {
-          offcanvas
-            .querySelector("button.absolute")
-            .classList.remove("opacity-0");
-
+          offcanvasBackdrop.classList.remove("opacity-0");
           offcanvasPanel.classList.remove("translate-x-full");
         });
 
@@ -427,8 +529,7 @@
       }
 
       function closeOffcanvas() {
-        offcanvas.querySelector("button.absolute").classList.add("opacity-0");
-
+        offcanvasBackdrop.classList.add("opacity-0");
         offcanvasPanel.classList.add("translate-x-full");
         offcanvas.setAttribute("aria-hidden", "true");
 
@@ -445,6 +546,7 @@
         closeOffcanvas();
 
         grandPrixModal.classList.remove("invisible", "pointer-events-none");
+
         grandPrixModal.setAttribute("aria-hidden", "false");
 
         requestAnimationFrame(() => {
