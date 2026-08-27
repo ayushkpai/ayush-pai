@@ -260,10 +260,9 @@
             </span>
           </a>
 
-          <a
-            href="/retro-grand-prix"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            data-open-retro
             class="group flex w-full items-center justify-between rounded-2xl border border-red-400/[0.08] bg-red-400/[0.025] p-4 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-red-300/25 hover:bg-red-400/[0.06]"
           >
             <div>
@@ -281,7 +280,7 @@
             >
               →
             </span>
-          </a>
+          </button>
         </div>
 
         <div class="mt-auto">
@@ -361,17 +360,16 @@
             <span class="text-slate-600">↗</span>
           </a>
 
-          <a
-            href="/retro-grand-prix"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
             data-command-item
             data-search="retro grand prix f1 racing"
-            class="flex items-center justify-between rounded-xl px-4 py-3.5 text-sm text-slate-300 transition hover:bg-white/[0.06] hover:text-white"
+            data-open-retro
+            class="flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-left text-sm text-slate-300 transition hover:bg-white/[0.06] hover:text-white"
           >
             <span>Retro Grand Prix</span>
-            <span class="text-slate-600">↗</span>
-          </a>
+            <span class="text-red-300/70">→</span>
+          </button>
 
           <button
             type="button"
@@ -393,6 +391,83 @@
       </div>
     </div>
 
+    <div
+      id="retroModal"
+      class="pointer-events-none fixed inset-0 z-[400] invisible flex items-center justify-center bg-black/70 px-4 opacity-0 backdrop-blur-sm transition-opacity duration-200"
+      aria-hidden="true"
+    >
+      <button
+        type="button"
+        data-close-retro
+        class="absolute inset-0 cursor-default"
+        aria-label="Close modal"
+      ></button>
+
+      <div
+        id="retroModalPanel"
+        class="relative w-full max-w-md scale-95 rounded-[1.75rem] border border-red-400/15 bg-[#080d17] p-6 shadow-[0_35px_120px_rgba(0,0,0,.75)] transition-transform duration-200 sm:p-7"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="retroModalTitle"
+      >
+        <div class="flex items-center justify-between">
+          <div>
+            <p
+              class="text-[9px] font-semibold uppercase tracking-[0.3em] text-red-300/60"
+            >
+              F1 Racing
+            </p>
+
+            <h2
+              id="retroModalTitle"
+              class="mt-1 text-xl font-semibold text-white"
+            >
+              Retro Grand Prix
+            </h2>
+          </div>
+
+          <button
+            type="button"
+            data-close-retro
+            aria-label="Close modal"
+            class="flex h-9 w-9 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] text-lg text-slate-500 transition hover:border-white/20 hover:bg-white/[0.07] hover:text-white"
+          >
+            ×
+          </button>
+        </div>
+
+        <div class="mt-6 grid gap-3">
+          <a
+            href="/retro-grand-prix"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-between rounded-xl border border-red-400/15 bg-red-400/[0.05] px-4 py-3.5 text-sm font-medium text-white transition hover:border-red-400/30 hover:bg-red-400/[0.1]"
+          >
+            <span>Enter Grand Prix</span>
+            <span class="text-red-300">↗</span>
+          </a>
+
+          <a
+            href="/retro-grand-prix"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-between rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 py-3.5 text-sm font-medium text-slate-300 transition hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
+          >
+            <span>View Game</span>
+            <span class="text-slate-500">↗</span>
+          </a>
+
+          <button
+            type="button"
+            data-close-retro
+            class="flex items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 py-3.5 text-sm font-medium text-slate-400 transition hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script>
       const offcanvas = document.getElementById("offcanvas");
       const offcanvasPanel = offcanvas.querySelector("aside");
@@ -400,13 +475,24 @@
       const commandPanel = command.querySelector(":scope > div");
       const commandInput = document.getElementById("commandInput");
       const progress = document.getElementById("progress");
+      const retroModal = document.getElementById("retroModal");
+      const retroModalPanel = document.getElementById("retroModalPanel");
 
       let commandItems = [...document.querySelectorAll("[data-command-item]")];
-
       let selectedIndex = 0;
+
+      function updateBodyLock() {
+        const locked =
+          !offcanvas.classList.contains("invisible") ||
+          !command.classList.contains("invisible") ||
+          !retroModal.classList.contains("invisible");
+
+        document.body.classList.toggle("overflow-hidden", locked);
+      }
 
       function openOffcanvas() {
         closeCommand();
+        closeRetroModal();
 
         offcanvas.classList.remove("invisible", "pointer-events-none");
         offcanvas.setAttribute("aria-hidden", "false");
@@ -419,26 +505,23 @@
           offcanvasPanel.classList.remove("translate-x-full");
         });
 
-        document.body.classList.add("overflow-hidden");
+        updateBodyLock();
       }
 
       function closeOffcanvas() {
         offcanvas.querySelector("button.absolute").classList.add("opacity-0");
-
         offcanvasPanel.classList.add("translate-x-full");
         offcanvas.setAttribute("aria-hidden", "true");
 
         setTimeout(() => {
           offcanvas.classList.add("invisible", "pointer-events-none");
+          updateBodyLock();
         }, 500);
-
-        if (command.classList.contains("invisible")) {
-          document.body.classList.remove("overflow-hidden");
-        }
       }
 
       function openCommand() {
         closeOffcanvas();
+        closeRetroModal();
 
         command.classList.remove(
           "invisible",
@@ -459,8 +542,7 @@
 
         updateSelection();
         commandInput.focus();
-
-        document.body.classList.add("overflow-hidden");
+        updateBodyLock();
       }
 
       function closeCommand() {
@@ -471,11 +553,39 @@
 
         setTimeout(() => {
           command.classList.add("invisible", "pointer-events-none");
+          updateBodyLock();
         }, 200);
+      }
 
-        if (offcanvas.getAttribute("aria-hidden") === "true") {
-          document.body.classList.remove("overflow-hidden");
-        }
+      function openRetroModal() {
+        closeCommand();
+        closeOffcanvas();
+
+        retroModal.classList.remove(
+          "invisible",
+          "pointer-events-none",
+          "opacity-0",
+        );
+
+        requestAnimationFrame(() => {
+          retroModalPanel.classList.remove("scale-95");
+        });
+
+        retroModal.setAttribute("aria-hidden", "false");
+        updateBodyLock();
+      }
+
+      function closeRetroModal() {
+        if (retroModal.classList.contains("invisible")) return;
+
+        retroModal.classList.add("opacity-0");
+        retroModalPanel.classList.add("scale-95");
+        retroModal.setAttribute("aria-hidden", "true");
+
+        setTimeout(() => {
+          retroModal.classList.add("invisible", "pointer-events-none");
+          updateBodyLock();
+        }, 200);
       }
 
       function getVisibleItems() {
@@ -539,6 +649,14 @@
         button.addEventListener("click", openCommand);
       });
 
+      document.querySelectorAll("[data-open-retro]").forEach((button) => {
+        button.addEventListener("click", openRetroModal);
+      });
+
+      document.querySelectorAll("[data-close-retro]").forEach((button) => {
+        button.addEventListener("click", closeRetroModal);
+      });
+
       document
         .querySelector("[data-command-close]")
         .addEventListener("click", closeCommand);
@@ -565,7 +683,6 @@
 
           if (visibleItems.length) {
             selectedIndex = (selectedIndex + 1) % visibleItems.length;
-
             updateSelection();
           }
         }
@@ -597,7 +714,9 @@
         }
 
         if (event.key === "Escape") {
-          if (!command.classList.contains("invisible")) {
+          if (!retroModal.classList.contains("invisible")) {
+            closeRetroModal();
+          } else if (!command.classList.contains("invisible")) {
             closeCommand();
           } else if (offcanvas.getAttribute("aria-hidden") === "false") {
             closeOffcanvas();
