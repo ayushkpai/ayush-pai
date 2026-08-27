@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Ayush Pai</title>
-
     <link rel="icon" href="images/favicon.ico" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
@@ -13,283 +11,171 @@
   <body
     class="min-h-screen overflow-x-hidden bg-[#02040a] font-sans text-white antialiased selection:bg-violet-500/30 selection:text-white"
   >
-    <div class="pointer-events-none fixed inset-0 -z-20 bg-[#02040a]"></div>
-
     <div
-      class="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_-10%,rgba(124,58,237,0.2),transparent_32%),radial-gradient(circle_at_100%_45%,rgba(99,102,241,0.08),transparent_30%),radial-gradient(circle_at_0%_90%,rgba(37,99,235,0.09),transparent_28%)]"
+      id="progress"
+      class="fixed left-0 top-0 z-[999999] h-[2px] w-0 bg-gradient-to-r from-violet-500 via-fuchsia-400 to-violet-300 shadow-[0_0_12px_rgba(139,92,246,.7)]"
     ></div>
 
     <div
-      class="pointer-events-none fixed left-1/2 top-0 -z-10 h-[32rem] w-[32rem] -translate-x-1/2 rounded-full bg-violet-600/[0.045] blur-[120px]"
+      class="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_75%_0%,rgba(124,58,237,0.13),transparent_30%),radial-gradient(circle_at_15%_85%,rgba(37,99,235,0.08),transparent_28%),linear-gradient(180deg,#02040a_0%,#030711_100%)]"
     ></div>
 
     <div
-      class="pointer-events-none fixed inset-0 -z-10 opacity-[0.025] bg-[linear-gradient(rgba(255,255,255,0.6)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.6)_1px,transparent_1px)] bg-[size:48px_48px]"
+      class="pointer-events-none fixed inset-0 -z-10 opacity-[0.025] bg-[linear-gradient(rgba(255,255,255,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.5)_1px,transparent_1px)] bg-[size:48px_48px]"
     ></div>
 
     <header class="fixed inset-x-0 top-4 z-50 px-4">
       <div
-        class="group mx-auto flex h-[4.4rem] max-w-7xl items-center justify-between rounded-[1.45rem] border border-white/[0.09] bg-[#080d17]/70 px-4 shadow-[0_20px_80px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-2xl transition duration-500 hover:border-white/[0.13] sm:px-5"
+        class="mx-auto flex h-[4.25rem] max-w-7xl items-center justify-between rounded-[1.4rem] border border-white/[0.08] bg-[#080d17]/75 px-4 shadow-[0_18px_60px_rgba(0,0,0,0.32)] backdrop-blur-2xl sm:rounded-[1.6rem] sm:px-5"
       >
-        <div
-          class="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-violet-400/30 to-transparent"
-        ></div>
-
         <button
           type="button"
           data-open-offcanvas
           aria-label="Open menu"
-          class="group/logo flex items-center gap-3 text-left"
+          class="group flex items-center gap-3 text-left"
         >
           <span
-            class="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-violet-500 p-[1px] shadow-[0_0_35px_rgba(139,92,246,0.12)] transition duration-500 group-hover/logo:scale-105 group-hover/logo:shadow-[0_0_45px_rgba(139,92,246,0.24)]"
+            class="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 p-[1px] shadow-lg shadow-violet-500/10 transition duration-500 group-hover:scale-105 group-hover:shadow-violet-500/20"
           >
             <span
-              class="absolute inset-0 animate-pulse rounded-2xl bg-violet-400/20 blur-xl"
-            ></span>
-
-            <span
-              class="relative flex h-full w-full items-center justify-center rounded-[0.95rem] bg-[#090d17]"
+              class="flex h-full w-full items-center justify-center rounded-[0.95rem] bg-[#090d17]"
             >
               <img
                 src="images/logo.png"
                 alt="Ayush Pai"
-                class="h-8 w-8 object-contain transition duration-500 group-hover/logo:scale-110"
+                class="h-8 w-8 object-contain"
               />
             </span>
           </span>
 
           <div>
             <p
-              class="text-sm font-semibold tracking-[-0.02em] text-white transition-colors duration-300 group-hover/logo:text-violet-100"
+              class="text-sm font-semibold tracking-[-0.02em] text-white transition-colors group-hover:text-violet-100"
             >
               Ayush Pai
             </p>
 
             <p
-              class="mt-0.5 hidden text-[9px] font-medium uppercase tracking-[0.3em] text-slate-500 sm:block"
+              class="mt-0.5 hidden text-[9px] font-medium uppercase tracking-[0.28em] text-slate-500 sm:block"
             >
               Software Developer
             </p>
           </div>
         </button>
 
-        <button
-          type="button"
-          data-open-offcanvas
-          aria-label="Open menu"
-          class="group flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.025] text-slate-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition duration-300 hover:border-violet-300/20 hover:bg-white/[0.07] hover:text-white"
-        >
-          <span class="flex flex-col gap-1">
-            <span
-              class="h-px w-4 bg-current transition duration-300 group-hover:translate-x-1"
-            ></span>
-            <span
-              class="h-px w-3 bg-current transition duration-300 group-hover:w-4"
-            ></span>
-            <span
-              class="h-px w-4 bg-current transition duration-300 group-hover:-translate-x-1"
-            ></span>
-          </span>
-        </button>
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            data-open-command
+            aria-label="Open command palette"
+            class="hidden h-10 items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.025] px-3 text-slate-500 transition duration-300 hover:border-white/20 hover:bg-white/[0.07] hover:text-white sm:flex"
+          >
+            <span class="text-xs">⌘</span>
+            <span class="text-[11px]">K</span>
+          </button>
+
+          <button
+            type="button"
+            data-open-offcanvas
+            aria-label="Open menu"
+            class="group flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.025] text-slate-400 transition duration-300 hover:border-white/20 hover:bg-white/[0.07] hover:text-white"
+          >
+            <span class="flex flex-col gap-1">
+              <span
+                class="h-px w-4 bg-current transition-transform duration-300 group-hover:translate-x-1"
+              ></span>
+              <span class="h-px w-3 bg-current"></span>
+              <span
+                class="h-px w-4 bg-current transition-transform duration-300 group-hover:-translate-x-1"
+              ></span>
+            </span>
+          </button>
+        </div>
       </div>
     </header>
 
-    <main
-      class="flex min-h-screen items-center justify-center px-4 pb-16 pt-28"
-    >
-      <section class="relative w-full max-w-4xl py-16 text-center sm:py-24">
-        <div
-          class="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500/[0.07] blur-[100px]"
-        ></div>
-
-        <div
-          class="group relative mx-auto flex h-24 w-24 items-center justify-center rounded-[2rem] border border-white/[0.09] bg-white/[0.025] shadow-[0_30px_100px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.05)] transition duration-700 hover:scale-105 hover:border-violet-400/20 hover:bg-white/[0.04]"
-        >
-          <span
-            class="absolute inset-[-1px] rounded-[2rem] bg-gradient-to-br from-violet-400/20 via-transparent to-fuchsia-400/20 opacity-0 blur-sm transition duration-700 group-hover:opacity-100"
-          ></span>
-
-          <div class="relative flex h-11 w-11 items-center justify-center">
-            <span
-              class="absolute inset-0 animate-spin rounded-full border-2 border-white/[0.06] border-t-violet-400 border-r-fuchsia-400"
-            ></span>
-
-            <span
-              class="h-2 w-2 rounded-full bg-violet-300 shadow-[0_0_20px_rgba(167,139,250,1)]"
-            ></span>
-          </div>
-        </div>
-
-        <div class="mt-10">
+    <main class="min-h-screen px-4 pb-32 pt-28">
+      <section
+        class="flex min-h-[80vh] items-center justify-center text-center"
+      >
+        <div>
           <div
-            class="mx-auto inline-flex items-center gap-2 rounded-full border border-white/[0.07] bg-white/[0.025] px-3 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+            class="mx-auto flex h-20 w-20 items-center justify-center rounded-[1.7rem] border border-white/[0.08] bg-white/[0.025] shadow-[0_25px_80px_rgba(0,0,0,0.45)]"
           >
-            <span
-              class="h-1.5 w-1.5 rounded-full bg-violet-400 shadow-[0_0_12px_rgba(167,139,250,0.9)]"
-            ></span>
-
-            <span
-              class="text-[9px] font-semibold uppercase tracking-[0.32em] text-slate-400"
-            >
-              Software Developer
-            </span>
-          </div>
-
-          <h1
-            class="mx-auto mt-6 max-w-4xl text-5xl font-semibold leading-[0.98] tracking-[-0.065em] text-white sm:text-6xl md:text-7xl lg:text-[5.25rem]"
-          >
-            Building things
-            <br />
-
-            <span
-              class="bg-gradient-to-r from-violet-200 via-white to-fuchsia-200 bg-clip-text text-transparent"
-            >
-              worth using.
-            </span>
-          </h1>
-
-          <p
-            class="mx-auto mt-7 max-w-xl text-sm leading-7 text-slate-500 sm:text-base"
-          >
-            Software, interfaces, and experiments crafted with simplicity,
-            precision, and attention to detail.
-          </p>
-
-          <div
-            class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
-          >
-            <button
-              type="button"
-              data-open-offcanvas
-              class="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-2xl bg-white px-6 py-3.5 text-sm font-semibold text-[#05070c] shadow-[0_10px_40px_rgba(255,255,255,0.06)] transition duration-300 hover:-translate-y-0.5 hover:bg-violet-100 hover:shadow-[0_15px_50px_rgba(139,92,246,0.16)]"
-            >
-              <span>Explore</span>
-
-              <span class="transition duration-300 group-hover:translate-x-1">
-                →
-              </span>
-            </button>
-
-            <a
-              href="https://github.com/ayushkpai"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group inline-flex items-center justify-center gap-2 rounded-2xl border border-white/[0.09] bg-white/[0.025] px-6 py-3.5 text-sm font-medium text-slate-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
-            >
-              GitHub
+            <div class="relative flex h-10 w-10 items-center justify-center">
+              <span
+                class="absolute inset-0 animate-spin rounded-full border-2 border-white/10 border-t-violet-400"
+              ></span>
 
               <span
-                class="text-slate-500 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet-300"
-              >
-                ↗
-              </span>
-            </a>
-          </div>
-
-          <div class="mx-auto mt-20 flex max-w-xl items-center justify-center">
-            <div
-              class="h-px flex-1 bg-gradient-to-r from-transparent to-white/[0.08]"
-            ></div>
-
-            <div
-              class="mx-5 flex items-center gap-3 text-[9px] font-medium uppercase tracking-[0.3em] text-slate-700"
-            >
-              <span>Design</span>
-              <span class="h-1 w-1 rounded-full bg-slate-700"></span>
-              <span>Code</span>
-              <span class="h-1 w-1 rounded-full bg-slate-700"></span>
-              <span>Ideas</span>
+                class="h-2 w-2 rounded-full bg-violet-400 shadow-[0_0_18px_rgba(167,139,250,0.9)]"
+              ></span>
             </div>
-
-            <div
-              class="h-px flex-1 bg-gradient-to-l from-transparent to-white/[0.08]"
-            ></div>
           </div>
+
+          <p class="mx-auto mt-4 max-w-md text-sm leading-6 text-slate-500">
+            Press
+            <span
+              class="rounded-md border border-white/10 bg-white/[0.04] px-1.5 py-0.5 text-slate-300"
+            >
+              ⌘K
+            </span>
+            to explore.
+          </p>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-6xl py-32">
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            class="h-64 rounded-[2rem] border border-white/[0.07] bg-white/[0.025]"
+          ></div>
+
+          <div
+            class="h-64 rounded-[2rem] border border-white/[0.07] bg-white/[0.025]"
+          ></div>
+
+          <div
+            class="h-64 rounded-[2rem] border border-white/[0.07] bg-white/[0.025]"
+          ></div>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-6xl py-32">
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div
+            class="h-80 rounded-[2rem] border border-white/[0.07] bg-white/[0.025]"
+          ></div>
+
+          <div
+            class="h-80 rounded-[2rem] border border-white/[0.07] bg-white/[0.025]"
+          ></div>
         </div>
       </section>
     </main>
 
     <div
-      id="toast"
-      class="pointer-events-none fixed bottom-6 left-1/2 z-[200] w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 translate-y-8 rounded-[1.35rem] border border-white/[0.09] bg-[#090d17]/90 p-1 opacity-0 shadow-[0_25px_80px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl transition-all duration-500 ease-out"
-      role="status"
-      aria-live="polite"
-    >
-      <div
-        class="relative overflow-hidden rounded-[1.05rem] bg-gradient-to-br from-white/[0.055] to-white/[0.015] px-4 py-3.5"
-      >
-        <div
-          class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-400/50 to-transparent"
-        ></div>
-
-        <div class="flex items-center gap-3">
-          <div
-            class="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-violet-400/[0.12] bg-violet-500/[0.08] shadow-[0_0_25px_rgba(139,92,246,0.08)]"
-          >
-            <span
-              class="absolute inset-0 animate-ping rounded-xl bg-violet-400/[0.06]"
-            ></span>
-
-            <span class="relative text-base">✦</span>
-          </div>
-
-          <div class="min-w-0">
-            <div class="flex items-center gap-2">
-              <p class="text-xs font-semibold tracking-[-0.01em] text-white">
-                Nice choice.
-              </p>
-
-              <span
-                class="h-1 w-1 rounded-full bg-violet-400 shadow-[0_0_8px_rgba(167,139,250,0.8)]"
-              ></span>
-            </div>
-
-            <p class="mt-1 text-[11px] leading-5 text-slate-500">
-              Menu unlocked.
-            </p>
-          </div>
-        </div>
-
-        <div class="mt-3 h-px overflow-hidden rounded-full bg-white/[0.04]">
-          <div
-            id="toastProgress"
-            class="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-violet-500 via-fuchsia-400 to-transparent transition-transform duration-[3500ms] ease-linear"
-          ></div>
-        </div>
-      </div>
-    </div>
-
-    <div
       id="offcanvas"
-      class="pointer-events-none invisible fixed inset-0 z-[100]"
+      class="pointer-events-none fixed inset-0 z-[100] invisible"
       aria-hidden="true"
     >
       <button
         type="button"
         data-close-offcanvas
-        class="absolute inset-0 bg-black/75 opacity-0 backdrop-blur-xl transition-opacity duration-500"
+        class="absolute inset-0 bg-black/70 opacity-0 backdrop-blur-md transition-opacity duration-500"
         aria-label="Close menu"
       ></button>
 
       <aside
-        class="absolute right-0 top-0 flex h-full w-[min(430px,92vw)] translate-x-full flex-col overflow-hidden border-l border-white/[0.08] bg-[#060a12]/95 p-6 shadow-[-40px_0_140px_rgba(0,0,0,0.7)] backdrop-blur-3xl transition-transform duration-500 ease-out sm:p-8"
+        class="absolute right-0 top-0 flex h-full w-[min(420px,92vw)] translate-x-full flex-col border-l border-white/[0.08] bg-[#070b13]/95 p-6 shadow-[-30px_0_120px_rgba(0,0,0,0.65)] backdrop-blur-2xl transition-transform duration-500 ease-out sm:p-8"
         role="dialog"
         aria-modal="true"
         aria-label="Navigation"
       >
-        <div
-          class="pointer-events-none absolute right-[-10rem] top-[-10rem] h-72 w-72 rounded-full bg-violet-500/[0.08] blur-[100px]"
-        ></div>
-
-        <div
-          class="pointer-events-none absolute bottom-[-12rem] left-[-10rem] h-80 w-80 rounded-full bg-blue-500/[0.06] blur-[110px]"
-        ></div>
-
-        <div class="relative flex items-center justify-between">
+        <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
             <div
-              class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 p-[1px] shadow-[0_0_30px_rgba(139,92,246,0.12)]"
+              class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 p-[1px]"
             >
               <div
                 class="flex h-full w-full items-center justify-center rounded-[0.95rem] bg-[#090d17]"
@@ -317,29 +203,23 @@
             type="button"
             data-close-offcanvas
             aria-label="Close menu"
-            class="group flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-xl text-slate-400 transition duration-300 hover:border-white/20 hover:bg-white/[0.07] hover:text-white"
+            class="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-xl text-slate-400 transition duration-300 hover:border-white/20 hover:bg-white/[0.07] hover:text-white"
           >
-            <span class="transition duration-300 group-hover:rotate-90">
-              ×
-            </span>
+            ×
           </button>
         </div>
 
         <div
-          class="relative my-8 h-px bg-gradient-to-r from-white/[0.1] via-white/[0.04] to-transparent"
+          class="my-8 h-px bg-gradient-to-r from-white/[0.10] via-white/[0.04] to-transparent"
         ></div>
 
-        <div class="relative space-y-3">
+        <div class="space-y-3">
           <a
             href="https://github.com/ayushkpai"
             target="_blank"
             rel="noopener noreferrer"
-            class="group relative flex items-center justify-between overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-400/20 hover:bg-violet-500/[0.05]"
+            class="group flex items-center justify-between rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.06]"
           >
-            <div
-              class="absolute inset-y-0 left-0 w-1 bg-violet-400 opacity-0 transition duration-300 group-hover:opacity-100"
-            ></div>
-
             <div>
               <p
                 class="text-sm font-medium text-white transition-colors group-hover:text-violet-100"
@@ -347,13 +227,11 @@
                 GitHub
               </p>
 
-              <p class="mt-1 text-[11px] text-slate-500">
-                Projects and open-source work
-              </p>
+              <p class="mt-1 text-[11px] text-slate-500">ayushkpai</p>
             </div>
 
             <span
-              class="text-slate-500 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet-300"
+              class="text-slate-500 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white"
             >
               ↗
             </span>
@@ -363,40 +241,31 @@
             href="https://github.com/paiandco"
             target="_blank"
             rel="noopener noreferrer"
-            class="group relative flex items-center justify-between overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-400/20 hover:bg-emerald-400/[0.05]"
+            class="group flex items-center justify-between rounded-2xl border border-emerald-400/[0.08] bg-emerald-400/[0.025] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-300/25 hover:bg-emerald-400/[0.06]"
           >
-            <div
-              class="absolute inset-y-0 left-0 w-1 bg-emerald-400 opacity-0 transition duration-300 group-hover:opacity-100"
-            ></div>
-
             <div>
               <p
                 class="text-sm font-medium text-white transition-colors group-hover:text-emerald-100"
               >
-                Pai & Co
+                Pai &amp; Co
               </p>
 
-              <p class="mt-1 text-[11px] text-slate-500">
-                Independent projects and ideas
-              </p>
+              <p class="mt-1 text-[11px] text-slate-500">paiandco</p>
             </div>
 
             <span
-              class="text-emerald-300/60 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-emerald-200"
+              class="text-emerald-300/70 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-emerald-200"
             >
               ↗
             </span>
           </a>
 
-          <button
-            type="button"
-            data-open-grand-prix
-            class="group relative flex w-full items-center justify-between overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:-translate-y-0.5 hover:border-red-400/20 hover:bg-red-400/[0.05]"
+          <a
+            href="/retro-grand-prix"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex w-full items-center justify-between rounded-2xl border border-red-400/[0.08] bg-red-400/[0.025] p-4 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-red-300/25 hover:bg-red-400/[0.06]"
           >
-            <div
-              class="absolute inset-y-0 left-0 w-1 bg-red-400 opacity-0 transition duration-300 group-hover:opacity-100"
-            ></div>
-
             <div>
               <p
                 class="text-sm font-medium text-white transition-colors group-hover:text-red-100"
@@ -404,31 +273,25 @@
                 Retro Grand Prix
               </p>
 
-              <p class="mt-1 text-[11px] text-slate-500">
-                F1 racing experience
-              </p>
+              <p class="mt-1 text-[11px] text-slate-500">F1 Racing</p>
             </div>
 
             <span
-              class="text-red-300/60 transition-all duration-300 group-hover:translate-x-1 group-hover:text-red-200"
+              class="text-red-300/70 transition-all duration-300 group-hover:translate-x-1 group-hover:text-red-200"
             >
               →
             </span>
-          </button>
+          </a>
         </div>
 
-        <div class="relative mt-auto">
+        <div class="mt-auto">
           <div
-            class="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
+            class="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4"
           >
             <div class="flex items-center gap-2">
               <span
-                class="relative h-1.5 w-1.5 rounded-full bg-violet-400 shadow-[0_0_12px_rgba(167,139,250,0.8)]"
-              >
-                <span
-                  class="absolute inset-0 animate-ping rounded-full bg-violet-400 opacity-50"
-                ></span>
-              </span>
+                class="h-1.5 w-1.5 rounded-full bg-violet-400 shadow-[0_0_12px_rgba(167,139,250,0.8)]"
+              ></span>
 
               <p
                 class="text-[9px] font-semibold uppercase tracking-[0.3em] text-slate-500"
@@ -436,177 +299,123 @@
                 Ayush Pai
               </p>
             </div>
-
-            <p class="mt-2 text-xs leading-5 text-slate-500">
-              Software developer building thoughtful digital experiences.
-            </p>
           </div>
         </div>
       </aside>
     </div>
 
     <div
-      id="grandPrixModal"
-      class="pointer-events-none invisible fixed inset-0 z-[110] flex items-center justify-center p-4 opacity-0 transition-opacity duration-300"
-      aria-hidden="true"
+      id="command"
+      class="pointer-events-none fixed inset-0 z-[300] invisible flex items-start justify-center bg-black/60 px-4 pt-[12vh] opacity-0 backdrop-blur-md transition-opacity duration-200"
     >
       <button
         type="button"
-        data-close-grand-prix
-        class="absolute inset-0 bg-black/85 backdrop-blur-xl"
-        aria-label="Close modal"
+        data-command-close
+        class="absolute inset-0 cursor-default"
+        aria-label="Close command palette"
       ></button>
 
       <div
-        class="relative w-full max-w-xl scale-95 overflow-hidden rounded-[2rem] border border-red-400/[0.14] bg-[#100908] shadow-[0_40px_140px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.04)] transition-transform duration-300"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="grandPrixTitle"
+        class="relative w-full max-w-xl scale-95 overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080d17]/95 shadow-[0_35px_120px_rgba(0,0,0,.7)] backdrop-blur-2xl transition-transform duration-200"
       >
-        <div
-          class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(239,68,68,0.24),transparent_34%),radial-gradient(circle_at_0%_100%,rgba(249,115,22,0.12),transparent_34%),linear-gradient(145deg,#1a0c0b,#100908_50%,#080606)]"
-        ></div>
+        <div class="flex items-center gap-3 border-b border-white/[0.07] px-5">
+          <span class="text-lg text-slate-500">⌕</span>
 
-        <div
-          class="pointer-events-none absolute right-[-6rem] top-[-6rem] h-48 w-48 rounded-full bg-red-500/[0.08] blur-[70px]"
-        ></div>
+          <input
+            id="commandInput"
+            type="text"
+            placeholder="Search anything..."
+            autocomplete="off"
+            class="h-16 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-slate-600"
+          />
 
-        <div class="relative p-6 sm:p-8">
-          <div class="flex items-start justify-between">
-            <div
-              class="group relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl border border-red-400/[0.16] bg-[#090606] shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_18px_40px_rgba(0,0,0,0.45)]"
-            >
-              <div
-                class="absolute inset-0 bg-[radial-gradient(circle_at_30%_15%,rgba(255,255,255,0.14),transparent_32%),linear-gradient(145deg,rgba(239,68,68,0.15),transparent_65%)]"
-              ></div>
+          <kbd
+            class="rounded-lg border border-white/10 bg-white/[0.04] px-2 py-1 text-[10px] text-slate-500"
+          >
+            ESC
+          </kbd>
+        </div>
 
-              <img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23090808'/%3E%3Cpath d='M6,20 L8,14 L12,12 L20,12 L24,14 L26,20 Z' fill='%23ef4444'/%3E%3Cellipse cx='16' cy='13' rx='3' ry='2' fill='%23111'/%3E%3Ccircle cx='16' cy='12.5' r='1.5' fill='%23facc15'/%3E%3Crect x='4' y='18' width='3' height='5' rx='1' fill='%23111'/%3E%3Crect x='25' y='18' width='3' height='5' rx='1' fill='%23111'/%3E%3Crect x='5' y='10' width='22' height='2' rx='1' fill='%23ef4444'/%3E%3C/svg%3E"
-                alt="Retro Grand Prix racing logo"
-                class="relative h-11 w-11 object-contain transition duration-500 group-hover:scale-110"
-              />
-            </div>
+        <div id="commandItems" class="p-2">
+          <a
+            href="https://github.com/ayushkpai"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-command-item
+            data-search="github ayushkpai"
+            class="flex items-center justify-between rounded-xl px-4 py-3.5 text-sm text-slate-300 transition hover:bg-white/[0.06] hover:text-white"
+          >
+            <span>GitHub</span>
+            <span class="text-slate-600">↗</span>
+          </a>
 
-            <button
-              type="button"
-              data-close-grand-prix
-              aria-label="Close modal"
-              class="group flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-xl text-slate-400 transition duration-300 hover:border-red-400/30 hover:bg-red-500/10 hover:text-red-200"
-            >
-              <span class="transition duration-300 group-hover:rotate-90">
-                ×
-              </span>
-            </button>
-          </div>
+          <a
+            href="https://github.com/paiandco"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-command-item
+            data-search="pai co paiandco github"
+            class="flex items-center justify-between rounded-xl px-4 py-3.5 text-sm text-slate-300 transition hover:bg-white/[0.06] hover:text-white"
+          >
+            <span>Pai &amp; Co</span>
+            <span class="text-slate-600">↗</span>
+          </a>
 
-          <div class="mt-8">
-            <div class="flex items-center gap-2">
-              <span
-                class="relative h-1.5 w-1.5 rounded-full bg-red-400 shadow-[0_0_14px_rgba(248,113,113,0.95)]"
-              >
-                <span
-                  class="absolute inset-0 animate-ping rounded-full bg-red-400 opacity-50"
-                ></span>
-              </span>
+          <a
+            href="/retro-grand-prix"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-command-item
+            data-search="retro grand prix f1 racing"
+            class="flex items-center justify-between rounded-xl px-4 py-3.5 text-sm text-slate-300 transition hover:bg-white/[0.06] hover:text-white"
+          >
+            <span>Retro Grand Prix</span>
+            <span class="text-slate-600">↗</span>
+          </a>
 
-              <span
-                class="text-[9px] font-semibold uppercase tracking-[0.3em] text-red-300/70"
-              >
-                F1 Racing
-              </span>
-            </div>
-
-            <h2
-              id="grandPrixTitle"
-              class="mt-3 text-3xl font-semibold tracking-[-0.05em] text-white sm:text-4xl"
-            >
-              Retro Grand Prix
-            </h2>
-
-            <p class="mt-4 max-w-lg text-sm leading-7 text-slate-400">
-              A retro-inspired racing experience built around fast gameplay,
-              nostalgic visuals, and a focused interface.
-            </p>
-          </div>
-
-          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
-              href="/retro-grand-prix"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group flex flex-1 items-center justify-center gap-2 rounded-2xl bg-red-500 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_10px_40px_rgba(239,68,68,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-red-400 hover:shadow-[0_15px_50px_rgba(239,68,68,0.2)]"
-            >
-              <span>Enter the Grid</span>
-
-              <span
-                class="transition-transform duration-300 group-hover:translate-x-1"
-              >
-                →
-              </span>
-            </a>
-
-            <button
-              type="button"
-              data-close-grand-prix
-              class="rounded-2xl border border-white/[0.08] bg-white/[0.025] px-5 py-3.5 text-sm font-medium text-slate-400 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.06] hover:text-white"
-            >
-              Close
-            </button>
-          </div>
+          <button
+            type="button"
+            data-command-item
+            data-search="menu navigation"
+            data-open-offcanvas
+            class="flex w-full items-center rounded-xl px-4 py-3.5 text-left text-sm text-slate-300 transition hover:bg-white/[0.06] hover:text-white"
+          >
+            <span>Open Menu</span>
+          </button>
         </div>
 
         <div
-          class="h-[2px] w-full bg-gradient-to-r from-red-500 via-orange-400 to-blue-500"
-        ></div>
+          class="flex items-center justify-between border-t border-white/[0.07] px-5 py-3 text-[10px] text-slate-600"
+        >
+          <span>Navigate with your keyboard</span>
+          <span>↑ ↓ Enter</span>
+        </div>
       </div>
     </div>
 
     <script>
       const offcanvas = document.getElementById("offcanvas");
       const offcanvasPanel = offcanvas.querySelector("aside");
-      const offcanvasBackdrop = offcanvas.querySelector("button.absolute");
+      const command = document.getElementById("command");
+      const commandPanel = command.querySelector(":scope > div");
+      const commandInput = document.getElementById("commandInput");
+      const progress = document.getElementById("progress");
 
-      const grandPrixModal = document.getElementById("grandPrixModal");
-      const grandPrixDialog = grandPrixModal.querySelector("[role='dialog']");
+      let commandItems = [...document.querySelectorAll("[data-command-item]")];
 
-      const toast = document.getElementById("toast");
-      const toastProgress = document.getElementById("toastProgress");
-
-      let toastTimer;
-
-      function showToast() {
-        clearTimeout(toastTimer);
-
-        toastProgress.classList.remove("scale-x-100");
-        toastProgress.classList.add("scale-x-0");
-
-        toast.classList.remove("opacity-0", "translate-y-8");
-        toast.classList.add("opacity-100", "translate-y-0");
-
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            toastProgress.classList.remove("scale-x-0");
-            toastProgress.classList.add("scale-x-100");
-          });
-        });
-
-        toastTimer = setTimeout(() => {
-          toast.classList.add("opacity-0", "translate-y-8");
-          toast.classList.remove("opacity-100", "translate-y-0");
-
-          toastProgress.classList.remove("scale-x-100");
-          toastProgress.classList.add("scale-x-0");
-        }, 3500);
-      }
+      let selectedIndex = 0;
 
       function openOffcanvas() {
-        showToast();
+        closeCommand();
 
         offcanvas.classList.remove("invisible", "pointer-events-none");
         offcanvas.setAttribute("aria-hidden", "false");
 
         requestAnimationFrame(() => {
-          offcanvasBackdrop.classList.remove("opacity-0");
+          offcanvas
+            .querySelector("button.absolute")
+            .classList.remove("opacity-0");
+
           offcanvasPanel.classList.remove("translate-x-full");
         });
 
@@ -614,7 +423,8 @@
       }
 
       function closeOffcanvas() {
-        offcanvasBackdrop.classList.add("opacity-0");
+        offcanvas.querySelector("button.absolute").classList.add("opacity-0");
+
         offcanvasPanel.classList.add("translate-x-full");
         offcanvas.setAttribute("aria-hidden", "true");
 
@@ -622,38 +432,99 @@
           offcanvas.classList.add("invisible", "pointer-events-none");
         }, 500);
 
-        if (grandPrixModal.getAttribute("aria-hidden") === "true") {
+        if (command.classList.contains("invisible")) {
           document.body.classList.remove("overflow-hidden");
         }
       }
 
-      function openGrandPrix() {
+      function openCommand() {
         closeOffcanvas();
 
-        grandPrixModal.classList.remove("invisible", "pointer-events-none");
-
-        grandPrixModal.setAttribute("aria-hidden", "false");
+        command.classList.remove(
+          "invisible",
+          "pointer-events-none",
+          "opacity-0",
+        );
 
         requestAnimationFrame(() => {
-          grandPrixModal.classList.remove("opacity-0");
-          grandPrixDialog.classList.remove("scale-95");
+          commandPanel.classList.remove("scale-95");
         });
+
+        commandInput.value = "";
+        selectedIndex = 0;
+
+        commandItems.forEach((item) => {
+          item.classList.remove("hidden");
+        });
+
+        updateSelection();
+        commandInput.focus();
 
         document.body.classList.add("overflow-hidden");
       }
 
-      function closeGrandPrix() {
-        grandPrixModal.classList.add("opacity-0");
-        grandPrixDialog.classList.add("scale-95");
-        grandPrixModal.setAttribute("aria-hidden", "true");
+      function closeCommand() {
+        if (command.classList.contains("invisible")) return;
+
+        command.classList.add("opacity-0");
+        commandPanel.classList.add("scale-95");
 
         setTimeout(() => {
-          grandPrixModal.classList.add("invisible", "pointer-events-none");
-        }, 300);
+          command.classList.add("invisible", "pointer-events-none");
+        }, 200);
 
         if (offcanvas.getAttribute("aria-hidden") === "true") {
           document.body.classList.remove("overflow-hidden");
         }
+      }
+
+      function getVisibleItems() {
+        return commandItems.filter(
+          (item) => !item.classList.contains("hidden"),
+        );
+      }
+
+      function updateSelection() {
+        const visibleItems = getVisibleItems();
+
+        commandItems.forEach((item) => {
+          item.classList.remove(
+            "bg-violet-500/10",
+            "text-white",
+            "ring-1",
+            "ring-violet-400/20",
+          );
+        });
+
+        if (!visibleItems.length) {
+          selectedIndex = 0;
+          return;
+        }
+
+        if (selectedIndex >= visibleItems.length) {
+          selectedIndex = 0;
+        }
+
+        const selected = visibleItems[selectedIndex];
+
+        selected.classList.add(
+          "bg-violet-500/10",
+          "text-white",
+          "ring-1",
+          "ring-violet-400/20",
+        );
+
+        selected.scrollIntoView({
+          block: "nearest",
+        });
+      }
+
+      function selectCommand() {
+        const visibleItems = getVisibleItems();
+
+        if (!visibleItems.length) return;
+
+        visibleItems[selectedIndex].click();
       }
 
       document.querySelectorAll("[data-open-offcanvas]").forEach((button) => {
@@ -664,23 +535,87 @@
         button.addEventListener("click", closeOffcanvas);
       });
 
-      document.querySelectorAll("[data-open-grand-prix]").forEach((button) => {
-        button.addEventListener("click", openGrandPrix);
+      document.querySelectorAll("[data-open-command]").forEach((button) => {
+        button.addEventListener("click", openCommand);
       });
 
-      document.querySelectorAll("[data-close-grand-prix]").forEach((button) => {
-        button.addEventListener("click", closeGrandPrix);
+      document
+        .querySelector("[data-command-close]")
+        .addEventListener("click", closeCommand);
+
+      commandInput.addEventListener("input", () => {
+        const query = commandInput.value.toLowerCase().trim();
+
+        commandItems.forEach((item) => {
+          item.classList.toggle(
+            "hidden",
+            query && !item.dataset.search.toLowerCase().includes(query),
+          );
+        });
+
+        selectedIndex = 0;
+        updateSelection();
+      });
+
+      commandInput.addEventListener("keydown", (event) => {
+        const visibleItems = getVisibleItems();
+
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+
+          if (visibleItems.length) {
+            selectedIndex = (selectedIndex + 1) % visibleItems.length;
+
+            updateSelection();
+          }
+        }
+
+        if (event.key === "ArrowUp") {
+          event.preventDefault();
+
+          if (visibleItems.length) {
+            selectedIndex =
+              (selectedIndex - 1 + visibleItems.length) % visibleItems.length;
+
+            updateSelection();
+          }
+        }
+
+        if (event.key === "Enter") {
+          event.preventDefault();
+          selectCommand();
+        }
       });
 
       document.addEventListener("keydown", (event) => {
-        if (event.key !== "Escape") return;
+        if (
+          (event.metaKey || event.ctrlKey) &&
+          event.key.toLowerCase() === "k"
+        ) {
+          event.preventDefault();
+          openCommand();
+        }
 
-        if (grandPrixModal.getAttribute("aria-hidden") === "false") {
-          closeGrandPrix();
-        } else if (offcanvas.getAttribute("aria-hidden") === "false") {
-          closeOffcanvas();
+        if (event.key === "Escape") {
+          if (!command.classList.contains("invisible")) {
+            closeCommand();
+          } else if (offcanvas.getAttribute("aria-hidden") === "false") {
+            closeOffcanvas();
+          }
         }
       });
+
+      window.addEventListener(
+        "scroll",
+        () => {
+          const height =
+            document.documentElement.scrollHeight - window.innerHeight;
+
+          progress.style.width =
+            height > 0 ? `${(window.scrollY / height) * 100}%` : "0%";
+        },
+        { passive: true },
+      );
     </script>
   </body>
 </html>
