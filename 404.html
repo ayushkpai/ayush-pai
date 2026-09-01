@@ -1,134 +1,45 @@
 <!doctype html>
-<html lang="en">
+<html class="h-full">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>404 — Ayush Pai</title>
-
+    <title>Ayush Pai | 404 - Page Not Found</title>
     <link rel="icon" href="images/favicon.ico" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body
-    class="min-h-screen overflow-hidden bg-[#02040a] font-sans text-white antialiased"
-  >
-    <div class="pointer-events-none fixed inset-0 -z-20 bg-[#02040a]"></div>
+  <body class="h-full bg-[#05060b]">
+    <main class="relative isolate min-h-full overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1583585635793-0e1894c169bd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1825&q=80"
+        alt=""
+        class="absolute inset-0 -z-20 h-full w-full object-cover"
+      />
 
-    <div
-      class="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_75%_0%,rgba(124,58,237,0.16),transparent_30%),radial-gradient(circle_at_15%_85%,rgba(37,99,235,0.09),transparent_28%),linear-gradient(180deg,#02040a_0%,#030711_100%)]"
-    ></div>
+      <div class="inset-0 -z-10 bg-[#05060b]/70 backdrop-blur-[2px]"></div>
 
-    <div
-      class="pointer-events-none fixed inset-0 -z-10 opacity-[0.025] bg-[linear-gradient(rgba(255,255,255,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.5)_1px,transparent_1px)] bg-[size:48px_48px]"
-    ></div>
+      <div class="mx-auto max-w-7xl px-6 py-32 text-center sm:py-40 lg:px-8">
+        <p class="mt-10 text-base font-semibold text-violet-300">404</p>
 
-    <header class="fixed inset-x-0 top-4 z-50 px-4">
-      <div
-        class="mx-auto flex h-[4.25rem] max-w-7xl items-center rounded-[1.4rem] border border-white/[0.08] bg-[#080d17]/75 px-4 shadow-[0_18px_60px_rgba(0,0,0,0.32)] backdrop-blur-2xl sm:px-5"
-      >
-        <a href="/" class="group flex items-center gap-3">
-          <span
-            class="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 p-[1px] shadow-lg shadow-violet-500/10 transition duration-500 group-hover:scale-105"
+        <h1
+          class="mt-4 text-5xl font-bold tracking-tight text-white sm:text-7xl"
+        >
+          Page not found
+        </h1>
+
+        <p class="mt-6 text-lg text-white/70 sm:text-xl">
+          The page you are looking for does not exist or has been moved
+        </p>
+
+        <div class="mt-10 flex justify-center gap-4 flex-wrap">
+          <a
+            href="/"
+            class="px-8 py-3 rounded-2xl bg-white/10 border border-white/20 text-white backdrop-blur hover:bg-white/20 hover:scale-105 transition"
           >
-            <span
-              class="flex h-full w-full items-center justify-center rounded-[0.95rem] bg-[#090d17]"
-            >
-              <img
-                src="images/logo.png"
-                alt="Ayush Pai"
-                class="h-8 w-8 object-contain"
-              />
-            </span>
-          </span>
-
-          <div>
-            <p
-              class="text-sm font-semibold tracking-[-0.02em] text-white transition-colors group-hover:text-violet-100"
-            >
-              Ayush Pai
-            </p>
-
-            <p
-              class="mt-0.5 hidden text-[9px] font-medium uppercase tracking-[0.28em] text-slate-500 sm:block"
-            >
-              Software Developer
-            </p>
-          </div>
-        </a>
+            ← Back Home
+          </a>
+        </div>
       </div>
-    </header>
-
-    <main
-      class="flex min-h-screen items-center justify-center px-6 pb-10 pt-28"
-    >
-      <section class="w-full max-w-2xl text-center">
-        <div
-          class="mx-auto flex h-24 w-24 items-center justify-center rounded-[2rem] border border-white/[0.08] bg-white/[0.025] shadow-[0_30px_100px_rgba(0,0,0,0.5)]"
-        >
-          <div class="relative flex h-11 w-11 items-center justify-center">
-            <span
-              class="absolute inset-0 animate-spin rounded-full border-2 border-white/[0.06] border-t-violet-400 border-r-fuchsia-400"
-            ></span>
-
-            <span
-              class="h-2.5 w-2.5 rounded-full bg-violet-300 shadow-[0_0_22px_rgba(167,139,250,1)]"
-            ></span>
-          </div>
-        </div>
-
-        <div class="mt-9">
-          <p
-            class="text-[10px] font-semibold uppercase tracking-[0.35em] text-violet-400/80"
-          >
-            Page not found
-          </p>
-
-          <h1
-            class="mt-4 text-8xl font-semibold tracking-[-0.08em] text-white sm:text-9xl"
-          >
-            404
-          </h1>
-
-          <h2
-            class="mt-5 text-2xl font-semibold tracking-[-0.04em] text-white sm:text-3xl"
-          >
-            This page took a wrong turn.
-          </h2>
-
-          <p
-            class="mx-auto mt-4 max-w-md text-sm leading-7 text-slate-500 sm:text-base"
-          >
-            The page you're looking for doesn't exist, or it may have moved
-            somewhere else.
-          </p>
-
-          <div class="mt-8">
-            <a
-              href="/"
-              class="group inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-7 py-3.5 text-sm font-semibold text-[#05070c] shadow-lg transition duration-300 hover:-translate-y-0.5 hover:bg-violet-100"
-            >
-              Back home
-
-              <span
-                class="transition-transform duration-300 group-hover:-translate-x-1"
-              >
-                ←
-              </span>
-            </a>
-          </div>
-        </div>
-
-        <div
-          class="mx-auto mt-14 flex max-w-sm items-center justify-center gap-3 text-[10px] uppercase tracking-[0.28em] text-slate-600"
-        >
-          <span class="h-px flex-1 bg-white/[0.06]"></span>
-
-          <span>Ayush Pai</span>
-
-          <span class="h-px flex-1 bg-white/[0.06]"></span>
-        </div>
-      </section>
     </main>
   </body>
 </html>
