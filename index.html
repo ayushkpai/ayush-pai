@@ -280,7 +280,7 @@
 
       function openRetro(e) {
         e.preventDefault();
-        retroFrame.src = "retro-grand-prix.html";
+        retroFrame.src = "retro-grand-prix.html?embed=1";
         retroModal.classList.remove("hidden");
         retroModal.classList.add("flex");
         document.body.style.overflow = "hidden";
@@ -309,12 +309,28 @@
       });
       window.addEventListener("popstate", () => {
         if (window.location.pathname === RETRO_PATH) {
-          retroFrame.src = "retro-grand-prix.html";
+          retroFrame.src = "retro-grand-prix.html?embed=1";
           retroModal.classList.remove("hidden");
           retroModal.classList.add("flex");
           document.body.style.overflow = "hidden";
         } else if (!retroModal.classList.contains("hidden")) {
           closeRetro();
+        }
+      });
+
+      window.addEventListener("DOMContentLoaded", () => {
+        if (
+          (window.location.pathname === RETRO_PATH ||
+            window.location.hash === "#retro-grand-prix") &&
+          retroModal.classList.contains("hidden")
+        ) {
+          retroFrame.src = "retro-grand-prix.html?embed=1";
+          retroModal.classList.remove("hidden");
+          retroModal.classList.add("flex");
+          document.body.style.overflow = "hidden";
+          if (window.location.pathname !== RETRO_PATH) {
+            history.replaceState({ retro: true }, "", RETRO_PATH);
+          }
         }
       });
     </script>
