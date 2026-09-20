@@ -37,10 +37,9 @@
 
         <nav class="ml-auto flex items-center gap-1">
           <a
-            href="https://ayushpai.com/retro-grand-prix"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group flex items-center gap-2 rounded-xl border border-cyan-400/20 bg-cyan-500/[0.06] px-3 py-2 text-sm font-medium text-cyan-200 transition-all duration-300 hover:border-cyan-400/40 hover:bg-cyan-500/10 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 sm:px-4"
+            href="retro-grand-prix.html"
+            id="retroOpenBtn"
+            class="group flex cursor-pointer items-center gap-2 rounded-xl border border-cyan-400/20 bg-cyan-500/[0.06] px-3 py-2 text-sm font-medium text-cyan-200 transition-all duration-300 hover:border-cyan-400/40 hover:bg-cyan-500/10 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 sm:px-4"
           >
             <img
               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a2e'/%3E%3Cpath d='M6,20 L8,14 L12,12 L20,12 L24,14 L26,20 Z' fill='%23e00'/%3E%3Cellipse cx='16' cy='13' rx='3' ry='2' fill='%23111'/%3E%3Ccircle cx='16' cy='12.5' r='1.5' fill='%23ff0'/%3E%3Crect x='4' y='18' width='3' height='5' rx='1' fill='%23111'/%3E%3Crect x='25' y='18' width='3' height='5' rx='1' fill='%23111'/%3E%3Crect x='5' y='10' width='22' height='2' rx='1' fill='%23e00'/%3E%3C/svg%3E"
@@ -193,5 +192,92 @@
         </div>
       </section>
     </main>
+
+    <div
+      id="retroModal"
+      class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-6"
+    >
+      <div
+        class="relative flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl"
+      >
+        <div
+          class="flex h-12 shrink-0 items-center justify-between bg-[#0b101b]/90 px-4 sm:px-5"
+        >
+          <span
+            class="flex items-center gap-2 text-sm font-semibold text-cyan-200"
+          >
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a2e'/%3E%3Cpath d='M6,20 L8,14 L12,12 L20,12 L24,14 L26,20 Z' fill='%23e00'/%3E%3Cellipse cx='16' cy='13' rx='3' ry='2' fill='%23111'/%3E%3Ccircle cx='16' cy='12.5' r='1.5' fill='%23ff0'/%3E%3Crect x='4' y='18' width='3' height='5' rx='1' fill='%23111'/%3E%3Crect x='25' y='18' width='3' height='5' rx='1' fill='%23111'/%3E%3Crect x='5' y='10' width='22' height='2' rx='1' fill='%23e00'/%3E%3C/svg%3E"
+              alt="Retro Grand Prix racing logo"
+              class="h-5 w-5"
+            />
+            Retro Grand Prix
+          </span>
+          <button
+            id="retroCloseBtn"
+            aria-label="Close Retro Grand Prix"
+            class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-400 transition hover:border-rose-400/40 hover:bg-rose-500/10 hover:text-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400/50"
+          >
+            ✕
+          </button>
+        </div>
+        <iframe
+          id="retroFrame"
+          src=""
+          title="Retro Grand Prix"
+          allow="autoplay; fullscreen; gamepad"
+          allowfullscreen
+          class="h-full w-full flex-1 border-0 bg-black"
+        ></iframe>
+      </div>
+    </div>
+
+    <script>
+      const retroModal = document.getElementById("retroModal");
+      const retroFrame = document.getElementById("retroFrame");
+      const retroOpenBtn = document.getElementById("retroOpenBtn");
+      const retroCloseBtn = document.getElementById("retroCloseBtn");
+      const RETRO_PATH = "/retro-grand-prix";
+
+      function openRetro(e) {
+        e.preventDefault();
+        retroFrame.src = "retro-grand-prix.html";
+        retroModal.classList.remove("hidden");
+        retroModal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+        history.pushState({ retro: true }, "", RETRO_PATH);
+      }
+
+      function closeRetro() {
+        retroModal.classList.add("hidden");
+        retroModal.classList.remove("flex");
+        document.body.style.overflow = "";
+        if (window.location.pathname === RETRO_PATH) {
+          history.replaceState({ retro: false }, "", "/");
+        }
+        setTimeout(() => {
+          retroFrame.src = "";
+        }, 300);
+      }
+
+      retroOpenBtn.addEventListener("click", openRetro);
+      retroCloseBtn.addEventListener("click", closeRetro);
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeRetro();
+      });
+      window.addEventListener("message", (e) => {
+        if (e.data === "retro-close") closeRetro();
+      });
+      window.addEventListener("popstate", () => {
+        if (window.location.pathname === RETRO_PATH) {
+          retroFrame.src = "retro-grand-prix.html";
+          retroModal.classList.remove("hidden");
+          retroModal.classList.add("flex");
+          document.body.style.overflow = "hidden";
+        } else if (!retroModal.classList.contains("hidden")) {
+          closeRetro();
+        }
+      });
+    </script>
   </body>
 </html>
