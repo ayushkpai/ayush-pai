@@ -30,6 +30,31 @@
         },
       };
     </script>
+    <style>
+      .card {
+        position: relative;
+        overflow: hidden;
+      }
+      .card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          115deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.08) 45%,
+          transparent 60%
+        );
+        transform: translateX(-150%);
+        transition: transform 0.9s ease;
+        pointer-events: none;
+      }
+      @media (hover: hover) {
+        .card:hover::after {
+          transform: translateX(150%);
+        }
+      }
+    </style>
   </head>
 
   <body
@@ -158,7 +183,7 @@
 
         <div class="mx-auto grid w-full max-w-3xl grid-cols-1 gap-5 sm:grid-cols-2">
           <div
-            class="reveal relative flex min-h-[240px] flex-col overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.035] p-6 shadow-[0_12px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-violet-400/30 hover:bg-white/[0.055] hover:shadow-[0_20px_70px_rgba(139,92,246,0.14)]"
+            class="card reveal relative flex min-h-[240px] flex-col overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.035] p-6 shadow-[0_12px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-violet-400/30 hover:bg-white/[0.055] hover:shadow-[0_20px_70px_rgba(139,92,246,0.14)]"
           >
             <div
               class="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-[#050914]/80 text-white shadow-lg shadow-black/20"
@@ -240,7 +265,7 @@
           <a
             href="retro-grand-prix.html"
             id="retroOpenBtn"
-            class="reveal group relative flex min-h-[240px] cursor-pointer flex-col overflow-hidden rounded-3xl border border-cyan-400/15 bg-blue-950/[0.35] p-6 shadow-[0_12px_50px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-blue-900/[0.45] hover:shadow-[0_20px_70px_rgba(6,182,212,0.18)] focus:outline-none focus:ring-2 focus:ring-cyan-400/50"
+            class="card reveal group relative flex min-h-[240px] cursor-pointer flex-col overflow-hidden rounded-3xl border border-cyan-400/15 bg-blue-950/[0.35] p-6 shadow-[0_12px_50px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-500 hover:border-cyan-400/40 hover:bg-blue-900/[0.45] hover:shadow-[0_20px_70px_rgba(6,182,212,0.18)] focus:outline-none focus:ring-2 focus:ring-cyan-400/50"
             style="--reveal-delay: 100ms"
           >
             <div class="relative flex h-full flex-col">
@@ -296,7 +321,7 @@
             href="https://www.bribooks.com/bookstore/the-cake-lover-by-ayush-pai/"
             target="_blank"
             rel="noopener noreferrer"
-            class="reveal group relative min-h-[240px] overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.035] p-6 shadow-[0_12px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-rose-400/30 hover:bg-white/[0.055] hover:shadow-[0_20px_70px_rgba(244,63,94,0.14)] focus:outline-none focus:ring-2 focus:ring-rose-400/50"
+            class="card reveal group relative min-h-[240px] overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.035] p-6 shadow-[0_12px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-rose-400/30 hover:bg-white/[0.055] hover:shadow-[0_20px_70px_rgba(244,63,94,0.14)] focus:outline-none focus:ring-2 focus:ring-rose-400/50"
             style="--reveal-delay: 200ms"
           >
             <div class="relative flex h-full flex-col">
