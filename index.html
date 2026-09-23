@@ -380,6 +380,70 @@
               </div>
             </div>
           </a>
+
+          <a
+            href="waddle.html"
+            id="waddleOpenBtn"
+            class="card reveal group relative flex min-h-[240px] cursor-pointer flex-col overflow-hidden rounded-3xl border border-orange-400/15 bg-orange-950/[0.22] p-6 shadow-[0_12px_50px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-500 hover:border-orange-400/40 hover:bg-orange-900/[0.35] hover:shadow-[0_20px_70px_rgba(249,115,22,0.18)] focus:outline-none focus:ring-2 focus:ring-orange-400/50"
+            style="--reveal-delay: 400ms"
+          >
+            <div class="relative flex h-full flex-col">
+              <div class="flex items-start justify-between">
+                <div
+                  class="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-orange-400/20 bg-[#050914]/90 shadow-lg shadow-orange-950/30 transition-all duration-500 group-hover:scale-105 group-hover:border-orange-400/50 group-hover:bg-orange-500/10"
+                >
+                  <svg
+                    viewBox="0 0 48 48"
+                    class="h-10 w-10 transition-transform duration-500 group-hover:scale-110"
+                    aria-hidden="true"
+                  >
+                    <ellipse cx="24" cy="28" rx="16" ry="20" fill="#0f172a" />
+                    <ellipse cx="28" cy="32" rx="10" ry="13" fill="#f8fafc" />
+                    <circle cx="27" cy="16" r="8" fill="#ffffff" />
+                    <circle cx="29" cy="15" r="3.5" fill="#0f172a" />
+                    <circle cx="30" cy="14" r="1.2" fill="#ffffff" />
+                    <path d="M40 22 l9 4 -9 4 z" fill="#fb923c" />
+                    <ellipse cx="14" cy="44" rx="7" ry="5" fill="#f97316" />
+                    <ellipse cx="32" cy="44" rx="7" ry="5" fill="#f97316" />
+                  </svg>
+                </div>
+
+                <div
+                  class="flex h-10 w-10 items-center justify-center rounded-full border border-orange-400/10 bg-white/[0.03] text-lg text-slate-500 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:border-orange-400/40 group-hover:bg-orange-500/10 group-hover:text-orange-300"
+                >
+                  ↗
+                </div>
+              </div>
+
+              <div class="mt-3">
+                <h2
+                  class="mt-1 text-2xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-orange-200"
+                >
+                  Waddle
+                </h2>
+
+                <p
+                  class="mt-1 text-sm text-slate-400 transition-colors duration-300 group-hover:text-orange-100/70"
+                >
+                  An endless penguin runner
+                </p>
+
+                <p
+                  class="mt-3 text-sm leading-relaxed text-slate-400 transition-colors duration-300 group-hover:text-slate-300"
+                >
+                  Double jump · Grab fish · Dodge icebergs
+                </p>
+              </div>
+
+              <div class="mt-auto flex items-center justify-between pt-4">
+                <span
+                  class="inline-flex items-center rounded-full border border-orange-400/30 bg-orange-500/10 px-2.5 py-1 text-xs font-semibold text-orange-300"
+                >
+                  ▶ Play
+                </span>
+              </div>
+            </div>
+          </a>
         </div>
       </section>
     </main>
@@ -477,6 +541,50 @@
       </div>
     </div>
 
+    <div
+      id="waddleModal"
+      class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-6"
+    >
+      <div
+        class="relative flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl"
+      >
+        <div
+          class="flex h-12 shrink-0 items-center justify-between bg-[#0b101b]/90 px-4 sm:px-5"
+        >
+          <span
+            class="flex items-center gap-2 text-sm font-semibold text-orange-200"
+          >
+            <svg viewBox="0 0 48 48" class="h-5 w-5" aria-hidden="true">
+              <ellipse cx="24" cy="28" rx="16" ry="20" fill="#0f172a" />
+              <ellipse cx="28" cy="32" rx="10" ry="13" fill="#f8fafc" />
+              <circle cx="27" cy="16" r="8" fill="#ffffff" />
+              <circle cx="29" cy="15" r="3.5" fill="#0f172a" />
+              <circle cx="30" cy="14" r="1.2" fill="#ffffff" />
+              <path d="M40 22 l9 4 -9 4 z" fill="#fb923c" />
+              <ellipse cx="14" cy="44" rx="7" ry="5" fill="#f97316" />
+              <ellipse cx="32" cy="44" rx="7" ry="5" fill="#f97316" />
+            </svg>
+            Waddle
+          </span>
+          <button
+            id="waddleCloseBtn"
+            aria-label="Close Waddle"
+            class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-400 transition hover:border-rose-400/40 hover:bg-rose-500/10 hover:text-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400/50"
+          >
+            ✕
+          </button>
+        </div>
+        <iframe
+          id="waddleFrame"
+          src=""
+          title="Waddle"
+          allow="autoplay; fullscreen; gamepad"
+          allowfullscreen
+          class="h-full w-full flex-1 border-0 bg-[#dff0ff]"
+        ></iframe>
+      </div>
+    </div>
+
     <script>
       const retroModal = document.getElementById("retroModal");
       const retroFrame = document.getElementById("retroFrame");
@@ -489,6 +597,11 @@
       const waffleOpenBtn = document.getElementById("waffleOpenBtn");
       const waffleCloseBtn = document.getElementById("waffleCloseBtn");
       const WAFFLE_PATH = "/waffle-prime";
+      const waddleModal = document.getElementById("waddleModal");
+      const waddleFrame = document.getElementById("waddleFrame");
+      const waddleOpenBtn = document.getElementById("waddleOpenBtn");
+      const waddleCloseBtn = document.getElementById("waddleCloseBtn");
+      const WADDLE_PATH = "/waddle";
 
       function openRetro(e) {
         e.preventDefault();
@@ -532,6 +645,27 @@
         }, 300);
       }
 
+      function openWaddle(e) {
+        e.preventDefault();
+        waddleFrame.src = "waddle.html?embed=1";
+        waddleModal.classList.remove("hidden");
+        waddleModal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+        history.pushState({ waddle: true }, "", WADDLE_PATH);
+      }
+
+      function closeWaddle() {
+        waddleModal.classList.add("hidden");
+        waddleModal.classList.remove("flex");
+        document.body.style.overflow = "";
+        if (window.location.pathname === WADDLE_PATH) {
+          history.replaceState({ waddle: false }, "", "/");
+        }
+        setTimeout(() => {
+          waddleFrame.src = "";
+        }, 300);
+      }
+
       retroOpenBtn.addEventListener("click", openRetro);
       retroCloseBtn.addEventListener("click", closeRetro);
       if (heroRetroBtn) {
@@ -539,28 +673,35 @@
       }
       waffleOpenBtn.addEventListener("click", openWaffle);
       waffleCloseBtn.addEventListener("click", closeWaffle);
+      waddleOpenBtn.addEventListener("click", openWaddle);
+      waddleCloseBtn.addEventListener("click", closeWaddle);
       window.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
           closeRetro();
           closeWaffle();
+          closeWaddle();
         }
       });
       window.addEventListener("message", (e) => {
         if (e.data === "retro-close") closeRetro();
         if (e.data === "waffle-close") closeWaffle();
+        if (e.data === "waddle-close") closeWaddle();
       });
       window.addEventListener("popstate", () => {
-        if (window.location.pathname === RETRO_PATH || window.location.pathname === WAFFLE_PATH) {
+        if (window.location.pathname === RETRO_PATH || window.location.pathname === WAFFLE_PATH || window.location.pathname === WADDLE_PATH) {
           const isRetro = window.location.pathname === RETRO_PATH;
-          const modal = isRetro ? retroModal : waffleModal;
-          const frame = isRetro ? retroFrame : waffleFrame;
-          frame.src = `${isRetro ? "retro-grand-prix" : "waffle-prime"}.html?embed=1`;
+          const isWaffle = window.location.pathname === WAFFLE_PATH;
+          const modal = isRetro ? retroModal : isWaffle ? waffleModal : waddleModal;
+          const frame = isRetro ? retroFrame : isWaffle ? waffleFrame : waddleFrame;
+          const name = isRetro ? "retro-grand-prix" : isWaffle ? "waffle-prime" : "waddle";
+          frame.src = `${name}.html?embed=1`;
           modal.classList.remove("hidden");
           modal.classList.add("flex");
           document.body.style.overflow = "hidden";
         } else {
           if (!retroModal.classList.contains("hidden")) closeRetro();
           if (!waffleModal.classList.contains("hidden")) closeWaffle();
+          if (!waddleModal.classList.contains("hidden")) closeWaddle();
         }
       });
 
@@ -581,6 +722,7 @@
         };
         openFor(RETRO_PATH, "#retro-grand-prix", retroModal, retroFrame, "retro-grand-prix");
         openFor(WAFFLE_PATH, "#waffle-prime", waffleModal, waffleFrame, "waffle-prime");
+        openFor(WADDLE_PATH, "#waddle", waddleModal, waddleFrame, "waddle");
       });
 
       document.querySelectorAll(".reveal").forEach((el) => {
