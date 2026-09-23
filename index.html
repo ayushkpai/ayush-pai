@@ -603,6 +603,11 @@
       const waddleCloseBtn = document.getElementById("waddleCloseBtn");
       const WADDLE_PATH = "/waddle";
 
+      function focusFrame(frame) {
+        frame.focus();
+        frame.addEventListener("load", () => frame.focus(), { once: true });
+      }
+
       function openRetro(e) {
         e.preventDefault();
         retroFrame.src = "retro-grand-prix.html?embed=1";
@@ -610,6 +615,7 @@
         retroModal.classList.add("flex");
         document.body.style.overflow = "hidden";
         history.pushState({ retro: true }, "", RETRO_PATH);
+        focusFrame(retroFrame);
       }
 
       function closeRetro() {
@@ -631,6 +637,7 @@
         waffleModal.classList.add("flex");
         document.body.style.overflow = "hidden";
         history.pushState({ waffle: true }, "", WAFFLE_PATH);
+        focusFrame(waffleFrame);
       }
 
       function closeWaffle() {
@@ -652,6 +659,7 @@
         waddleModal.classList.add("flex");
         document.body.style.overflow = "hidden";
         history.pushState({ waddle: true }, "", WADDLE_PATH);
+        focusFrame(waddleFrame);
       }
 
       function closeWaddle() {
@@ -698,6 +706,7 @@
           modal.classList.remove("hidden");
           modal.classList.add("flex");
           document.body.style.overflow = "hidden";
+          focusFrame(frame);
         } else {
           if (!retroModal.classList.contains("hidden")) closeRetro();
           if (!waffleModal.classList.contains("hidden")) closeWaffle();
@@ -718,6 +727,7 @@
             if (window.location.pathname !== path) {
               history.replaceState({}, "", path);
             }
+            focusFrame(frame);
           }
         };
         openFor(RETRO_PATH, "#retro-grand-prix", retroModal, retroFrame, "retro-grand-prix");
