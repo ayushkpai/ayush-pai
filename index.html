@@ -1,773 +1,646 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-full antialiased">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ayush Pai</title>
     <link rel="icon" type="image/png" href="images/logo.png" />
+    <meta
+      name="description"
+      content="I’m Ayush Pai — a game maker and science-fiction writer. I design fast little browser games and put them here."
+    />
+    <script>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var dark = stored
+          ? stored === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (dark) document.documentElement.classList.add("dark");
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        darkMode: "class",
         theme: {
           extend: {
             fontFamily: {
               sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-              display: [
-                "Space Grotesk",
-                "Inter",
-                "ui-sans-serif",
-                "system-ui",
-                "sans-serif",
-              ],
             },
           },
         },
       };
     </script>
     <style>
-      .card {
-        position: relative;
-        overflow: hidden;
-      }
-      .card::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          115deg,
-          transparent 30%,
-          rgba(255, 255, 255, 0.08) 45%,
-          transparent 60%
-        );
-        transform: translateX(-150%);
-        transition: transform 0.9s ease;
-        pointer-events: none;
-      }
-      @media (hover: hover) {
-        .card:hover::after {
-          transform: translateX(150%);
-        }
+      html {
+        scroll-behavior: smooth;
       }
     </style>
   </head>
-
   <body
-    class="min-h-screen overflow-x-hidden bg-[#030712] font-sans text-white antialiased selection:bg-violet-500/30 selection:text-white"
+    class="flex w-full overflow-x-hidden bg-zinc-50 font-sans text-zinc-900 dark:bg-black dark:text-zinc-100"
   >
     <div
-      class="pointer-events-none fixed inset-0 z-0 overflow-hidden"
+      class="fixed inset-0 flex justify-center sm:px-8"
       aria-hidden="true"
     >
-      <div
-        class="absolute -top-40 left-1/2 h-[520px] w-[780px] -translate-x-1/2 rounded-full bg-violet-600/20 blur-[140px]"
-      ></div>
-      <div
-        class="absolute bottom-[-200px] left-[-160px] h-[420px] w-[420px] rounded-full bg-fuchsia-600/10 blur-[120px]"
-      ></div>
-      <div
-        class="absolute right-[-140px] top-1/3 h-[380px] w-[380px] rounded-full bg-cyan-500/10 blur-[120px]"
-      ></div>
-      <div
-        class="absolute inset-0 opacity-[0.05]"
-        style="background-image: linear-gradient(rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.35) 1px, transparent 1px); background-size: 48px 48px; -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%); mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)"
-      ></div>
+      <div class="flex w-full max-w-7xl lg:px-8">
+        <div class="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20"></div>
+      </div>
     </div>
 
-    <header class="fixed inset-x-0 top-4 z-50 px-4">
-      <div
-        class="mx-auto flex h-16 max-w-7xl items-center rounded-2xl border border-white/[0.08] bg-[#0b101b]/75 px-4 shadow-[0_10px_40px_rgba(0,0,0,0.25)] backdrop-blur-2xl sm:rounded-3xl sm:px-5"
-      >
-        <a href="/" class="group flex items-center gap-3">
-          <span
-            class="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 p-[1px] shadow-lg shadow-violet-500/10 transition duration-500 group-hover:scale-105"
-          >
-            <span
-              class="flex h-full w-full items-center justify-center rounded-[0.95rem] bg-[#090d17]"
-            >
-              <img src="images/logo.png" class="h-8 w-8 object-contain" />
-            </span>
-          </span>
+    <div class="relative flex w-full flex-col">
+      <header class="pointer-events-none relative z-40 flex flex-none flex-col">
+        <div class="pointer-events-auto top-0 h-16 pt-6">
+          <div class="sm:px-8">
+            <div class="mx-auto w-full max-w-7xl lg:px-8">
+              <div class="relative px-4 sm:px-8 lg:px-12">
+                <div class="relative flex gap-4">
+                  <div class="fixed top-6 left-6 z-10 flex flex-1 sm:left-8 lg:left-20">
+                    <a
+                      href="/"
+                      aria-label="Home"
+                      class="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-sm transition hover:ring-zinc-900/10 dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+                    >
+                      <span
+                        class="flex h-full w-full items-center justify-center rounded-full bg-zinc-100 object-cover dark:bg-zinc-800"
+                      >
+                        <img
+                          src="images/logo.png"
+                          alt="Ayush Pai logo"
+                          class="h-9 w-9 rounded-full object-cover"
+                        />
+                      </span>
+                    </a>
+                  </div>
 
-          <div>
-            <p
-              class="text-sm font-semibold tracking-[-0.02em] text-white transition-colors group-hover:text-violet-100"
-            >
-              Ayush Pai
-            </p>
+                  <div class="flex flex-1 justify-end md:flex-1">
+                    <button
+                      id="themeToggle"
+                      type="button"
+                      aria-label="Toggle theme"
+                      class="pointer-events-auto flex h-10 items-center justify-center rounded-full bg-white/90 px-3 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-sm transition hover:ring-zinc-900/10 dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                        class="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-600 dark:hidden dark:stroke-teal-500"
+                      >
+                        <path d="M8 12.25A4.25 4.25 0 0 1 12.25 8v0a4.25 4.25 0 0 1 4.25 4.25v0a4.25 4.25 0 0 1-4.25 4.25v0A4.25 4.25 0 0 1 8 12.25v0Z" />
+                        <path
+                          d="M12.25 3v1.5M21.5 12.25H20M18.791 18.791l-1.06-1.06M18.791 5.709l-1.06 1.06M12.25 20v1.5M4.5 12.25H3M6.77 6.77 5.709 5.709M6.77 17.73l-1.061 1.061"
+                          fill="none"
+                        />
+                      </svg>
+                      <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        class="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 dark:block dark:fill-teal-400/10 dark:stroke-teal-500"
+                      >
+                        <path
+                          d="M17.25 16.22a6.937 6.937 0 0 1-9.47-9.47 7.451 7.451 0 1 0 9.47 9.47ZM12.75 7C17 7 17 2.75 17 2.75S17 7 21.25 7C17 7 17 11.25 17 11.25S17 7 12.75 7Z"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </a>
-      </div>
-    </header>
+        </div>
+      </header>
 
-    <main class="relative z-10 mx-auto max-w-7xl px-4 pb-16 pt-28 sm:px-6 sm:pt-32">
-      <section class="mx-auto max-w-3xl pb-2 pt-8 text-center sm:pt-12">
-        <h1
-          class="mt-6 font-display text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-6xl"
-        >
-          Hi, I’m
-          <span
-            class="bg-gradient-to-r from-violet-300 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent"
-          >
-            Ayush
-          </span>
-          .
-        </h1>
-      </section>
+      <main class="flex-auto">
+        <div class="mt-16 sm:mt-20">
+          <div class="sm:px-8">
+            <div class="mx-auto w-full max-w-7xl lg:px-8">
+              <div class="relative px-4 sm:px-8 lg:px-12">
+                <div class="mx-auto max-w-2xl lg:max-w-5xl">
+                  <div class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
+                    <div class="flex flex-col gap-16">
+                      <a
+                        href="retro-grand-prix.html"
+                        id="retroOpenBtn"
+                        class="group relative flex flex-col items-start"
+                      >
+                        <div class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl dark:bg-zinc-800/50"></div>
+                        <div class="relative z-10">
+                          <p class="relative z-10 order-first mb-3 flex items-center pl-3.5 text-sm text-zinc-400 dark:text-zinc-500">
+                            <span class="absolute inset-y-0 left-0 flex items-center" aria-hidden="true">
+                              <span class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"></span>
+                            </span>
+                            Racing · Arcade
+                          </p>
+                          <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                            Retro Grand Prix
+                          </h2>
+                          <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                            An arcade F1-style racing game — qualifying, pit stops, slipstream
+                            boost, and 3 laps to prove yourself.
+                          </p>
+                          <div class="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-500">
+                            Play now
+                            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="ml-1 h-4 w-4 stroke-current">
+                              <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </div>
+                        </div>
+                      </a>
 
-      <section class="mx-auto max-w-5xl">
+                      <a
+                        href="waffle-prime.html"
+                        id="waffleOpenBtn"
+                        class="group relative flex flex-col items-start"
+                      >
+                        <div class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl dark:bg-zinc-800/50"></div>
+                        <div class="relative z-10">
+                          <p class="relative z-10 order-first mb-3 flex items-center pl-3.5 text-sm text-zinc-400 dark:text-zinc-500">
+                            <span class="absolute inset-y-0 left-0 flex items-center" aria-hidden="true">
+                              <span class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"></span>
+                            </span>
+                            Simulation · Speed
+                          </p>
+                          <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                            Waffle Prime
+                          </h2>
+                          <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                            A fast-paced waffle shop sim. Mix, cook, serve, and deliver — before
+                            the waffle goes cold.
+                          </p>
+                          <div class="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-500">
+                            Play now
+                            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="ml-1 h-4 w-4 stroke-current">
+                              <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </div>
+                        </div>
+                      </a>
+
+                      <a
+                        href="waddle.html"
+                        id="waddleOpenBtn"
+                        class="group relative flex flex-col items-start"
+                      >
+                        <div class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl dark:bg-zinc-800/50"></div>
+                        <div class="relative z-10">
+                          <p class="relative z-10 order-first mb-3 flex items-center pl-3.5 text-sm text-zinc-400 dark:text-zinc-500">
+                            <span class="absolute inset-y-0 left-0 flex items-center" aria-hidden="true">
+                              <span class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"></span>
+                            </span>
+                            Endless runner
+                          </p>
+                          <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                            Waddle
+                          </h2>
+                          <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                            An endless runner about a penguin with ambitions. Waddle, double-jump,
+                            and grab the fish.
+                          </p>
+                          <div class="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-500">
+                            Play now
+                            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="ml-1 h-4 w-4 stroke-current">
+                              <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="space-y-10 lg:pl-16 xl:pl-24">
+                      <div
+                        class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
+                      >
+                        <div class="flex items-center gap-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                          <span class="relative flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-zinc-800 dark:fill-zinc-200">
+                              <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                d="M12 2C6.475 2 2 6.588 2 12.253c0 4.537 2.862 8.369 6.838 9.727.5.09.687-.218.687-.487 0-.243-.013-1.05-.013-1.91C7 20.059 6.35 18.957 6.15 18.38c-.113-.295-.6-1.205-1.025-1.448-.35-.192-.85-.667-.013-.68.788-.012 1.35.744 1.538 1.051.9 1.551 2.338 1.116 2.912.846.088-.666.35-1.115.638-1.371-2.225-.256-4.55-1.14-4.55-5.062 0-1.115.387-2.038 1.025-2.756-.1-.256-.45-1.307.1-2.717 0 0 .837-.269 2.75 1.051.8-.23 1.65-.346 2.5-.346.85 0 1.7.115 2.5.346 1.912-1.333 2.75-1.05 2.75-1.05.55 1.409.2 2.46.1 2.716.637.718 1.025 1.628 1.025 2.756 0 3.934-2.337 4.806-4.562 5.062.362.32.675.936.675 1.897 0 1.371-.013 2.473-.013 2.82 0 .268.188.589.688.486a10.039 10.039 0 0 0 4.932-3.74A10.447 10.447 0 0 0 22 12.253C22 6.588 17.525 2 12 2Z"
+                              />
+                            </svg>
+                          </span>
+                          <span>GitHub</span>
+                        </div>
+                        <ul class="mt-6 space-y-4">
+                          <li class="flex gap-4">
+                            <span class="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+                              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-zinc-800 dark:fill-zinc-200">
+                                <path
+                                  fillRule="evenodd"
+                                  clipRule="evenodd"
+                                  d="M12 2C6.475 2 2 6.588 2 12.253c0 4.537 2.862 8.369 6.838 9.727.5.09.687-.218.687-.487 0-.243-.013-1.05-.013-1.91C7 20.059 6.35 18.957 6.15 18.38c-.113-.295-.6-1.205-1.025-1.448-.35-.192-.85-.667-.013-.68.788-.012 1.35.744 1.538 1.051.9 1.551 2.338 1.116 2.912.846.088-.666.35-1.115.638-1.371-2.225-.256-4.55-1.14-4.55-5.062 0-1.115.387-2.038 1.025-2.756-.1-.256-.45-1.307.1-2.717 0 0 .837-.269 2.75 1.051.8-.23 1.65-.346 2.5-.346.85 0 1.7.115 2.5.346 1.912-1.333 2.75-1.05 2.75-1.05.55 1.409.2 2.46.1 2.716.637.718 1.025 1.628 1.025 2.756 0 3.934-2.337 4.806-4.562 5.062.362.32.675.936.675 1.897 0 1.371-.013 2.473-.013 2.82 0 .268.188.589.688.486a10.039 10.039 0 0 0 4.932-3.74A10.447 10.447 0 0 0 22 12.253C22 6.588 17.525 2 12 2Z"
+                                />
+                              </svg>
+                            </span>
+                            <dl class="flex flex-auto flex-wrap gap-x-2">
+                              <dt class="sr-only">Profile</dt>
+                              <dd class="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                                <a href="https://github.com/ayushkpai" target="_blank" rel="noopener noreferrer" class="transition hover:text-teal-500 dark:hover:text-teal-400">
+                                  ayushkpai
+                                </a>
+                              </dd>
+                              <dt class="sr-only">Type</dt>
+                              <dd class="text-xs text-zinc-500 dark:text-zinc-400">account</dd>
+                            </dl>
+                          </li>
+                          <li class="flex gap-4">
+                            <span class="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+                              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-zinc-800 dark:fill-zinc-200">
+                                <path
+                                  fillRule="evenodd"
+                                  clipRule="evenodd"
+                                  d="M12 2C6.475 2 2 6.588 2 12.253c0 4.537 2.862 8.369 6.838 9.727.5.09.687-.218.687-.487 0-.243-.013-1.05-.013-1.91C7 20.059 6.35 18.957 6.15 18.38c-.113-.295-.6-1.205-1.025-1.448-.35-.192-.85-.667-.013-.68.788-.012 1.35.744 1.538 1.051.9 1.551 2.338 1.116 2.912.846.088-.666.35-1.115.638-1.371-2.225-.256-4.55-1.14-4.55-5.062 0-1.115.387-2.038 1.025-2.756-.1-.256-.45-1.307.1-2.717 0 0 .837-.269 2.75 1.051.8-.23 1.65-.346 2.5-.346.85 0 1.7.115 2.5.346 1.912-1.333 2.75-1.05 2.75-1.05.55 1.409.2 2.46.1 2.716.637.718 1.025 1.628 1.025 2.756 0 3.934-2.337 4.806-4.562 5.062.362.32.675.936.675 1.897 0 1.371-.013 2.473-.013 2.82 0 .268.188.589.688.486a10.039 10.039 0 0 0 4.932-3.74A10.447 10.447 0 0 0 22 12.253C22 6.588 17.525 2 12 2Z"
+                                />
+                              </svg>
+                            </span>
+                            <dl class="flex flex-auto flex-wrap gap-x-2">
+                              <dt class="sr-only">Organisation</dt>
+                              <dd class="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                                <a href="https://github.com/paiandco" target="_blank" rel="noopener noreferrer" class="transition hover:text-teal-500 dark:hover:text-teal-400">
+                                  Pai &amp; Co
+                                </a>
+                              </dd>
+                              <dt class="sr-only">Type</dt>
+                              <dd class="text-xs text-zinc-500 dark:text-zinc-400">organisation</dd>
+                            </dl>
+                          </li>
+                        </ul>
+                        <a
+                          href="https://github.com/ayushkpai"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-zinc-50 px-3 py-2 text-sm font-medium text-zinc-900 transition hover:bg-zinc-100 active:bg-zinc-100 active:text-zinc-900/60 dark:bg-zinc-800/50 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
+                        >
+                          View GitHub
+                          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50">
+                            <path
+                              d="M4.75 8.75 8 12.25m0 0 3.25-3.5M8 12.25v-8.5"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </a>
+                      </div>
+
+                      <div
+                        class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
+                      >
+                        <h2 class="flex items-center gap-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                          <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="h-6 w-6 flex-none">
+                            <path
+                              d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+                              class="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
+                            />
+                            <path
+                              d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"
+                              class="stroke-zinc-400 dark:stroke-zinc-500"
+                            />
+                          </svg>
+                          <span>The Cake Lover</span>
+                        </h2>
+                        <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                          Science fiction · 37 pages · ★ 5.0 by readers
+                        </p>
+                        <div class="mt-6">
+                          <a
+                            href="https://www.bribooks.com/bookstore/the-cake-lover-by-ayush-pai/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex w-full items-center justify-center gap-2 rounded-md bg-zinc-800 px-3 py-2 text-sm font-semibold text-zinc-100 transition hover:bg-zinc-700 active:bg-zinc-800 active:text-zinc-100/70 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+                          >
+                            Read the book
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="mt-32 flex-none">
+        <div class="sm:px-8">
+          <div class="mx-auto w-full max-w-7xl lg:px-8">
+            <div class="relative border-t border-zinc-100 px-4 pb-16 pt-10 dark:border-zinc-700/40 sm:px-8 lg:px-12">
+              <div class="mx-auto flex max-w-2xl flex-col items-center justify-between gap-6 text-center md:flex-row lg:max-w-5xl">
+                <p class="text-sm text-zinc-400 dark:text-zinc-500">
+                  © 2026 Ayush Pai. All rights reserved.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <div
+        id="retroModal"
+        class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-6"
+      >
         <div
-          class="mx-auto mt-14 grid w-full max-w-3xl grid-cols-1 gap-5 sm:mt-20 sm:grid-cols-2"
+          class="relative flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl"
         >
           <div
-            class="card reveal relative flex min-h-[240px] flex-col overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.035] p-6 shadow-[0_12px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-violet-400/30 hover:bg-white/[0.055] hover:shadow-[0_20px_70px_rgba(139,92,246,0.14)]"
+            class="flex h-12 shrink-0 items-center justify-between bg-[#0b101b]/90 px-4 sm:px-5"
           >
-            <div
-              class="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-[#050914]/80 text-white shadow-lg shadow-black/20"
+            <span
+              class="flex items-center gap-2 text-sm font-semibold text-cyan-200"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="h-7 w-7"
-                aria-hidden="true"
-              >
-                <path
-                  d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.49.5.092.682-.217.682-.482
-                  0-.237-.009-.866-.014-1.7-2.782.604-3.369-1.342-3.369-1.342-.455-1.157-1.11-1.466-1.11-1.466
-                  -.908-.62.069-.608.069-.608 1.004.07 1.532 1.03 1.532 1.03.892 1.53 2.341 1.088 2.91.832
-                  .092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.683
-                  -.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.56 9.56 0 0 1 12 6.844
-                  a9.56 9.56 0 0 1 2.504.337c1.91-1.294 2.75-1.025 2.75-1.025.544 1.377.201 2.394.098 2.647
-                  .64.699 1.03 1.592 1.03 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.92.678 1.855
-                  0 1.338-.012 2.419-.012 2.748 0 .268.18.579.688.481A10.001 10.001 0 0 0 22 12
-                  C22 6.477 17.523 2 12 2Z"
-                />
+              <svg viewBox="0 0 32 32" class="h-5 w-5" aria-hidden="true">
+                <rect width="32" height="32" rx="6" fill="#0a0a2e" />
+                <path d="M6,20 L8,14 L12,12 L20,12 L24,14 L26,20 Z" fill="#e00" />
+                <ellipse cx="16" cy="13" rx="3" ry="2" fill="#111" />
+                <circle cx="16" cy="12.5" r="1.5" fill="#ff0" />
+                <rect x="4" y="18" width="3" height="5" rx="1" fill="#111" />
+                <rect x="25" y="18" width="3" height="5" rx="1" fill="#111" />
+                <rect x="5" y="10" width="22" height="2" rx="1" fill="#e00" />
               </svg>
-            </div>
-
-            <div class="mt-2">
-              <h2
-                class="mt-1 text-2xl font-semibold tracking-tight text-white"
-              >
-                GitHub
-              </h2>
-            </div>
-
-            <div class="mt-auto flex flex-col gap-2 pt-4">
-              <a
-                href="https://github.com/ayushkpai"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 transition-all duration-300 hover:border-violet-400/40 hover:bg-violet-500/10 focus:outline-none focus:ring-2 focus:ring-violet-400/50"
-              >
-                <span class="text-sm font-medium text-slate-300 transition-colors group-hover:text-violet-100">
-                  ayushkpai
-                  <span
-                    class="ml-1 inline-flex items-center rounded-full border border-violet-400/30 bg-violet-500/10 px-2 py-0.5 text-xs font-medium text-violet-300"
-                  >
-                    account
-                  </span>
-                </span>
-                <span
-                  class="text-slate-500 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet-300"
-                >
-                  ↗
-                </span>
-              </a>
-
-              <a
-                href="https://github.com/paiandco"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 transition-all duration-300 hover:border-violet-400/40 hover:bg-violet-500/10 focus:outline-none focus:ring-2 focus:ring-violet-400/50"
-              >
-                <span class="text-sm font-medium text-slate-300 transition-colors group-hover:text-violet-100">
-                  paiandco
-                  <span
-                    class="ml-1 inline-flex items-center rounded-full border border-violet-400/30 bg-violet-500/10 px-2 py-0.5 text-xs font-medium text-violet-300"
-                  >
-                    org
-                  </span>
-                </span>
-                <span
-                  class="text-slate-500 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet-300"
-                >
-                  ↗
-                </span>
-              </a>
-            </div>
+              Retro Grand Prix
+            </span>
+            <button
+              id="retroCloseBtn"
+              aria-label="Close Retro Grand Prix"
+              class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-400 transition hover:border-rose-400/40 hover:bg-rose-500/10 hover:text-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400/50"
+            >
+              ✕
+            </button>
           </div>
-
-          <a
-            href="retro-grand-prix.html"
-            id="retroOpenBtn"
-            class="card reveal group relative flex min-h-[240px] cursor-pointer flex-col overflow-hidden rounded-3xl border border-cyan-400/15 bg-blue-950/[0.35] p-6 shadow-[0_12px_50px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-500 hover:border-cyan-400/40 hover:bg-blue-900/[0.45] hover:shadow-[0_20px_70px_rgba(6,182,212,0.18)] focus:outline-none focus:ring-2 focus:ring-cyan-400/50"
-            style="--reveal-delay: 100ms"
-          >
-            <div class="relative flex h-full flex-col">
-              <div class="flex items-start justify-between">
-                <div
-                  class="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-cyan-400/20 bg-[#050914]/90 shadow-lg shadow-cyan-950/30 transition-all duration-500 group-hover:scale-105 group-hover:border-cyan-400/50 group-hover:bg-cyan-500/10"
-                >
-                  <img
-                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a2e'/%3E%3Cpath d='M6,20 L8,14 L12,12 L20,12 L24,14 L26,20 Z' fill='%23e00'/%3E%3Cellipse cx='16' cy='13' rx='3' ry='2' fill='%23111'/%3E%3Ccircle cx='16' cy='12.5' r='1.5' fill='%23ff0'/%3E%3Crect x='4' y='18' width='3' height='5' rx='1' fill='%23111'/%3E%3Crect x='25' y='18' width='3' height='5' rx='1' fill='%23111'/%3E%3Crect x='5' y='10' width='22' height='2' rx='1' fill='%23e00'/%3E%3C/svg%3E"
-                    alt="Retro Grand Prix racing logo"
-                    class="h-10 w-10 transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-
-                <div
-                  class="flex h-10 w-10 items-center justify-center rounded-full border border-cyan-400/10 bg-white/[0.03] text-lg text-slate-500 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:border-cyan-400/40 group-hover:bg-cyan-500/10 group-hover:text-cyan-300"
-                >
-                  ↗
-                </div>
-              </div>
-
-              <div class="mt-3">
-                <h2
-                  class="mt-1 text-2xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-cyan-200"
-                >
-                  Retro Grand Prix
-                </h2>
-
-                <p
-                  class="mt-1 text-sm text-slate-400 transition-colors duration-300 group-hover:text-cyan-100/70"
-                >
-                  An arcade F1-style racing game
-                </p>
-
-                <p
-                  class="mt-3 text-sm leading-relaxed text-slate-400 transition-colors duration-300 group-hover:text-slate-300"
-                >
-                  Qualifying · Pit stops · Slipstream boost · 3 laps
-                </p>
-              </div>
-
-              <div class="mt-auto flex items-center justify-between pt-4">
-                <span
-                  class="inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-500/10 px-2.5 py-1 text-xs font-semibold text-cyan-300"
-                >
-                  ▶ Play
-                </span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            href="waffle-prime.html"
-            id="waffleOpenBtn"
-            class="card reveal group relative flex min-h-[240px] cursor-pointer flex-col overflow-hidden rounded-3xl border border-amber-400/15 bg-amber-950/[0.22] p-6 shadow-[0_12px_50px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-500 hover:border-amber-400/40 hover:bg-amber-900/[0.35] hover:shadow-[0_20px_70px_rgba(245,158,11,0.18)] focus:outline-none focus:ring-2 focus:ring-amber-400/50"
-            style="--reveal-delay: 300ms"
-          >
-            <div class="relative flex h-full flex-col">
-              <div class="flex items-start justify-between">
-                <div
-                  class="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-amber-400/20 bg-[#050914]/90 shadow-lg shadow-amber-950/30 transition-all duration-500 group-hover:scale-105 group-hover:border-amber-400/50 group-hover:bg-amber-500/10"
-                >
-                  <svg
-                    viewBox="0 0 32 32"
-                    class="h-10 w-10 transition-transform duration-500 group-hover:scale-110"
-                    aria-hidden="true"
-                  >
-                    <rect x="1" y="1" width="30" height="30" rx="6" fill="#d39b2e" />
-                    <rect x="4" y="4" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                    <rect x="12" y="4" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                    <rect x="20" y="4" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                    <rect x="4" y="12" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                    <rect x="12" y="12" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                    <rect x="20" y="12" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                    <rect x="4" y="20" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                    <rect x="12" y="20" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                    <rect x="20" y="20" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                  </svg>
-                </div>
-
-                <div
-                  class="flex h-10 w-10 items-center justify-center rounded-full border border-amber-400/10 bg-white/[0.03] text-lg text-slate-500 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:border-amber-400/40 group-hover:bg-amber-500/10 group-hover:text-amber-300"
-                >
-                  ↗
-                </div>
-              </div>
-
-              <div class="mt-3">
-                <h2
-                  class="mt-1 text-2xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-amber-200"
-                >
-                  Waffle Prime
-                </h2>
-
-                <p
-                  class="mt-1 text-sm text-slate-400 transition-colors duration-300 group-hover:text-amber-100/70"
-                >
-                  A fast-paced waffle shop sim
-                </p>
-
-                <p
-                  class="mt-3 text-sm leading-relaxed text-slate-400 transition-colors duration-300 group-hover:text-slate-300"
-                >
-                  Mix · Cook · Serve · Deliver
-                </p>
-              </div>
-
-              <div class="mt-auto flex items-center justify-between pt-4">
-                <span
-                  class="inline-flex items-center rounded-full border border-amber-400/30 bg-amber-500/10 px-2.5 py-1 text-xs font-semibold text-amber-300"
-                >
-                  ▶ Play
-                </span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            href="waddle.html"
-            id="waddleOpenBtn"
-            class="card reveal group relative flex min-h-[240px] cursor-pointer flex-col overflow-hidden rounded-3xl border border-orange-400/15 bg-orange-950/[0.22] p-6 shadow-[0_12px_50px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-500 hover:border-orange-400/40 hover:bg-orange-900/[0.35] hover:shadow-[0_20px_70px_rgba(249,115,22,0.18)] focus:outline-none focus:ring-2 focus:ring-orange-400/50"
-            style="--reveal-delay: 400ms"
-          >
-            <div class="relative flex h-full flex-col">
-              <div class="flex items-start justify-between">
-                <div
-                  class="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-orange-400/20 bg-[#050914]/90 shadow-lg shadow-orange-950/30 transition-all duration-500 group-hover:scale-105 group-hover:border-orange-400/50 group-hover:bg-orange-500/10"
-                >
-                  <svg
-                    viewBox="0 0 48 48"
-                    class="h-10 w-10 transition-transform duration-500 group-hover:scale-110"
-                    aria-hidden="true"
-                  >
-                    <ellipse cx="24" cy="28" rx="16" ry="20" fill="#0f172a" />
-                    <ellipse cx="28" cy="32" rx="10" ry="13" fill="#f8fafc" />
-                    <circle cx="27" cy="16" r="8" fill="#ffffff" />
-                    <circle cx="29" cy="15" r="3.5" fill="#0f172a" />
-                    <circle cx="30" cy="14" r="1.2" fill="#ffffff" />
-                    <path d="M40 22 l9 4 -9 4 z" fill="#fb923c" />
-                    <ellipse cx="14" cy="44" rx="7" ry="5" fill="#f97316" />
-                    <ellipse cx="32" cy="44" rx="7" ry="5" fill="#f97316" />
-                  </svg>
-                </div>
-
-                <div
-                  class="flex h-10 w-10 items-center justify-center rounded-full border border-orange-400/10 bg-white/[0.03] text-lg text-slate-500 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:border-orange-400/40 group-hover:bg-orange-500/10 group-hover:text-orange-300"
-                >
-                  ↗
-                </div>
-              </div>
-
-              <div class="mt-3">
-                <h2
-                  class="mt-1 text-2xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-orange-200"
-                >
-                  Waddle
-                </h2>
-
-                <p
-                  class="mt-1 text-sm text-slate-400 transition-colors duration-300 group-hover:text-orange-100/70"
-                >
-                  An endless penguin runner
-                </p>
-
-                <p
-                  class="mt-3 text-sm leading-relaxed text-slate-400 transition-colors duration-300 group-hover:text-slate-300"
-                >
-                  Double jump · Grab fish · Dodge icebergs
-                </p>
-              </div>
-
-              <div class="mt-auto flex items-center justify-between pt-4">
-                <span
-                  class="inline-flex items-center rounded-full border border-orange-400/30 bg-orange-500/10 px-2.5 py-1 text-xs font-semibold text-orange-300"
-                >
-                  ▶ Play
-                </span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            href="https://www.bribooks.com/bookstore/the-cake-lover-by-ayush-pai/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card reveal group relative min-h-[240px] overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.035] p-6 shadow-[0_12px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-rose-400/30 hover:bg-white/[0.055] hover:shadow-[0_20px_70px_rgba(244,63,94,0.14)] focus:outline-none focus:ring-2 focus:ring-rose-400/50"
-            style="--reveal-delay: 500ms"
-          >
-            <div class="relative flex h-full flex-col">
-              <div class="flex items-start justify-between">
-                <div
-                  class="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-white/10 shadow-lg shadow-black/20 transition-all duration-500 group-hover:scale-105 group-hover:border-rose-400/30"
-                >
-                  <img
-                    src="https://media.bribooks.com/public/AuthorCoverImages/user_cover_694030ae5edc9_b0_v1764030.png?width=400&format=png"
-                    alt="The Cake Lover book cover"
-                    class="h-full w-full object-cover"
-                  />
-                </div>
-
-                <div
-                  class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-lg text-slate-500 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:border-rose-400/30 group-hover:bg-rose-500/10 group-hover:text-rose-300"
-                >
-                  ↗
-                </div>
-              </div>
-
-              <div class="mt-3">
-                <h2
-                  class="mt-1 text-2xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-rose-200"
-                >
-                  The Cake Lover
-                </h2>
-
-                <p
-                  class="mt-1 text-sm text-slate-400 transition-colors duration-300 group-hover:text-rose-100/70"
-                >
-                  by Ayush Pai
-                </p>
-
-                <p
-                  class="mt-3 text-sm leading-relaxed text-slate-400 transition-colors duration-300 group-hover:text-slate-300"
-                >
-                  Science Fiction · Super Heroes · 37 pages
-                </p>
-              </div>
-
-              <div class="mt-auto flex items-center justify-between pt-4">
-                <span
-                  class="inline-flex items-center gap-1 rounded-full border border-amber-400/30 bg-amber-500/10 px-2.5 py-1 text-xs font-semibold text-amber-300"
-                >
-                  ★ 5.0
-                </span>
-              </div>
-            </div>
-          </a>
+          <iframe
+            id="retroFrame"
+            src=""
+            title="Retro Grand Prix"
+            allow="autoplay; fullscreen; gamepad"
+            allowfullscreen
+            class="h-full w-full flex-1 border-0 bg-black"
+          ></iframe>
         </div>
-      </section>
-    </main>
-
-    <footer class="relative z-10 mx-auto max-w-7xl px-4 pb-12 sm:px-6">
-      <div
-        class="flex flex-col items-center gap-3 border-t border-white/[0.06] px-4 pt-8 text-center text-xs text-slate-500"
-      >
-        <p>© 2026 Ayush Pai.</p>
       </div>
-    </footer>
 
-    <div
-      id="retroModal"
-      class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-6"
-    >
       <div
-        class="relative flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl"
+        id="waffleModal"
+        class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-6"
       >
         <div
-          class="flex h-12 shrink-0 items-center justify-between bg-[#0b101b]/90 px-4 sm:px-5"
+          class="relative flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl"
         >
-          <span
-            class="flex items-center gap-2 text-sm font-semibold text-cyan-200"
+          <div
+            class="flex h-12 shrink-0 items-center justify-between bg-[#0b101b]/90 px-4 sm:px-5"
           >
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a2e'/%3E%3Cpath d='M6,20 L8,14 L12,12 L20,12 L24,14 L26,20 Z' fill='%23e00'/%3E%3Cellipse cx='16' cy='13' rx='3' ry='2' fill='%23111'/%3E%3Ccircle cx='16' cy='12.5' r='1.5' fill='%23ff0'/%3E%3Crect x='4' y='18' width='3' height='5' rx='1' fill='%23111'/%3E%3Crect x='25' y='18' width='3' height='5' rx='1' fill='%23111'/%3E%3Crect x='5' y='10' width='22' height='2' rx='1' fill='%23e00'/%3E%3C/svg%3E"
-              alt="Retro Grand Prix racing logo"
-              class="h-5 w-5"
-            />
-            Retro Grand Prix
-          </span>
-          <button
-            id="retroCloseBtn"
-            aria-label="Close Retro Grand Prix"
-            class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-400 transition hover:border-rose-400/40 hover:bg-rose-500/10 hover:text-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400/50"
-          >
-            ✕
-          </button>
+            <span
+              class="flex items-center gap-2 text-sm font-semibold text-amber-200"
+            >
+              <svg viewBox="0 0 32 32" class="h-5 w-5" aria-hidden="true">
+                <rect x="1" y="1" width="30" height="30" rx="6" fill="#d39b2e" />
+                <rect x="4" y="4" width="7" height="7" rx="1.6" fill="#f2c96a" />
+                <rect x="12" y="4" width="7" height="7" rx="1.6" fill="#f2c96a" />
+                <rect x="20" y="4" width="7" height="7" rx="1.6" fill="#f2c96a" />
+                <rect x="4" y="12" width="7" height="7" rx="1.6" fill="#f2c96a" />
+                <rect x="12" y="12" width="7" height="7" rx="1.6" fill="#f2c96a" />
+                <rect x="20" y="12" width="7" height="7" rx="1.6" fill="#f2c96a" />
+                <rect x="4" y="20" width="7" height="7" rx="1.6" fill="#f2c96a" />
+                <rect x="12" y="20" width="7" height="7" rx="1.6" fill="#f2c96a" />
+                <rect x="20" y="20" width="7" height="7" rx="1.6" fill="#f2c96a" />
+              </svg>
+              Waffle Prime
+            </span>
+            <button
+              id="waffleCloseBtn"
+              aria-label="Close Waffle Prime"
+              class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-400 transition hover:border-rose-400/40 hover:bg-rose-500/10 hover:text-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400/50"
+            >
+              ✕
+            </button>
+          </div>
+          <iframe
+            id="waffleFrame"
+            src=""
+            title="Waffle Prime"
+            allow="autoplay; fullscreen; gamepad"
+            allowfullscreen
+            class="h-full w-full flex-1 border-0 bg-white"
+          ></iframe>
         </div>
-        <iframe
-          id="retroFrame"
-          src=""
-          title="Retro Grand Prix"
-          allow="autoplay; fullscreen; gamepad"
-          allowfullscreen
-          class="h-full w-full flex-1 border-0 bg-black"
-        ></iframe>
       </div>
-    </div>
 
-    <div
-      id="waffleModal"
-      class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-6"
-    >
       <div
-        class="relative flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl"
+        id="waddleModal"
+        class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-6"
       >
         <div
-          class="flex h-12 shrink-0 items-center justify-between bg-[#0b101b]/90 px-4 sm:px-5"
+          class="relative flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl"
         >
-          <span
-            class="flex items-center gap-2 text-sm font-semibold text-amber-200"
+          <div
+            class="flex h-12 shrink-0 items-center justify-between bg-[#0b101b]/90 px-4 sm:px-5"
           >
-            <svg viewBox="0 0 32 32" class="h-5 w-5" aria-hidden="true">
-              <rect x="1" y="1" width="30" height="30" rx="6" fill="#d39b2e" />
-              <rect x="4" y="4" width="7" height="7" rx="1.6" fill="#f2c96a" />
-              <rect x="12" y="4" width="7" height="7" rx="1.6" fill="#f2c96a" />
-              <rect x="20" y="4" width="7" height="7" rx="1.6" fill="#f2c96a" />
-              <rect x="4" y="12" width="7" height="7" rx="1.6" fill="#f2c96a" />
-              <rect x="12" y="12" width="7" height="7" rx="1.6" fill="#f2c96a" />
-              <rect x="20" y="12" width="7" height="7" rx="1.6" fill="#f2c96a" />
-              <rect x="4" y="20" width="7" height="7" rx="1.6" fill="#f2c96a" />
-              <rect x="12" y="20" width="7" height="7" rx="1.6" fill="#f2c96a" />
-              <rect x="20" y="20" width="7" height="7" rx="1.6" fill="#f2c96a" />
-            </svg>
-            Waffle Prime
-          </span>
-          <button
-            id="waffleCloseBtn"
-            aria-label="Close Waffle Prime"
-            class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-400 transition hover:border-rose-400/40 hover:bg-rose-500/10 hover:text-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400/50"
-          >
-            ✕
-          </button>
+            <span
+              class="flex items-center gap-2 text-sm font-semibold text-orange-200"
+            >
+              <svg viewBox="0 0 48 48" class="h-5 w-5" aria-hidden="true">
+                <ellipse cx="24" cy="28" rx="16" ry="20" fill="#0f172a" />
+                <ellipse cx="28" cy="32" rx="10" ry="13" fill="#f8fafc" />
+                <circle cx="27" cy="16" r="8" fill="#ffffff" />
+                <circle cx="29" cy="15" r="3.5" fill="#0f172a" />
+                <circle cx="30" cy="14" r="1.2" fill="#ffffff" />
+                <path d="M40 22 l9 4 -9 4 z" fill="#fb923c" />
+                <ellipse cx="14" cy="44" rx="7" ry="5" fill="#f97316" />
+                <ellipse cx="32" cy="44" rx="7" ry="5" fill="#f97316" />
+              </svg>
+              Waddle
+            </span>
+            <button
+              id="waddleCloseBtn"
+              aria-label="Close Waddle"
+              class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-400 transition hover:border-rose-400/40 hover:bg-rose-500/10 hover:text-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400/50"
+            >
+              ✕
+            </button>
+          </div>
+          <iframe
+            id="waddleFrame"
+            src=""
+            title="Waddle"
+            allow="autoplay; fullscreen; gamepad"
+            allowfullscreen
+            class="h-full w-full flex-1 border-0 bg-[#dff0ff]"
+          ></iframe>
         </div>
-        <iframe
-          id="waffleFrame"
-          src=""
-          title="Waffle Prime"
-          allow="autoplay; fullscreen; gamepad"
-          allowfullscreen
-          class="h-full w-full flex-1 border-0 bg-white"
-        ></iframe>
       </div>
-    </div>
 
-    <div
-      id="waddleModal"
-      class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-6"
-    >
-      <div
-        class="relative flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl"
-      >
-        <div
-          class="flex h-12 shrink-0 items-center justify-between bg-[#0b101b]/90 px-4 sm:px-5"
-        >
-          <span
-            class="flex items-center gap-2 text-sm font-semibold text-orange-200"
-          >
-            <svg viewBox="0 0 48 48" class="h-5 w-5" aria-hidden="true">
-              <ellipse cx="24" cy="28" rx="16" ry="20" fill="#0f172a" />
-              <ellipse cx="28" cy="32" rx="10" ry="13" fill="#f8fafc" />
-              <circle cx="27" cy="16" r="8" fill="#ffffff" />
-              <circle cx="29" cy="15" r="3.5" fill="#0f172a" />
-              <circle cx="30" cy="14" r="1.2" fill="#ffffff" />
-              <path d="M40 22 l9 4 -9 4 z" fill="#fb923c" />
-              <ellipse cx="14" cy="44" rx="7" ry="5" fill="#f97316" />
-              <ellipse cx="32" cy="44" rx="7" ry="5" fill="#f97316" />
-            </svg>
-            Waddle
-          </span>
-          <button
-            id="waddleCloseBtn"
-            aria-label="Close Waddle"
-            class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-400 transition hover:border-rose-400/40 hover:bg-rose-500/10 hover:text-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400/50"
-          >
-            ✕
-          </button>
-        </div>
-        <iframe
-          id="waddleFrame"
-          src=""
-          title="Waddle"
-          allow="autoplay; fullscreen; gamepad"
-          allowfullscreen
-          class="h-full w-full flex-1 border-0 bg-[#dff0ff]"
-        ></iframe>
-      </div>
-    </div>
+      <script>
+        const retroModal = document.getElementById("retroModal");
+        const retroFrame = document.getElementById("retroFrame");
+        const retroOpenBtns = document.querySelectorAll("[id='retroOpenBtn']");
+        const retroCloseBtn = document.getElementById("retroCloseBtn");
+        const RETRO_PATH = "/retro-grand-prix";
+        const waffleModal = document.getElementById("waffleModal");
+        const waffleFrame = document.getElementById("waffleFrame");
+        const waffleOpenBtns = document.querySelectorAll("[id='waffleOpenBtn']");
+        const waffleCloseBtn = document.getElementById("waffleCloseBtn");
+        const WAFFLE_PATH = "/waffle-prime";
+        const waddleModal = document.getElementById("waddleModal");
+        const waddleFrame = document.getElementById("waddleFrame");
+        const waddleOpenBtns = document.querySelectorAll("[id='waddleOpenBtn']");
+        const waddleCloseBtn = document.getElementById("waddleCloseBtn");
+        const WADDLE_PATH = "/waddle";
 
-    <script>
-      const retroModal = document.getElementById("retroModal");
-      const retroFrame = document.getElementById("retroFrame");
-      const retroOpenBtn = document.getElementById("retroOpenBtn");
-      const retroCloseBtn = document.getElementById("retroCloseBtn");
-      const heroRetroBtn = document.getElementById("heroRetroBtn");
-      const RETRO_PATH = "/retro-grand-prix";
-      const waffleModal = document.getElementById("waffleModal");
-      const waffleFrame = document.getElementById("waffleFrame");
-      const waffleOpenBtn = document.getElementById("waffleOpenBtn");
-      const waffleCloseBtn = document.getElementById("waffleCloseBtn");
-      const WAFFLE_PATH = "/waffle-prime";
-      const waddleModal = document.getElementById("waddleModal");
-      const waddleFrame = document.getElementById("waddleFrame");
-      const waddleOpenBtn = document.getElementById("waddleOpenBtn");
-      const waddleCloseBtn = document.getElementById("waddleCloseBtn");
-      const WADDLE_PATH = "/waddle";
-
-      function focusFrame(frame) {
-        frame.focus();
-        frame.addEventListener("load", () => frame.focus(), { once: true });
-      }
-
-      function openRetro(e) {
-        e.preventDefault();
-        retroFrame.src = "retro-grand-prix.html?embed=1";
-        retroModal.classList.remove("hidden");
-        retroModal.classList.add("flex");
-        document.body.style.overflow = "hidden";
-        history.pushState({ retro: true }, "", RETRO_PATH);
-        focusFrame(retroFrame);
-      }
-
-      function closeRetro() {
-        retroModal.classList.add("hidden");
-        retroModal.classList.remove("flex");
-        document.body.style.overflow = "";
-        if (window.location.pathname === RETRO_PATH) {
-          history.replaceState({ retro: false }, "", "/");
+        function focusFrame(frame) {
+          frame.focus();
+          frame.addEventListener("load", () => frame.focus(), { once: true });
         }
-        setTimeout(() => {
-          retroFrame.src = "";
-        }, 300);
-      }
 
-      function openWaffle(e) {
-        e.preventDefault();
-        waffleFrame.src = "waffle-prime.html?embed=1";
-        waffleModal.classList.remove("hidden");
-        waffleModal.classList.add("flex");
-        document.body.style.overflow = "hidden";
-        history.pushState({ waffle: true }, "", WAFFLE_PATH);
-        focusFrame(waffleFrame);
-      }
-
-      function closeWaffle() {
-        waffleModal.classList.add("hidden");
-        waffleModal.classList.remove("flex");
-        document.body.style.overflow = "";
-        if (window.location.pathname === WAFFLE_PATH) {
-          history.replaceState({ waffle: false }, "", "/");
-        }
-        setTimeout(() => {
-          waffleFrame.src = "";
-        }, 300);
-      }
-
-      function openWaddle(e) {
-        e.preventDefault();
-        waddleFrame.src = "waddle.html?embed=1";
-        waddleModal.classList.remove("hidden");
-        waddleModal.classList.add("flex");
-        document.body.style.overflow = "hidden";
-        history.pushState({ waddle: true }, "", WADDLE_PATH);
-        focusFrame(waddleFrame);
-      }
-
-      function closeWaddle() {
-        waddleModal.classList.add("hidden");
-        waddleModal.classList.remove("flex");
-        document.body.style.overflow = "";
-        if (window.location.pathname === WADDLE_PATH) {
-          history.replaceState({ waddle: false }, "", "/");
-        }
-        setTimeout(() => {
-          waddleFrame.src = "";
-        }, 300);
-      }
-
-      retroOpenBtn.addEventListener("click", openRetro);
-      retroCloseBtn.addEventListener("click", closeRetro);
-      if (heroRetroBtn) {
-        heroRetroBtn.addEventListener("click", openRetro);
-      }
-      waffleOpenBtn.addEventListener("click", openWaffle);
-      waffleCloseBtn.addEventListener("click", closeWaffle);
-      waddleOpenBtn.addEventListener("click", openWaddle);
-      waddleCloseBtn.addEventListener("click", closeWaddle);
-      window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          closeRetro();
-          closeWaffle();
-          closeWaddle();
-        }
-      });
-      window.addEventListener("message", (e) => {
-        if (e.data === "retro-close") closeRetro();
-        if (e.data === "waffle-close") closeWaffle();
-        if (e.data === "waddle-close") closeWaddle();
-      });
-      window.addEventListener("popstate", () => {
-        if (window.location.pathname === RETRO_PATH || window.location.pathname === WAFFLE_PATH || window.location.pathname === WADDLE_PATH) {
-          const isRetro = window.location.pathname === RETRO_PATH;
-          const isWaffle = window.location.pathname === WAFFLE_PATH;
-          const modal = isRetro ? retroModal : isWaffle ? waffleModal : waddleModal;
-          const frame = isRetro ? retroFrame : isWaffle ? waffleFrame : waddleFrame;
-          const name = isRetro ? "retro-grand-prix" : isWaffle ? "waffle-prime" : "waddle";
-          frame.src = `${name}.html?embed=1`;
-          modal.classList.remove("hidden");
-          modal.classList.add("flex");
+        function openRetro(e) {
+          e.preventDefault();
+          retroFrame.src = "retro-grand-prix.html?embed=1";
+          retroModal.classList.remove("hidden");
+          retroModal.classList.add("flex");
           document.body.style.overflow = "hidden";
-          focusFrame(frame);
-        } else {
-          if (!retroModal.classList.contains("hidden")) closeRetro();
-          if (!waffleModal.classList.contains("hidden")) closeWaffle();
-          if (!waddleModal.classList.contains("hidden")) closeWaddle();
+          history.pushState({ retro: true }, "", RETRO_PATH);
+          focusFrame(retroFrame);
         }
-      });
 
-      window.addEventListener("DOMContentLoaded", () => {
-        const openFor = (path, hash, modal, frame, srcName) => {
+        function closeRetro() {
+          retroModal.classList.add("hidden");
+          retroModal.classList.remove("flex");
+          document.body.style.overflow = "";
+          if (window.location.pathname === RETRO_PATH) {
+            history.replaceState({ retro: false }, "", "/");
+          }
+          setTimeout(() => {
+            retroFrame.src = "";
+          }, 300);
+        }
+
+        function openWaffle(e) {
+          e.preventDefault();
+          waffleFrame.src = "waffle-prime.html?embed=1";
+          waffleModal.classList.remove("hidden");
+          waffleModal.classList.add("flex");
+          document.body.style.overflow = "hidden";
+          history.pushState({ waffle: true }, "", WAFFLE_PATH);
+          focusFrame(waffleFrame);
+        }
+
+        function closeWaffle() {
+          waffleModal.classList.add("hidden");
+          waffleModal.classList.remove("flex");
+          document.body.style.overflow = "";
+          if (window.location.pathname === WAFFLE_PATH) {
+            history.replaceState({ waffle: false }, "", "/");
+          }
+          setTimeout(() => {
+            waffleFrame.src = "";
+          }, 300);
+        }
+
+        function openWaddle(e) {
+          e.preventDefault();
+          waddleFrame.src = "waddle.html?embed=1";
+          waddleModal.classList.remove("hidden");
+          waddleModal.classList.add("flex");
+          document.body.style.overflow = "hidden";
+          history.pushState({ waddle: true }, "", WADDLE_PATH);
+          focusFrame(waddleFrame);
+        }
+
+        function closeWaddle() {
+          waddleModal.classList.add("hidden");
+          waddleModal.classList.remove("flex");
+          document.body.style.overflow = "";
+          if (window.location.pathname === WADDLE_PATH) {
+            history.replaceState({ waddle: false }, "", "/");
+          }
+          setTimeout(() => {
+            waddleFrame.src = "";
+          }, 300);
+        }
+
+        retroOpenBtns.forEach((btn) => btn.addEventListener("click", openRetro));
+        retroCloseBtn.addEventListener("click", closeRetro);
+        waffleOpenBtns.forEach((btn) => btn.addEventListener("click", openWaffle));
+        waffleCloseBtn.addEventListener("click", closeWaffle);
+        waddleOpenBtns.forEach((btn) => btn.addEventListener("click", openWaddle));
+        waddleCloseBtn.addEventListener("click", closeWaddle);
+        window.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            closeRetro();
+            closeWaffle();
+            closeWaddle();
+          }
+        });
+        window.addEventListener("message", (e) => {
+          if (e.data === "retro-close") closeRetro();
+          if (e.data === "waffle-close") closeWaffle();
+          if (e.data === "waddle-close") closeWaddle();
+        });
+        window.addEventListener("popstate", () => {
           if (
-            (window.location.pathname === path || window.location.hash === hash) &&
-            modal.classList.contains("hidden")
+            window.location.pathname === RETRO_PATH ||
+            window.location.pathname === WAFFLE_PATH ||
+            window.location.pathname === WADDLE_PATH
           ) {
-            frame.src = `${srcName}.html?embed=1`;
+            const isRetro = window.location.pathname === RETRO_PATH;
+            const isWaffle = window.location.pathname === WAFFLE_PATH;
+            const modal = isRetro ? retroModal : isWaffle ? waffleModal : waddleModal;
+            const frame = isRetro ? retroFrame : isWaffle ? waffleFrame : waddleFrame;
+            const name = isRetro ? "retro-grand-prix" : isWaffle ? "waffle-prime" : "waddle";
+            frame.src = `${name}.html?embed=1`;
             modal.classList.remove("hidden");
             modal.classList.add("flex");
             document.body.style.overflow = "hidden";
-            if (window.location.pathname !== path) {
-              history.replaceState({}, "", path);
-            }
             focusFrame(frame);
+          } else {
+            if (!retroModal.classList.contains("hidden")) closeRetro();
+            if (!waffleModal.classList.contains("hidden")) closeWaffle();
+            if (!waddleModal.classList.contains("hidden")) closeWaddle();
           }
-        };
-        openFor(RETRO_PATH, "#retro-grand-prix", retroModal, retroFrame, "retro-grand-prix");
-        openFor(WAFFLE_PATH, "#waffle-prime", waffleModal, waffleFrame, "waffle-prime");
-        openFor(WADDLE_PATH, "#waddle", waddleModal, waddleFrame, "waddle");
-      });
+        });
 
-      document.querySelectorAll(".reveal").forEach((el) => {
-        el.classList.add("reveal-hidden");
-      });
-      const revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("revealed");
-              revealObserver.unobserve(entry.target);
+        window.addEventListener("DOMContentLoaded", () => {
+          const paths = [
+            [RETRO_PATH, "#retro-grand-prix", RETRO_PATH, retroModal, retroFrame, "retro-grand-prix"],
+            [WAFFLE_PATH, "#waffle-prime", WAFFLE_PATH, waffleModal, waffleFrame, "waffle-prime"],
+            [WADDLE_PATH, "#waddle", WADDLE_PATH, waddleModal, waddleFrame, "waddle"],
+          ];
+          for (const [path, hash, , modal, frame, srcName] of paths) {
+            if (
+              (window.location.pathname === path || window.location.hash === hash) &&
+              modal.classList.contains("hidden")
+            ) {
+              frame.src = `${srcName}.html?embed=1`;
+              modal.classList.remove("hidden");
+              modal.classList.add("flex");
+              document.body.style.overflow = "hidden";
+              if (window.location.pathname !== path) {
+                history.replaceState({}, "", path);
+              }
+              focusFrame(frame);
+              break;
             }
-          });
-        },
-        { threshold: 0.15 }
-      );
-      document.querySelectorAll(".reveal").forEach((el) => {
-        revealObserver.observe(el);
-      });
-      const revealStyle = document.createElement("style");
-      revealStyle.textContent = `
-        .reveal-hidden {
-          opacity: 0;
-          translate: 0 20px;
-        }
-        .reveal.revealed {
-          opacity: 1;
-          translate: 0 0;
-        }
-        .reveal {
-          transition: opacity 0.7s ease, translate 0.7s ease;
-          transition-delay: var(--reveal-delay, 0ms);
-        }
-      `;
-      document.head.appendChild(revealStyle);
-    </script>
+          }
+        });
+
+        const themeToggle = document.getElementById("themeToggle");
+        themeToggle.addEventListener("click", () => {
+          const isDark = document.documentElement.classList.toggle("dark");
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+      </script>
+    </div>
   </body>
 </html>
