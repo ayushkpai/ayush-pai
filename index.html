@@ -161,6 +161,7 @@
     </div>
 
     <div class="relative flex w-full flex-col">
+      <audio id="bgMusic" src="audio/music.mp3" loop preload="auto" class="hidden"></audio>
       <header class="pointer-events-none relative z-40 flex flex-none flex-col">
         <div class="pointer-events-auto top-0 h-20 pt-6">
           <div class="sm:px-8">
@@ -186,8 +187,28 @@
                   </div>
 
                   <div class="drop-in-sm flex flex-1 justify-end md:flex-1" style="animation-delay: 0.1s">
-                    <button
-                      id="themeToggle"
+                    <div class="flex items-center gap-2">
+                      <button
+                        id="musicToggle"
+                        type="button"
+                        aria-label="Toggle music"
+                        aria-pressed="false"
+                        class="pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-white/90 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-sm transition hover:ring-zinc-900/10 dark:bg-[#16122b]/80 dark:ring-white/10 dark:hover:ring-white/20"
+                      >
+                        <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="hidden h-5 w-5 stroke-zinc-600 dark:stroke-[#8c97ea]">
+                          <path d="M9 18V6l10-2v12" />
+                          <circle cx="6" cy="18" r="3" />
+                          <circle cx="16" cy="16" r="3" />
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="h-5 w-5 stroke-zinc-400 dark:stroke-zinc-500">
+                          <path d="M9 18V6l10-2v12" />
+                          <circle cx="6" cy="18" r="3" />
+                          <circle cx="16" cy="16" r="3" />
+                          <path d="M3 3l18 18" />
+                        </svg>
+                      </button>
+                      <button
+                        id="themeToggle"
                       type="button"
                       aria-label="Toggle theme"
                       class="pointer-events-auto flex h-10 items-center justify-center rounded-full bg-white/90 px-3 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-sm transition hover:ring-zinc-900/10 dark:bg-[#16122b]/80 dark:ring-white/10 dark:hover:ring-white/20"
@@ -218,7 +239,8 @@
                           strokeLinejoin="round"
                         />
                       </svg>
-                    </button>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -509,6 +531,82 @@
       </div>
 
       <div
+        id="musicBackdrop"
+        class="fixed inset-0 z-[70] hidden bg-zinc-950/60 opacity-0 backdrop-blur-sm transition-opacity duration-300"
+      ></div>
+
+      <div
+        id="musicSheet"
+        aria-label="Music controls"
+        class="fixed inset-x-0 bottom-0 z-[80] mx-auto flex w-full max-w-md translate-y-full flex-col rounded-t-3xl border-t border-white/10 bg-white shadow-2xl transition-transform duration-300 ease-out dark:bg-[#141225]"
+      >
+        <div class="mx-auto mt-3 h-1 w-10 flex-none rounded-full bg-zinc-200 dark:bg-[#5966cc]/40"></div>
+        <header class="flex items-center justify-between px-5 pt-3 pb-4">
+          <span class="flex items-center gap-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+            <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="h-5 w-5 stroke-[#5966cc] dark:stroke-[#8c97ea]">
+              <path d="M9 18V6l10-2v12" />
+              <circle cx="6" cy="18" r="3" />
+              <circle cx="16" cy="16" r="3" />
+            </svg>
+            Music
+          </span>
+          <button
+            id="musicCloseBtn"
+            type="button"
+            aria-label="Close music controls"
+            class="flex h-8 w-8 items-center justify-center rounded-full text-zinc-400 transition hover:bg-zinc-100 hover:text-zinc-600 dark:hover:bg-[#1d1e38] dark:hover:text-zinc-200"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="h-5 w-5">
+              <path d="m6 6 12 12M18 6 6 18" />
+            </svg>
+          </button>
+        </header>
+
+        <div class="flex flex-col gap-5 px-5 pb-6">
+          <div class="flex items-center gap-4 rounded-2xl border border-zinc-100 p-4 dark:border-[#5966cc]/25">
+            <span class="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-gradient-to-br from-[#5966cc] to-[#eb58e3] shadow-lg shadow-[#5966cc]/30">
+              <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="h-5 w-5 stroke-white">
+                <path d="M9 18V6l10-2v12" />
+                <circle cx="6" cy="18" r="3" />
+                <circle cx="16" cy="16" r="3" />
+              </svg>
+            </span>
+            <span class="min-w-0 flex-1">
+              <span class="block truncate text-sm font-medium text-zinc-900 dark:text-zinc-100">Background music</span>
+              <span id="musicStatus" class="block text-xs text-zinc-500 dark:text-zinc-400">Paused</span>
+            </span>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <button
+              id="musicPlayBtn"
+              type="button"
+              aria-label="Play or pause music"
+              aria-pressed="false"
+              class="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-[#eb58e3] shadow-[0_8px_20px_rgba(235,88,227,0.4)] transition hover:bg-[#eb58e3]/85 active:scale-95"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="hidden h-5 w-5 text-white">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5 text-white">
+                <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
+              </svg>
+            </button>
+            <input
+              id="musicVolume"
+              type="range"
+              min="0"
+              max="100"
+              value="55"
+              aria-label="Volume"
+              class="h-1.5 flex-1 cursor-pointer appearance-none rounded-full bg-zinc-200 accent-[#eb58e3] dark:bg-[#5966cc]/30"
+            />
+            <span id="musicVolumeLabel" class="w-8 flex-none text-right text-sm font-medium tabular-nums text-zinc-500 dark:text-zinc-400">55</span>
+          </div>
+        </div>
+      </div>
+
+      <div
         id="toastContainer"
         class="pointer-events-none fixed inset-x-0 bottom-6 z-[90] flex flex-col items-center gap-2 px-4"
       ></div>
@@ -747,6 +845,7 @@
             closeWaddle();
             closeBookDrawer();
             closeGithubSheet();
+            closeMusicSheet();
           }
         });
         window.addEventListener("message", (e) => {
@@ -856,6 +955,72 @@
         githubBackdrop.addEventListener("click", (e) => {
           if (e.target === githubBackdrop) closeGithubSheet();
         });
+
+        const bgMusic = document.getElementById("bgMusic");
+        bgMusic.volume = 0.55;
+        const musicToggle = document.getElementById("musicToggle");
+        const musicBackdrop = document.getElementById("musicBackdrop");
+        const musicSheet = document.getElementById("musicSheet");
+        const musicCloseBtn = document.getElementById("musicCloseBtn");
+        const musicPlayBtn = document.getElementById("musicPlayBtn");
+        const musicPlayIcon = musicPlayBtn.querySelector("svg:first-of-type");
+        const musicPauseIcon = musicPlayBtn.querySelector("svg:last-of-type");
+        const musicStatus = document.getElementById("musicStatus");
+        const musicVolume = document.getElementById("musicVolume");
+        const musicVolumeLabel = document.getElementById("musicVolumeLabel");
+
+        function openMusicSheet() {
+          musicBackdrop.classList.remove("hidden");
+          void musicSheet.offsetWidth;
+          musicBackdrop.classList.remove("opacity-0");
+          musicSheet.classList.remove("translate-y-full");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeMusicSheet() {
+          musicSheet.classList.add("translate-y-full");
+          musicBackdrop.classList.add("opacity-0");
+          document.body.style.overflow = "";
+          setTimeout(() => {
+            musicBackdrop.classList.add("hidden");
+          }, 300);
+        }
+
+        function syncMusicUI() {
+          const on = !bgMusic.paused;
+          musicToggle.setAttribute("aria-pressed", String(on));
+          musicToggle.querySelector("svg:first-of-type").classList.toggle("hidden", !on);
+          musicToggle.querySelector("svg:last-of-type").classList.toggle("hidden", on);
+          musicPlayBtn.setAttribute("aria-pressed", String(on));
+          musicPlayIcon.classList.toggle("hidden", !on);
+          musicPauseIcon.classList.toggle("hidden", on);
+          musicStatus.textContent = on ? "Playing" : "Paused";
+        }
+
+        musicToggle.addEventListener("click", openMusicSheet);
+        musicCloseBtn.addEventListener("click", closeMusicSheet);
+        musicBackdrop.addEventListener("click", (e) => {
+          if (e.target === musicBackdrop) closeMusicSheet();
+        });
+
+        musicPlayBtn.addEventListener("click", () => {
+          if (bgMusic.paused) {
+            bgMusic.volume = musicVolume.value / 100;
+            bgMusic.play().catch(() => syncMusicUI());
+          } else {
+            bgMusic.pause();
+          }
+        });
+
+        musicVolume.addEventListener("input", () => {
+          const v = musicVolume.value;
+          bgMusic.volume = v / 100;
+          musicVolumeLabel.textContent = v;
+        });
+
+        bgMusic.addEventListener("play", syncMusicUI);
+        bgMusic.addEventListener("pause", syncMusicUI);
+        syncMusicUI();
 
         const toastContainer = document.getElementById("toastContainer");
 
