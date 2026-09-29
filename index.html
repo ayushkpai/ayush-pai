@@ -1007,8 +1007,10 @@
           if (bgMusic.paused) {
             bgMusic.volume = musicVolume.value / 100;
             bgMusic.play().catch(() => syncMusicUI());
+            showToast("Music playing");
           } else {
             bgMusic.pause();
+            showToast("Music paused");
           }
         });
 
@@ -1016,6 +1018,10 @@
           const v = musicVolume.value;
           bgMusic.volume = v / 100;
           musicVolumeLabel.textContent = v;
+        });
+
+        musicVolume.addEventListener("change", () => {
+          showToast(`Volume ${musicVolume.value}%`);
         });
 
         bgMusic.addEventListener("play", syncMusicUI);
