@@ -116,6 +116,32 @@
       *::-webkit-scrollbar {
         display: none;
       }
+      .toast-in {
+        animation: toast-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      .toast-out {
+        animation: toast-out 0.2s ease-in both;
+      }
+      @keyframes toast-in {
+        from {
+          transform: translateY(16px);
+          opacity: 0;
+        }
+        to {
+          transform: none;
+          opacity: 1;
+        }
+      }
+      @keyframes toast-out {
+        from {
+          transform: none;
+          opacity: 1;
+        }
+        to {
+          transform: translateY(16px);
+          opacity: 0;
+        }
+      }
     </style>
   </head>
   <body
@@ -422,6 +448,11 @@
           </a>
         </footer>
       </aside>
+
+      <div
+        id="toastContainer"
+        class="pointer-events-none fixed inset-x-0 bottom-6 z-[90] flex flex-col items-center gap-2 px-4"
+      ></div>
 
       <div
         id="retroModal"
@@ -738,10 +769,30 @@
           if (e.target === bookBackdrop) closeBookDrawer();
         });
 
+        const toastContainer = document.getElementById("toastContainer");
+
+        function showToast(message) {
+          const toast = document.createElement("div");
+          toast.className =
+            "pointer-events-auto flex items-center gap-2 rounded-xl border border-zinc-900/5 bg-white/90 px-4 py-2.5 text-sm font-medium text-zinc-900 shadow-lg shadow-zinc-900/10 ring-1 ring-zinc-900/5 backdrop-blur-md transition dark:border-white/10 dark:bg-zinc-800/90 dark:text-zinc-100 dark:shadow-black/40 dark:ring-white/10";
+          const dot = document.createElement("span");
+          dot.className = "h-1.5 w-1.5 flex-none rounded-full bg-teal-500 dark:bg-teal-400";
+          toast.appendChild(dot);
+          toast.appendChild(document.createTextNode(message));
+          toastContainer.appendChild(toast);
+          requestAnimationFrame(() => toast.classList.add("toast-in"));
+          setTimeout(() => {
+            toast.classList.remove("toast-in");
+            toast.classList.add("toast-out");
+            setTimeout(() => toast.remove(), 200);
+          }, 2500);
+        }
+
         const themeToggle = document.getElementById("themeToggle");
         themeToggle.addEventListener("click", () => {
           const isDark = document.documentElement.classList.toggle("dark");
           localStorage.setItem("theme", isDark ? "dark" : "light");
+          showToast(isDark ? "Dark mode on" : "Light mode on");
         });
       </script>
     </div>
