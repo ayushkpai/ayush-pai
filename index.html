@@ -1218,7 +1218,13 @@ cd ayush-pai
           musicStatus.textContent = on ? "Playing" : "Paused";
         }
 
-        musicToggle.addEventListener("click", openMusicSheet);
+        musicToggle.addEventListener("click", () => {
+          if (bgMusic.paused) {
+            bgMusic.volume = musicVolume.value / 100;
+            bgMusic.play().catch(() => syncMusicUI());
+          }
+          openMusicSheet();
+        });
         musicCloseBtn.addEventListener("click", closeMusicSheet);
         musicBackdrop.addEventListener("click", (e) => {
           if (e.target === musicBackdrop) closeMusicSheet();
