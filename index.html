@@ -757,19 +757,18 @@
       </div>
 
       <script>
-        let scrollLockTimer = 0;
-        function unlockScrollAfter(ms) {
-          clearTimeout(scrollLockTimer);
-          scrollLockTimer = setTimeout(() => {
-            const anyOpen =
-              !retroModal.classList.contains("hidden") ||
-              !waffleModal.classList.contains("hidden") ||
-              !waddleModal.classList.contains("hidden") ||
-              !document.getElementById("bookBackdrop").classList.contains("hidden") ||
-              !document.getElementById("githubBackdrop").classList.contains("hidden") ||
-              !document.getElementById("musicBackdrop").classList.contains("hidden");
-            if (!anyOpen) unlockScrollAfter(300);
-          }, ms);
+        function anyOverlayOpen() {
+          return (
+            !retroModal.classList.contains("hidden") ||
+            !waffleModal.classList.contains("hidden") ||
+            !waddleModal.classList.contains("hidden") ||
+            !document.getElementById("bookBackdrop").classList.contains("hidden") ||
+            !document.getElementById("githubBackdrop").classList.contains("hidden") ||
+            !document.getElementById("musicBackdrop").classList.contains("hidden")
+          );
+        }
+        function restoreScrollIfIdle() {
+          if (!anyOverlayOpen()) document.body.style.overflow = "";
         }
 
         const retroModal = document.getElementById("retroModal");
@@ -806,7 +805,7 @@
         function closeRetro() {
           retroModal.classList.add("hidden");
           retroModal.classList.remove("flex");
-          unlockScrollAfter(300);
+          restoreScrollIfIdle();
           if (window.location.pathname === RETRO_PATH) {
             history.replaceState({ retro: false }, "", "/");
           }
@@ -828,7 +827,7 @@
         function closeWaffle() {
           waffleModal.classList.add("hidden");
           waffleModal.classList.remove("flex");
-          unlockScrollAfter(300);
+          restoreScrollIfIdle();
           if (window.location.pathname === WAFFLE_PATH) {
             history.replaceState({ waffle: false }, "", "/");
           }
@@ -850,7 +849,7 @@
         function closeWaddle() {
           waddleModal.classList.add("hidden");
           waddleModal.classList.remove("flex");
-          unlockScrollAfter(300);
+          restoreScrollIfIdle();
           if (window.location.pathname === WADDLE_PATH) {
             history.replaceState({ waddle: false }, "", "/");
           }
@@ -943,9 +942,9 @@
         function closeBookDrawer() {
           bookDrawer.classList.add("translate-x-full");
           bookBackdrop.classList.add("opacity-0");
-          unlockScrollAfter(300);
           setTimeout(() => {
             bookBackdrop.classList.add("hidden");
+            restoreScrollIfIdle();
           }, 300);
         }
 
@@ -971,9 +970,9 @@
         function closeGithubSheet() {
           githubSheet.classList.add("translate-y-full");
           githubBackdrop.classList.add("opacity-0");
-          unlockScrollAfter(300);
           setTimeout(() => {
             githubBackdrop.classList.add("hidden");
+            restoreScrollIfIdle();
           }, 300);
         }
 
@@ -1007,9 +1006,9 @@
         function closeMusicSheet() {
           musicSheet.classList.add("translate-y-full");
           musicBackdrop.classList.add("opacity-0");
-          unlockScrollAfter(300);
           setTimeout(() => {
             musicBackdrop.classList.add("hidden");
+            restoreScrollIfIdle();
           }, 300);
         }
 
@@ -1082,7 +1081,7 @@
         });
 
         document.body.style.overflow = "hidden";
-        unlockScrollAfter(800);
+        setTimeout(restoreScrollIfIdle, 800);
       </script>
     </div>
   </body>
