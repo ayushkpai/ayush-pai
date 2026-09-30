@@ -1187,6 +1187,9 @@ cd ayush-pai
         const musicVolume = document.getElementById("musicVolume");
         const musicVolumeLabel = document.getElementById("musicVolumeLabel");
 
+        musicVolume.value = Math.round(bgMusic.volume * 100);
+        musicVolumeLabel.textContent = musicVolume.value;
+
         function openMusicSheet() {
           musicBackdrop.classList.remove("hidden");
           void musicSheet.offsetWidth;
