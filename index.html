@@ -757,6 +757,21 @@
       </div>
 
       <script>
+        let scrollLockTimer = 0;
+        function unlockScrollAfter(ms) {
+          clearTimeout(scrollLockTimer);
+          scrollLockTimer = setTimeout(() => {
+            const anyOpen =
+              !retroModal.classList.contains("hidden") ||
+              !waffleModal.classList.contains("hidden") ||
+              !waddleModal.classList.contains("hidden") ||
+              !document.getElementById("bookBackdrop").classList.contains("hidden") ||
+              !document.getElementById("githubBackdrop").classList.contains("hidden") ||
+              !document.getElementById("musicBackdrop").classList.contains("hidden");
+            if (!anyOpen) unlockScrollAfter(300);
+          }, ms);
+        }
+
         const retroModal = document.getElementById("retroModal");
         const retroFrame = document.getElementById("retroFrame");
         const retroOpenBtns = document.querySelectorAll("[id='retroOpenBtn']");
@@ -791,7 +806,7 @@
         function closeRetro() {
           retroModal.classList.add("hidden");
           retroModal.classList.remove("flex");
-          document.body.style.overflow = "";
+          unlockScrollAfter(300);
           if (window.location.pathname === RETRO_PATH) {
             history.replaceState({ retro: false }, "", "/");
           }
@@ -813,7 +828,7 @@
         function closeWaffle() {
           waffleModal.classList.add("hidden");
           waffleModal.classList.remove("flex");
-          document.body.style.overflow = "";
+          unlockScrollAfter(300);
           if (window.location.pathname === WAFFLE_PATH) {
             history.replaceState({ waffle: false }, "", "/");
           }
@@ -835,7 +850,7 @@
         function closeWaddle() {
           waddleModal.classList.add("hidden");
           waddleModal.classList.remove("flex");
-          document.body.style.overflow = "";
+          unlockScrollAfter(300);
           if (window.location.pathname === WADDLE_PATH) {
             history.replaceState({ waddle: false }, "", "/");
           }
@@ -928,7 +943,7 @@
         function closeBookDrawer() {
           bookDrawer.classList.add("translate-x-full");
           bookBackdrop.classList.add("opacity-0");
-          document.body.style.overflow = "";
+          unlockScrollAfter(300);
           setTimeout(() => {
             bookBackdrop.classList.add("hidden");
           }, 300);
@@ -956,7 +971,7 @@
         function closeGithubSheet() {
           githubSheet.classList.add("translate-y-full");
           githubBackdrop.classList.add("opacity-0");
-          document.body.style.overflow = "";
+          unlockScrollAfter(300);
           setTimeout(() => {
             githubBackdrop.classList.add("hidden");
           }, 300);
@@ -992,7 +1007,7 @@
         function closeMusicSheet() {
           musicSheet.classList.add("translate-y-full");
           musicBackdrop.classList.add("opacity-0");
-          document.body.style.overflow = "";
+          unlockScrollAfter(300);
           setTimeout(() => {
             musicBackdrop.classList.add("hidden");
           }, 300);
@@ -1065,6 +1080,9 @@
           localStorage.setItem("theme", isDark ? "dark" : "light");
           showToast(isDark ? "Dark mode on" : "Light mode on");
         });
+
+        document.body.style.overflow = "hidden";
+        unlockScrollAfter(800);
       </script>
     </div>
   </body>
