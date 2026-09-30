@@ -1,0 +1,150 @@
+#!/usr/bin/env ruby
+
+require "io/console"
+
+WEBSITES = [
+  ["Website", "https://ayushpai.com", "ayushpai.com"],
+  ["GitHub", "https://github.com/ayushkpai", "github.com/ayushkpai"],
+  ["GitHub Org.", "https://github.com/paiandco", "github.com/paiandco"],
+]
+
+TOKEN_SITE = "ayushpai.com"
+
+BOLD   = "\e[1m"
+DIM    = "\e[90m"
+PURPLE = "\e[38;5;141m"
+PINK   = "\e[38;5;213m"
+LAV    = "\e[38;5;111m"
+GREEN  = "\e[38;5;84m"
+RESET  = "\e[0m"
+
+HISTORY = File.join(Dir.home, ".ap_selection")
+
+def load_selection
+  Integer(File.read(HISTORY).strip)
+rescue StandardError
+  0
+end
+
+def save_selection(index)
+  File.write(HISTORY, index.to_s)
+end
+
+def open_url(url)
+  case RUBY_PLATFORM
+  when /darwin/    then system("open", url)
+  when /linux|bsd/ then system("xdg-open", url)
+  when /mswin|mingw|cygwin/ then system("start", "", url)
+  else
+    system("open", url)
+  end
+end
+
+def read_token
+  digits = []
+  while digits.length < 4
+    ch = $stdin.getch
+    break if ch == "\u0003"
+    next unless ch =~ /\d/
+
+    digits << ch
+    print PINK + ch + RESET
+  end
+  digits.join
+end
+
+def token_gate
+  token = rand(1000..9999).to_s
+
+  loop do
+    print "\e[2J\e[H"
+    puts "#{BOLD}#{PURPLE}◇  ayushpai#{RESET} #{DIM}·  locked#{RESET}"
+    puts
+    puts "  #{BOLD}Ap token#{RESET}"
+    letters = ("a".."z").to_a
+    display = token.chars.each_with_index.map do |d, i|
+      seg = "#{DIM}#{d}#{RESET}"
+      i == token.length - 1 ? seg : "#{seg}#{PINK}#{BOLD}#{letters.sample}#{RESET}"
+    end.join
+    puts "  #{display}"
+    puts
+    puts "  #{DIM}4 digits · #{TOKEN_SITE}#{RESET}"
+    puts
+    print "#{DIM}  ❯ enter token: #{RESET}"
+
+    entered = read_token
+    return if entered == token
+  end
+end
+
+def render(selected)
+  print "\e[2J\e[H"
+
+  puts "#{BOLD}#{PURPLE}◇  ayushpai#{RESET} #{DIM}·  open a website#{RESET}"
+  puts
+
+  WEBSITES.each_with_index do |(name, _url, handle), i|
+    if i == selected
+      puts "  #{PINK}❯ #{BOLD}#{name}#{RESET}  #{DIM}#{handle}#{RESET}"
+    else
+      puts "    #{LAV}#{name}#{RESET}  #{DIM}#{handle}#{RESET}"
+    end
+  end
+
+  puts
+  puts "#{DIM}  ↑↓ / jk  navigate      enter / l  open      q / ctrl-c  quit#{RESET}"
+end
+
+unless $stdin.tty?
+  render(0)
+  puts
+  puts "#{DIM}Run this from an interactive terminal to pick with your keyboard.#{RESET}"
+  exit 0
+end
+
+selected = load_selection
+
+print "\e[?25l"
+
+at_exit do
+  print "\e[?25h"
+  print RESET
+end
+
+begin
+  token_gate
+
+  loop do
+    render(selected)
+
+    key = $stdin.getch
+
+    case key
+    when "\u0003", "q", "Q"
+      break
+    when "\r", "\n", "l", "L", " ", "o"
+      name, url, = WEBSITES[selected]
+      save_selection(selected)
+      print "\e[2J\e[H"
+      puts "#{GREEN}✔  Opening #{name}…#{RESET}"
+      puts "#{DIM}#{url}#{RESET}"
+      open_url(url)
+      break
+    when "\e"
+      next_char = $stdin.getch
+      next unless next_char == "["
+
+      case $stdin.getch
+      when "A"
+        selected = (selected - 1) % WEBSITES.length
+      when "B"
+        selected = (selected + 1) % WEBSITES.length
+      end
+    when "j", "\x0e"
+      selected = (selected + 1) % WEBSITES.length
+    when "k", "\x10"
+      selected = (selected - 1) % WEBSITES.length
+    end
+  end
+rescue Interrupt
+end
