@@ -147,6 +147,22 @@
   <body
     class="flex w-full flex-col bg-[#f5f4fb] font-sans text-zinc-900 dark:bg-[#0e0d1a] dark:text-zinc-200"
   >
+    <div
+      id="pageLoader"
+      class="fixed inset-0 z-[100] flex items-center justify-center bg-[#f5f4fb] backdrop-blur-sm transition-opacity duration-500 dark:bg-[#0e0d1a]"
+      aria-hidden="true"
+    >
+      <div class="flex flex-col items-center gap-5">
+        <div class="relative flex h-20 w-20 items-center justify-center">
+          <div class="absolute inset-0 animate-spin rounded-full border-4 border-[#5966cc]/20 border-t-[#eb58e3]"></div>
+          <span class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white/70 dark:bg-[#16122b]/70">
+            <img src="images/logo.png" alt="Ayush Pai logo" class="h-10 w-10 rounded-full object-cover" />
+          </span>
+        </div>
+        <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">Loading…</p>
+      </div>
+    </div>
+
     <div class="pointer-events-none fixed inset-0" aria-hidden="true">
       <img
         src="images/wallpaper.png"
@@ -1082,6 +1098,17 @@
 
         document.body.style.overflow = "hidden";
         setTimeout(restoreScrollIfIdle, 800);
+
+        const pageLoader = document.getElementById("pageLoader");
+        function hidePageLoader() {
+          pageLoader.classList.add("opacity-0", "pointer-events-none");
+          setTimeout(() => pageLoader.remove(), 550);
+        }
+        if (document.readyState === "complete") {
+          hidePageLoader();
+        } else {
+          window.addEventListener("load", hidePageLoader);
+        }
       </script>
     </div>
   </body>
