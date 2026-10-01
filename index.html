@@ -127,10 +127,40 @@
           width: 0%;
         }
       }
-      @media (prefers-reduced-motion: reduce) {
-        .flash-progress {
-          animation: none;
+      .flash-in {
+        animation: flash-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      .flash-out {
+        animation: flash-out 0.4s cubic-bezier(0.4, 0, 1, 1) both;
+      }
+      @keyframes flash-in {
+        from {
+          transform: translateX(-24px);
+          opacity: 0;
         }
+        to {
+          transform: none;
+          opacity: 1;
+        }
+      }
+      @keyframes flash-out {
+        from {
+          transform: none;
+          opacity: 1;
+        }
+        to {
+          transform: translateX(28px);
+          opacity: 0;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+.flash-progress {
+        animation: none;
+      }
+      .flash-in,
+      .flash-out {
+        animation: none;
+      }
       }
     </style>
   </head>
@@ -748,7 +778,7 @@ cd ayush-pai
         id="toastContainer"
         role="status"
         aria-live="polite"
-        class="pointer-events-none fixed top-4 left-1/2 z-[90] flex w-auto max-w-[min(22rem,calc(100vw-2rem))] -translate-x-1/2 flex-col gap-2"
+        class="pointer-events-none fixed bottom-5 left-5 z-[90] flex w-auto max-w-[min(22rem,calc(100vw-2.5rem))] flex-col gap-2"
       ></div>
 
       <div
@@ -1254,8 +1284,9 @@ cd ayush-pai
         function dismissToast(card) {
           if (card.dataset.leaving) return;
           card.dataset.leaving = "1";
-          card.classList.add("opacity-0", "-translate-y-4");
-          setTimeout(() => card.remove(), 300);
+          card.classList.remove("flash-in");
+          card.classList.add("flash-out");
+          setTimeout(() => card.remove(), 400);
         }
 
         function showToast(message, type = "notice") {
@@ -1263,7 +1294,7 @@ cd ayush-pai
 
           const card = document.createElement("div");
           card.className =
-            "pointer-events-auto relative flex items-center gap-2.5 overflow-hidden rounded-2xl border border-zinc-900/10 bg-white/60 py-2 pr-2 pl-3 shadow-[0_10px_30px_rgba(9,9,11,0.12)] ring-1 ring-inset ring-white/50 backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 opacity-0 -translate-y-4 dark:border-white/15 dark:bg-white/10 dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)] dark:ring-white/10";
+            "flash-card pointer-events-auto relative flex items-center gap-2.5 overflow-hidden rounded-2xl border border-zinc-900/10 bg-white/60 py-2 pr-2 pl-3 shadow-[0_10px_30px_rgba(9,9,11,0.12)] ring-1 ring-inset ring-white/50 backdrop-blur-xl backdrop-saturate-150 dark:border-white/15 dark:bg-white/10 dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)] dark:ring-white/10";
           card.dataset.message = message;
 
           const icon = document.createElement("span");
@@ -1295,7 +1326,7 @@ cd ayush-pai
           card.appendChild(bar);
 
           toastContainer.appendChild(card);
-          setTimeout(() => card.classList.add("opacity-100", "translate-y-0"), 40);
+          requestAnimationFrame(() => card.classList.add("flash-in"));
           setTimeout(() => dismissToast(card), FLASH_MS);
 
           toastContainer
