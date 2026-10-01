@@ -1180,7 +1180,7 @@ cd ayush-pai
           try {
             await navigator.clipboard.writeText(text);
             cliCopyLabel.textContent = "Copied";
-            showToast("Commands copied");
+            showToast("Commands copied", "notice");
           } catch {
             const range = document.createRange();
             range.selectNodeContents(cliCommands);
@@ -1244,6 +1244,9 @@ cd ayush-pai
           if (bgMusic.paused) {
             bgMusic.volume = musicVolume.value / 100;
             bgMusic.play().catch(() => syncMusicUI());
+            showToast("Music playing");
+          } else {
+            showToast("Options opened");
           }
           openMusicSheet();
         });
