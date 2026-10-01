@@ -47,6 +47,12 @@
       const JUMP_V = 730;
       const PLAYER_X = 120;
       const FISH_POINTS = 50;
+      const POWER_MAX = 500;
+      const POWER_AIR_GAIN = 55;
+      const POWER_GROUND_GAIN = 14;
+      const EXTRA_JUMP_COST = 25;
+      const BASE_JUMPS = 2;
+      const CEIL_Y = 40;
 
       type SpeedLevel = "slow" | "normal" | "fast";
 
@@ -114,6 +120,7 @@
         flakes: { x: number; y: number; s: number; v: number }[];
         audio: AudioContext | null;
         best: number;
+        power: number;
       };
 
       function loadBest(): number {
@@ -143,6 +150,7 @@
           flakes: [],
           audio: null,
           best: 0,
+          power: 0,
         });
 
         const [phase, setPhase] = useState("ready");
@@ -166,6 +174,7 @@
           st.vy = 0;
           st.onGround = true;
           st.jumps = 0;
+          st.power = 0;
           st.speed = SPEEDS[speedRef.current].start;
           st.spawnTimer = 0.7;
           st.phase = "playing";
@@ -206,7 +215,12 @@
 
           const jump = () => {
             const g = s.current;
-            if (g.onGround || g.jumps < 2) {
+            const extraJumps = Math.floor(g.power / EXTRA_JUMP_COST);
+            const maxJumps = BASE_JUMPS + extraJumps;
+            if (g.onGround || g.jumps < maxJumps) {
+              if (!g.onGround && g.jumps >= BASE_JUMPS) {
+                g.power = Math.max(0, g.power - EXTRA_JUMP_COST);
+              }
               g.vy = g.onGround ? -JUMP_V : -JUMP_V * 1.15;
               g.onGround = false;
               g.jumps += 1;
@@ -256,12 +270,17 @@
             if (!g.onGround) {
               g.vy += GRAVITY * dt;
               g.py += g.vy * dt;
+              if (g.py <= CEIL_Y && g.vy < 0) g.vy = 0;
               if (g.py >= GROUND_Y) {
                 g.py = GROUND_Y;
                 g.vy = 0;
                 g.onGround = true;
                 g.jumps = 0;
+              } else if (g.jumps < BASE_JUMPS) {
+                if (g.power < POWER_MAX) g.power = Math.min(POWER_MAX, g.power + POWER_AIR_GAIN * dt);
               }
+            } else if (g.power < POWER_MAX) {
+              g.power = Math.min(POWER_MAX, g.power + POWER_GROUND_GAIN * dt);
             }
 
             g.spawnTimer -= dt;
@@ -562,6 +581,22 @@
               ctx.fillStyle = "rgba(15,23,42,0.55)";
               ctx.fillText(`BEST ${Math.max(s.current.best, HUD_SCORE)}`, W - 20, 34);
               ctx.textAlign = "left";
+
+              const pw = s.current.power / POWER_MAX;
+              const barW = 120;
+              ctx.fillStyle = "rgba(15,23,42,0.15)";
+              ctx.fillRect(20, 70, barW, 7);
+              ctx.fillStyle = pw >= 1 ? "#f97316" : "#0ea5e9";
+              ctx.fillRect(20, 70, barW * pw, 7);
+              ctx.font = "bold 12px ui-sans-serif, system-ui, sans-serif";
+              ctx.fillStyle = "rgba(15,23,42,0.55)";
+              ctx.fillText(
+                pw >= 1
+                  ? `POWER FULL — ${2 + Math.floor(POWER_MAX / EXTRA_JUMP_COST)} JUMPS`
+                  : `POWER ${Math.floor(s.current.power)}% — ${2 + Math.floor(s.current.power / EXTRA_JUMP_COST)} JUMPS`,
+                20,
+                92
+              );
             }
 
             drawPenguin(t);
@@ -640,7 +675,9 @@
                   <h2 className="text-lg font-black sm:text-2xl">Ready to waddle?</h2>
                   <p className="max-w-sm text-[11px] leading-relaxed text-slate-200 sm:text-sm">
                     Press <kbd className="rounded bg-white/20 px-1.5 py-0.5">Space</kbd>, click, or tap to
-                    jump. Jump again mid-air for a double jump. Grab fish, dodge icebergs and snowmen.
+                    jump. Jump again mid-air for a double jump. Skip the double jump and{" "}
+                    <span className="font-bold text-orange-300">power</span> builds, unlocking extra jumps.
+                    Grab fish, dodge icebergs and snowmen.
                   </p>
                   <div className="mt-0.5 grid w-full max-w-xs grid-cols-3 gap-1.5 sm:mt-1 sm:flex sm:w-auto sm:max-w-none sm:gap-2">
                     {(Object.keys(SPEEDS)).map((lvl) => (
@@ -696,7 +733,7 @@
             </div>
 
             <p className="max-w-xl text-center text-xs text-slate-400 sm:text-sm">
-              Space / click jumps. Speed builds over time, so start waddling.
+              Space / click jumps. Skip the double jump to build power for extra jumps. Speed builds over time, so start waddling.
             </p>
           </div>
         );
