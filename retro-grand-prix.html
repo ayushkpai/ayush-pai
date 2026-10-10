@@ -3551,29 +3551,47 @@
       });
 
       // Game loop
+      let loopRunning = true;
+      let loopRaf = 0;
       function gameLoop(timestamp) {
+        if (!loopRunning) return;
         const dt = Math.min((timestamp - lastTime) / 1000, 0.05);
         lastTime = timestamp;
 
-        const gameDt = dt * 20;
-        if (gameState === "qualifying") {
-          updateQuali(gameDt);
-          render();
-        } else if (gameState === "pitstop") {
-          updatePitStop(gameDt);
-          drawPitScene();
-        } else {
-          update(gameDt);
-          render();
+        try {
+          const gameDt = dt * 20;
+          if (gameState === "qualifying") {
+            updateQuali(gameDt);
+            render();
+          } else if (gameState === "pitstop") {
+            updatePitStop(gameDt);
+            drawPitScene();
+          } else {
+            update(gameDt);
+            render();
+          }
+        } catch (err) {
+          if (err && err.name === "NS_ERROR_FAILURE") {
+            loopRunning = false;
+            return;
+          }
+          throw err;
         }
-        requestAnimationFrame(gameLoop);
+        loopRaf = requestAnimationFrame(gameLoop);
       }
+
+      function stopGameLoop() {
+        loopRunning = false;
+        cancelAnimationFrame(loopRaf);
+      }
+      window.addEventListener("pagehide", stopGameLoop);
+      window.addEventListener("beforeunload", stopGameLoop);
 
       // Init
       buildTrack();
       resetPlayer();
       lastTime = performance.now();
-      requestAnimationFrame(gameLoop);
+      loopRaf = requestAnimationFrame(gameLoop);
     </script>
   </body>
 </html>
