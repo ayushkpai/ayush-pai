@@ -426,10 +426,10 @@
                             type="button"
                             class="group inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#5966cc]/60 bg-[#5966cc]/5 px-5 py-2 text-sm font-semibold text-[#5966cc] shadow-[0_0_0_4px_rgba(89,102,204,0.08),0_8px_20px_rgba(89,102,204,0.12)] transition hover:border-[#eb58e3] hover:bg-[#eb58e3]/10 hover:text-[#eb58e3] hover:shadow-[0_0_0_4px_rgba(235,88,227,0.1),0_10px_25px_rgba(235,88,227,0.18)] active:bg-[#eb58e3]/20 dark:border-[#8c97ea]/50 dark:bg-[#8c97ea]/5 dark:text-[#8c97ea] dark:hover:border-[#eb58e3] dark:hover:bg-[#eb58e3]/10 dark:hover:text-[#eb58e3]"
                           >
-                            Visit Pai &amp; Co
-                            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="h-4 w-4 stroke-current transition group-hover:-translate-y-0.5">
-                              <path d="M8 11.5V4.75M5.75 7 8 4.75 10.25 7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
+                             Visit Pai &amp; Co
+                             <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="h-4 w-4 stroke-current transition group-hover:translate-x-0.5">
+                               <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                             </svg>
                           </button>
                         </div>
                       </div>
@@ -940,13 +940,12 @@ bin/ap</code></pre>
         class="fixed inset-0 z-[70] hidden bg-zinc-950/60 opacity-0 backdrop-blur-sm transition-opacity duration-300"
       ></div>
 
-      <div
+      <aside
         id="paiandcoSheet"
         aria-label="Pai &amp; Co"
-        class="fixed inset-x-0 bottom-0 z-[80] mx-auto flex w-full max-w-md translate-y-full flex-col rounded-t-3xl border-t border-white/10 bg-white shadow-2xl transition-transform duration-300 ease-out dark:bg-[#141225]"
+        class="fixed inset-y-0 right-0 z-[80] flex w-full max-w-sm translate-x-full flex-col bg-white shadow-2xl transition-transform duration-300 ease-out dark:bg-[#141225]"
       >
-        <div class="mx-auto mt-3 h-1 w-10 flex-none rounded-full bg-zinc-200 dark:bg-[#5966cc]/40"></div>
-        <header class="flex items-center justify-between px-5 pt-3 pb-4">
+        <header class="flex items-center justify-between border-b border-zinc-100 px-5 py-4 dark:border-[#5966cc]/25">
           <span class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Pai &amp; Co</span>
           <button
             id="paiandcoCloseBtn"
@@ -960,7 +959,7 @@ bin/ap</code></pre>
           </button>
         </header>
 
-        <div class="flex flex-col items-center gap-4 px-5 pb-7 text-center">
+        <div class="flex flex-1 flex-col items-center justify-center gap-5 overflow-y-auto p-6 text-center">
           <img
             src="images/paiandco.png"
             alt="Pai &amp; Co"
@@ -984,7 +983,7 @@ bin/ap</code></pre>
             </svg>
           </a>
         </div>
-      </div>
+      </aside>
 
       <script>
         function anyOverlayOpen() {
@@ -1279,12 +1278,12 @@ bin/ap</code></pre>
           paiandcoBackdrop.classList.remove("hidden");
           void paiandcoSheet.offsetWidth;
           paiandcoBackdrop.classList.remove("opacity-0");
-          paiandcoSheet.classList.remove("translate-y-full");
+          paiandcoSheet.classList.remove("translate-x-full");
           document.body.style.overflow = "hidden";
         }
 
         function closePaiandcoSheet() {
-          paiandcoSheet.classList.add("translate-y-full");
+          paiandcoSheet.classList.add("translate-x-full");
           paiandcoBackdrop.classList.add("opacity-0");
           setTimeout(() => {
             paiandcoBackdrop.classList.add("hidden");
