@@ -113,6 +113,26 @@
       *::-webkit-scrollbar {
         display: none;
       }
+      .loader-ring {
+        background: conic-gradient(
+          from 0deg,
+          transparent 0deg,
+          #5966cc 70deg,
+          #8c97ea 150deg,
+          #eb58e3 260deg,
+          transparent 360deg
+        );
+        -webkit-mask: radial-gradient(
+          farthest-side,
+          transparent calc(100% - 4px),
+          #000 calc(100% - 4px)
+        );
+        mask: radial-gradient(
+          farthest-side,
+          transparent calc(100% - 4px),
+          #000 calc(100% - 4px)
+        );
+      }
       .flash-progress {
         animation: flash-timer 3.5s linear forwards;
       }
@@ -170,13 +190,11 @@
       aria-hidden="true"
     >
       <div class="flex flex-col items-center gap-5">
-        <div class="relative flex h-20 w-20 items-center justify-center">
-          <div class="absolute inset-0 animate-spin rounded-full border-4 border-[#5966cc]/20 border-t-[#eb58e3]"></div>
-          <span class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white/70 dark:bg-[#16122b]/70">
-            <img src="images/logo.png" alt="Ayush Pai logo" class="h-10 w-10 rounded-full object-cover" />
-          </span>
+        <div class="relative flex h-16 w-16 items-center justify-center">
+          <div class="absolute inset-2 rounded-full bg-[#5966cc]/20 blur-xl dark:bg-[#8c97ea]/20"></div>
+          <div class="loader-ring h-12 w-12 animate-spin rounded-full"></div>
         </div>
-        <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">Loading…</p>
+        <p class="text-sm font-medium tracking-wide text-zinc-500 dark:text-zinc-400">Loading…</p>
       </div>
     </div>
 
