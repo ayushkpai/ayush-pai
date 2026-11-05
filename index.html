@@ -332,56 +332,6 @@
                           </div>
                         </div>
                       </a>
-
-                      <a
-                        href="waffle-prime.html"
-                        id="waffleOpenBtn"
-                        class="group block rounded-2xl border border-zinc-100 bg-white/60 p-6 shadow-[0_12px_35px_rgba(0,0,0,0.05)] backdrop-blur-md transition hover:-translate-y-1 hover:border-[#5966cc]/60 hover:shadow-[0_20px_45px_rgba(0,0,0,0.1)] dark:border-[#5966cc]/25 dark:bg-[#141225]/70 dark:shadow-[0_12px_35px_rgba(0,0,0,0.25)] dark:hover:border-[#8c97ea]/50 dark:hover:shadow-[0_20px_45px_rgba(0,0,0,0.35)]"
-                      >
-                        <div class="flex items-start gap-4">
-                          <span class="text-4xl" aria-hidden="true">🧇</span>
-                          <div class="min-w-0 flex-1">
-                            <p class="text-sm text-zinc-400 dark:text-zinc-500">Simulation · Speed</p>
-                            <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-                              Waffle Prime
-                            </h2>
-                            <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                              A fast-paced waffle shop sim. Mix, cook, serve, and deliver — before the waffle goes cold.
-                            </p>
-                            <div class="mt-4 flex items-center text-sm font-medium text-[#5966cc] dark:text-[#8c97ea]">
-                              Play now
-                              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="ml-1 h-4 w-4 stroke-current">
-                                <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                              </svg>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-
-                      <a
-                        href="waddle.html"
-                        id="waddleOpenBtn"
-                        class="group block rounded-2xl border border-zinc-100 bg-white/60 p-6 shadow-[0_12px_35px_rgba(0,0,0,0.05)] backdrop-blur-md transition hover:-translate-y-1 hover:border-[#5966cc]/60 hover:shadow-[0_20px_45px_rgba(0,0,0,0.1)] dark:border-[#5966cc]/25 dark:bg-[#141225]/70 dark:shadow-[0_12px_35px_rgba(0,0,0,0.25)] dark:hover:border-[#8c97ea]/50 dark:hover:shadow-[0_20px_45px_rgba(0,0,0,0.35)]"
-                      >
-                        <div class="flex items-start gap-4">
-                          <span class="text-4xl" aria-hidden="true">🐧</span>
-                          <div class="min-w-0 flex-1">
-                            <p class="text-sm text-zinc-400 dark:text-zinc-500">Endless runner</p>
-                            <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-                              Waddle
-                            </h2>
-                            <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                              A penguin with ambitions. Waddle, double-jump, and grab the fish.
-                            </p>
-                            <div class="mt-4 flex items-center text-sm font-medium text-[#5966cc] dark:text-[#8c97ea]">
-                              Play now
-                              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="ml-1 h-4 w-4 stroke-current">
-                                <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                              </svg>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
                     </div>
 
                     <div class="in-right space-y-10 lg:pl-16 xl:pl-24" style="animation-delay: 0.12s">
@@ -846,96 +796,6 @@ bin/ap</code></pre>
       </div>
 
       <div
-        id="waffleModal"
-        class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-6"
-      >
-        <div
-          class="relative flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl"
-        >
-          <div
-            class="flex h-12 shrink-0 items-center justify-between bg-[#0b101b]/90 px-4 sm:px-5"
-          >
-            <span
-              class="flex items-center gap-2 text-sm font-semibold text-amber-200"
-            >
-              <svg viewBox="0 0 32 32" class="h-5 w-5" aria-hidden="true">
-                <rect x="1" y="1" width="30" height="30" rx="6" fill="#d39b2e" />
-                <rect x="4" y="4" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                <rect x="12" y="4" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                <rect x="20" y="4" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                <rect x="4" y="12" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                <rect x="12" y="12" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                <rect x="20" y="12" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                <rect x="4" y="20" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                <rect x="12" y="20" width="7" height="7" rx="1.6" fill="#f2c96a" />
-                <rect x="20" y="20" width="7" height="7" rx="1.6" fill="#f2c96a" />
-              </svg>
-              Waffle Prime
-            </span>
-            <button
-              id="waffleCloseBtn"
-              aria-label="Close Waffle Prime"
-              class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-400 transition hover:border-rose-400/40 hover:bg-rose-500/10 hover:text-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400/50"
-            >
-              ✕
-            </button>
-          </div>
-          <iframe
-            id="waffleFrame"
-            src=""
-            title="Waffle Prime"
-            allow="fullscreen; gamepad"
-            allowfullscreen
-            class="h-full w-full flex-1 border-0 bg-white"
-          ></iframe>
-        </div>
-      </div>
-
-      <div
-        id="waddleModal"
-        class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-6"
-      >
-        <div
-          class="relative flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl"
-        >
-          <div
-            class="flex h-12 shrink-0 items-center justify-between bg-[#0b101b]/90 px-4 sm:px-5"
-          >
-            <span
-              class="flex items-center gap-2 text-sm font-semibold text-orange-200"
-            >
-              <svg viewBox="0 0 48 48" class="h-5 w-5" aria-hidden="true">
-                <ellipse cx="24" cy="28" rx="16" ry="20" fill="#0f172a" />
-                <ellipse cx="28" cy="32" rx="10" ry="13" fill="#f8fafc" />
-                <circle cx="27" cy="16" r="8" fill="#ffffff" />
-                <circle cx="29" cy="15" r="3.5" fill="#0f172a" />
-                <circle cx="30" cy="14" r="1.2" fill="#ffffff" />
-                <path d="M40 22 l9 4 -9 4 z" fill="#fb923c" />
-                <ellipse cx="14" cy="44" rx="7" ry="5" fill="#f97316" />
-                <ellipse cx="32" cy="44" rx="7" ry="5" fill="#f97316" />
-              </svg>
-              Waddle
-            </span>
-            <button
-              id="waddleCloseBtn"
-              aria-label="Close Waddle"
-              class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-400 transition hover:border-rose-400/40 hover:bg-rose-500/10 hover:text-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400/50"
-            >
-              ✕
-            </button>
-          </div>
-          <iframe
-            id="waddleFrame"
-            src=""
-            title="Waddle"
-            allow="fullscreen; gamepad"
-            allowfullscreen
-            class="h-full w-full flex-1 border-0 bg-[#dff0ff]"
-          ></iframe>
-        </div>
-      </div>
-
-      <div
         id="paiandcoBackdrop"
         class="fixed inset-0 z-[70] hidden bg-zinc-950/60 opacity-0 backdrop-blur-sm transition-opacity duration-300"
       ></div>
@@ -989,8 +849,6 @@ bin/ap</code></pre>
         function anyOverlayOpen() {
           return (
             !retroModal.classList.contains("hidden") ||
-            !waffleModal.classList.contains("hidden") ||
-            !waddleModal.classList.contains("hidden") ||
             !document.getElementById("bookBackdrop").classList.contains("hidden") ||
             !document.getElementById("githubBackdrop").classList.contains("hidden") ||
             !document.getElementById("cliBackdrop").classList.contains("hidden") ||
@@ -1007,16 +865,6 @@ bin/ap</code></pre>
         const retroOpenBtns = document.querySelectorAll("[id='retroOpenBtn']");
         const retroCloseBtn = document.getElementById("retroCloseBtn");
         const RETRO_PATH = "/retro-grand-prix";
-        const waffleModal = document.getElementById("waffleModal");
-        const waffleFrame = document.getElementById("waffleFrame");
-        const waffleOpenBtns = document.querySelectorAll("[id='waffleOpenBtn']");
-        const waffleCloseBtn = document.getElementById("waffleCloseBtn");
-        const WAFFLE_PATH = "/waffle-prime";
-        const waddleModal = document.getElementById("waddleModal");
-        const waddleFrame = document.getElementById("waddleFrame");
-        const waddleOpenBtns = document.querySelectorAll("[id='waddleOpenBtn']");
-        const waddleCloseBtn = document.getElementById("waddleCloseBtn");
-        const WADDLE_PATH = "/waddle";
 
         function focusFrame(frame) {
           frame.focus();
@@ -1045,61 +893,11 @@ bin/ap</code></pre>
           }, 300);
         }
 
-        function openWaffle(e) {
-          e.preventDefault();
-          waffleFrame.src = "waffle-prime.html?embed=1";
-          waffleModal.classList.remove("hidden");
-          waffleModal.classList.add("flex");
-          document.body.style.overflow = "hidden";
-          history.pushState({ waffle: true }, "", WAFFLE_PATH);
-          focusFrame(waffleFrame);
-        }
-
-        function closeWaffle() {
-          waffleModal.classList.add("hidden");
-          waffleModal.classList.remove("flex");
-          restoreScrollIfIdle();
-          if (window.location.pathname === WAFFLE_PATH) {
-            history.replaceState({ waffle: false }, "", "/");
-          }
-          setTimeout(() => {
-            waffleFrame.src = "data:text/html,<!doctype html>";
-          }, 300);
-        }
-
-        function openWaddle(e) {
-          e.preventDefault();
-          waddleFrame.src = "waddle.html?embed=1";
-          waddleModal.classList.remove("hidden");
-          waddleModal.classList.add("flex");
-          document.body.style.overflow = "hidden";
-          history.pushState({ waddle: true }, "", WADDLE_PATH);
-          focusFrame(waddleFrame);
-        }
-
-        function closeWaddle() {
-          waddleModal.classList.add("hidden");
-          waddleModal.classList.remove("flex");
-          restoreScrollIfIdle();
-          if (window.location.pathname === WADDLE_PATH) {
-            history.replaceState({ waddle: false }, "", "/");
-          }
-          setTimeout(() => {
-            waddleFrame.src = "data:text/html,<!doctype html>";
-          }, 300);
-        }
-
         retroOpenBtns.forEach((btn) => btn.addEventListener("click", openRetro));
         retroCloseBtn.addEventListener("click", closeRetro);
-        waffleOpenBtns.forEach((btn) => btn.addEventListener("click", openWaffle));
-        waffleCloseBtn.addEventListener("click", closeWaffle);
-        waddleOpenBtns.forEach((btn) => btn.addEventListener("click", openWaddle));
-        waddleCloseBtn.addEventListener("click", closeWaddle);
         window.addEventListener("keydown", (e) => {
           if (e.key === "Escape") {
             closeRetro();
-            closeWaffle();
-            closeWaddle();
             closeBookDrawer();
             closeGithubSheet();
             closeCliDrawer();
@@ -1109,37 +907,22 @@ bin/ap</code></pre>
         });
         window.addEventListener("message", (e) => {
           if (e.data === "retro-close") closeRetro();
-          if (e.data === "waffle-close") closeWaffle();
-          if (e.data === "waddle-close") closeWaddle();
         });
         window.addEventListener("popstate", () => {
-          if (
-            window.location.pathname === RETRO_PATH ||
-            window.location.pathname === WAFFLE_PATH ||
-            window.location.pathname === WADDLE_PATH
-          ) {
-            const isRetro = window.location.pathname === RETRO_PATH;
-            const isWaffle = window.location.pathname === WAFFLE_PATH;
-            const modal = isRetro ? retroModal : isWaffle ? waffleModal : waddleModal;
-            const frame = isRetro ? retroFrame : isWaffle ? waffleFrame : waddleFrame;
-            const name = isRetro ? "retro-grand-prix" : isWaffle ? "waffle-prime" : "waddle";
-            frame.src = `${name}.html?embed=1`;
-            modal.classList.remove("hidden");
-            modal.classList.add("flex");
+          if (window.location.pathname === RETRO_PATH) {
+            retroFrame.src = "retro-grand-prix.html?embed=1";
+            retroModal.classList.remove("hidden");
+            retroModal.classList.add("flex");
             document.body.style.overflow = "hidden";
-            focusFrame(frame);
-          } else {
-            if (!retroModal.classList.contains("hidden")) closeRetro();
-            if (!waffleModal.classList.contains("hidden")) closeWaffle();
-            if (!waddleModal.classList.contains("hidden")) closeWaddle();
+            focusFrame(retroFrame);
+          } else if (!retroModal.classList.contains("hidden")) {
+            closeRetro();
           }
         });
 
         window.addEventListener("DOMContentLoaded", () => {
           const paths = [
             [RETRO_PATH, "#retro-grand-prix", RETRO_PATH, retroModal, retroFrame, "retro-grand-prix"],
-            [WAFFLE_PATH, "#waffle-prime", WAFFLE_PATH, waffleModal, waffleFrame, "waffle-prime"],
-            [WADDLE_PATH, "#waddle", WADDLE_PATH, waddleModal, waddleFrame, "waddle"],
           ];
           for (const [path, hash, , modal, frame, srcName] of paths) {
             if (
