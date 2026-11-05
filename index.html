@@ -40,12 +40,20 @@
         scroll-behavior: smooth;
       }
       ::selection {
-        background-color: rgba(235, 88, 227, 0.35);
-        color: inherit;
+        background-color: #5966cc;
+        color: #fff;
       }
       ::-moz-selection {
-        background-color: rgba(235, 88, 227, 0.35);
-        color: inherit;
+        background-color: #5966cc;
+        color: #fff;
+      }
+      .dark ::selection {
+        background-color: #eb58e3;
+        color: #141225;
+      }
+      .dark ::-moz-selection {
+        background-color: #eb58e3;
+        color: #141225;
       }
       .drop-in-sm {
         animation: drop-in-sm 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
