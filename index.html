@@ -256,25 +256,6 @@
                   <div class="drop-in-sm flex flex-1 justify-end md:flex-1" style="animation-delay: 0.1s">
                     <div class="flex items-center gap-2">
                       <button
-                        id="musicToggle"
-                        type="button"
-                        aria-label="Toggle music"
-                        aria-pressed="false"
-                        class="pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#5966cc]/60 bg-white/90 shadow-[0_0_0_4px_rgba(89,102,204,0.08),0_8px_20px_rgba(89,102,204,0.1)] backdrop-blur-sm transition hover:border-[#eb58e3] hover:shadow-[0_0_0_4px_rgba(235,88,227,0.1)] dark:border-[#8c97ea]/50 dark:bg-[#16122b]/80 dark:hover:border-[#eb58e3]"
-                      >
-                        <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="hidden h-5 w-5 stroke-zinc-600 dark:stroke-[#8c97ea]">
-                          <path d="M9 18V6l10-2v12" />
-                          <circle cx="6" cy="18" r="3" />
-                          <circle cx="16" cy="16" r="3" />
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="h-5 w-5 stroke-zinc-400 dark:stroke-zinc-500">
-                          <path d="M9 18V6l10-2v12" />
-                          <circle cx="6" cy="18" r="3" />
-                          <circle cx="16" cy="16" r="3" />
-                          <path d="M3 3l18 18" />
-                        </svg>
-                      </button>
-                      <button
                         id="themeToggle"
                       type="button"
                       aria-label="Toggle theme"
@@ -690,79 +671,58 @@ bin/ap</code></pre>
         </div>
       </div>
 
-      <div
-        id="musicBackdrop"
-        class="fixed inset-0 z-[70] hidden bg-zinc-950/60 opacity-0 backdrop-blur-sm transition-opacity duration-300"
-      ></div>
+      <div class="pointer-events-none fixed right-5 bottom-5 z-50 flex flex-col items-end gap-3">
+        <div
+          id="volumePopover"
+          class="pointer-events-auto hidden w-56 rounded-2xl border border-zinc-100 bg-white/95 p-4 shadow-2xl backdrop-blur-md dark:border-[#5966cc]/25 dark:bg-[#141225]/95"
+        >
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">Volume</span>
+            <span id="musicVolumeLabel" class="text-xs font-medium tabular-nums text-zinc-500 dark:text-zinc-400">55</span>
+          </div>
+          <input
+            id="musicVolume"
+            type="range"
+            min="0"
+            max="100"
+            value="55"
+            aria-label="Volume"
+            class="mt-3 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-zinc-200 accent-[#eb58e3] dark:bg-[#5966cc]/30"
+          />
+        </div>
 
-      <div
-        id="musicSheet"
-        aria-label="Music controls"
-        class="fixed inset-x-0 bottom-0 z-[80] mx-auto flex w-full max-w-md translate-y-full flex-col rounded-t-3xl border-t border-white/10 bg-white shadow-2xl transition-transform duration-300 ease-out dark:bg-[#141225]"
-      >
-        <div class="mx-auto mt-3 h-1 w-10 flex-none rounded-full bg-zinc-200 dark:bg-[#5966cc]/40"></div>
-        <header class="flex items-center justify-between px-5 pt-3 pb-4">
-          <span class="flex items-center gap-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-            <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="h-5 w-5 stroke-[#5966cc] dark:stroke-[#8c97ea]">
-              <path d="M9 18V6l10-2v12" />
-              <circle cx="6" cy="18" r="3" />
-              <circle cx="16" cy="16" r="3" />
-            </svg>
-            Music
-          </span>
+        <div class="pointer-events-auto flex items-center gap-1 rounded-full border-2 border-[#5966cc]/60 bg-white/90 p-1 shadow-[0_0_0_4px_rgba(89,102,204,0.08),0_8px_20px_rgba(89,102,204,0.1)] backdrop-blur-sm dark:border-[#8c97ea]/50 dark:bg-[#16122b]/80">
           <button
-            id="musicCloseBtn"
+            id="musicToggle"
             type="button"
-            aria-label="Close music controls"
-            class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-zinc-200/80 text-zinc-400 transition hover:border-[#eb58e3]/60 hover:text-[#eb58e3] dark:border-[#5966cc]/30 dark:hover:border-[#eb58e3] dark:hover:text-[#eb58e3]"
+            aria-label="Play or pause music"
+            aria-pressed="false"
+            class="flex h-11 w-11 items-center justify-center rounded-full text-zinc-500 transition hover:bg-[#eb58e3]/10 hover:text-[#eb58e3] dark:text-zinc-300 dark:hover:text-[#eb58e3]"
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="h-5 w-5">
-              <path d="m6 6 12 12M18 6 6 18" />
+            <svg id="musicIconOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="hidden h-5 w-5">
+              <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+              <path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" />
+            </svg>
+            <svg id="musicIconOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="h-5 w-5">
+              <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+              <path d="m16 9 5 5m0-5-5 5" />
             </svg>
           </button>
-        </header>
-
-        <div class="flex flex-col gap-5 px-5 pb-6">
-          <div class="flex items-center gap-4 rounded-2xl border border-zinc-100 p-4 dark:border-[#5966cc]/25">
-            <span class="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-gradient-to-br from-[#5966cc] to-[#eb58e3] shadow-lg shadow-[#5966cc]/30">
-              <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="h-5 w-5 stroke-white">
-                <path d="M9 18V6l10-2v12" />
-                <circle cx="6" cy="18" r="3" />
-                <circle cx="16" cy="16" r="3" />
-              </svg>
-            </span>
-            <span class="min-w-0 flex-1">
-              <span class="block truncate text-sm font-medium text-zinc-900 dark:text-zinc-100">Background music</span>
-              <span id="musicStatus" class="block text-xs text-zinc-500 dark:text-zinc-400">Paused</span>
-            </span>
-          </div>
-
-          <div class="flex items-center gap-4">
-            <button
-              id="musicPlayBtn"
-              type="button"
-              aria-label="Play or pause music"
-              aria-pressed="false"
-              class="flex h-12 w-12 flex-none items-center justify-center rounded-full border-2 border-[#eb58e3]/60 bg-[#eb58e3]/5 shadow-[0_0_0_4px_rgba(235,88,227,0.08),0_8px_20px_rgba(235,88,227,0.12)] transition hover:border-[#eb58e3] hover:bg-[#eb58e3]/15 active:scale-95"
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="hidden h-5 w-5 text-[#eb58e3]">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5 text-[#eb58e3]">
-                <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
-              </svg>
-            </button>
-            <input
-              id="musicVolume"
-              type="range"
-              min="0"
-              max="100"
-              value="55"
-              aria-label="Volume"
-              class="h-1.5 flex-1 cursor-pointer appearance-none rounded-full bg-zinc-200 accent-[#eb58e3] dark:bg-[#5966cc]/30"
-            />
-            <span id="musicVolumeLabel" class="w-8 flex-none text-right text-sm font-medium tabular-nums text-zinc-500 dark:text-zinc-400">55</span>
-          </div>
+          <span class="h-6 w-px bg-zinc-200 dark:bg-white/10" aria-hidden="true"></span>
+          <button
+            id="volumeToggle"
+            type="button"
+            aria-label="Adjust volume"
+            aria-expanded="false"
+            class="flex h-11 w-11 items-center justify-center rounded-full text-zinc-500 transition hover:bg-[#eb58e3]/10 hover:text-[#eb58e3] dark:text-zinc-300 dark:hover:text-[#eb58e3]"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="h-5 w-5">
+              <path d="M4 6h10M18 6h2M4 12h2M10 12h10M4 18h8M16 18h4" />
+              <circle cx="16" cy="6" r="2" />
+              <circle cx="8" cy="12" r="2" />
+              <circle cx="14" cy="18" r="2" />
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -873,8 +833,7 @@ bin/ap</code></pre>
             !document.getElementById("bookBackdrop").classList.contains("hidden") ||
             !document.getElementById("githubBackdrop").classList.contains("hidden") ||
             !document.getElementById("cliBackdrop").classList.contains("hidden") ||
-            !document.getElementById("paiandcoBackdrop").classList.contains("hidden") ||
-            !document.getElementById("musicBackdrop").classList.contains("hidden")
+            !document.getElementById("paiandcoBackdrop").classList.contains("hidden")
           );
         }
         function restoreScrollIfIdle() {
@@ -923,7 +882,7 @@ bin/ap</code></pre>
             closeGithubSheet();
             closeCliDrawer();
             closePaiandcoSheet();
-            closeMusicSheet();
+            closeVolumePopover();
           }
         });
         window.addEventListener("message", (e) => {
@@ -1104,45 +1063,31 @@ bin/ap</code></pre>
         const bgMusic = document.getElementById("bgMusic");
         bgMusic.volume = 0.55;
         const musicToggle = document.getElementById("musicToggle");
-        const musicBackdrop = document.getElementById("musicBackdrop");
-        const musicSheet = document.getElementById("musicSheet");
-        const musicCloseBtn = document.getElementById("musicCloseBtn");
-        const musicPlayBtn = document.getElementById("musicPlayBtn");
-        const musicPlayIcon = musicPlayBtn.querySelector("svg:first-of-type");
-        const musicPauseIcon = musicPlayBtn.querySelector("svg:last-of-type");
-        const musicStatus = document.getElementById("musicStatus");
+        const musicIconOn = document.getElementById("musicIconOn");
+        const musicIconOff = document.getElementById("musicIconOff");
+        const volumeToggle = document.getElementById("volumeToggle");
+        const volumePopover = document.getElementById("volumePopover");
         const musicVolume = document.getElementById("musicVolume");
         const musicVolumeLabel = document.getElementById("musicVolumeLabel");
 
         musicVolume.value = Math.round(bgMusic.volume * 100);
         musicVolumeLabel.textContent = musicVolume.value;
 
-        function openMusicSheet() {
-          musicBackdrop.classList.remove("hidden");
-          void musicSheet.offsetWidth;
-          musicBackdrop.classList.remove("opacity-0");
-          musicSheet.classList.remove("translate-y-full");
-          document.body.style.overflow = "hidden";
-        }
-
-        function closeMusicSheet() {
-          musicSheet.classList.add("translate-y-full");
-          musicBackdrop.classList.add("opacity-0");
-          setTimeout(() => {
-            musicBackdrop.classList.add("hidden");
-            restoreScrollIfIdle();
-          }, 300);
-        }
-
         function syncMusicUI() {
           const on = !bgMusic.paused;
           musicToggle.setAttribute("aria-pressed", String(on));
-          musicToggle.querySelector("svg:first-of-type").classList.toggle("hidden", !on);
-          musicToggle.querySelector("svg:last-of-type").classList.toggle("hidden", on);
-          musicPlayBtn.setAttribute("aria-pressed", String(on));
-          musicPlayIcon.classList.toggle("hidden", !on);
-          musicPauseIcon.classList.toggle("hidden", on);
-          musicStatus.textContent = on ? "Playing" : "Paused";
+          musicIconOn.classList.toggle("hidden", !on);
+          musicIconOff.classList.toggle("hidden", on);
+        }
+
+        function openVolumePopover() {
+          volumePopover.classList.remove("hidden");
+          volumeToggle.setAttribute("aria-expanded", "true");
+        }
+
+        function closeVolumePopover() {
+          volumePopover.classList.add("hidden");
+          volumeToggle.setAttribute("aria-expanded", "false");
         }
 
         musicToggle.addEventListener("click", () => {
@@ -1151,23 +1096,17 @@ bin/ap</code></pre>
             bgMusic.play().catch(() => syncMusicUI());
             showToast("Music playing");
           } else {
-            showToast("Options opened");
-          }
-          openMusicSheet();
-        });
-        musicCloseBtn.addEventListener("click", closeMusicSheet);
-        musicBackdrop.addEventListener("click", (e) => {
-          if (e.target === musicBackdrop) closeMusicSheet();
-        });
-
-        musicPlayBtn.addEventListener("click", () => {
-          if (bgMusic.paused) {
-            bgMusic.volume = musicVolume.value / 100;
-            bgMusic.play().catch(() => syncMusicUI());
-            showToast("Music playing");
-          } else {
             bgMusic.pause();
             showToast("Music paused");
+          }
+        });
+
+        volumeToggle.addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (volumePopover.classList.contains("hidden")) {
+            openVolumePopover();
+          } else {
+            closeVolumePopover();
           }
         });
 
@@ -1179,6 +1118,16 @@ bin/ap</code></pre>
 
         musicVolume.addEventListener("change", () => {
           showToast(`Volume ${musicVolume.value}%`);
+        });
+
+        document.addEventListener("click", (e) => {
+          if (
+            !volumePopover.classList.contains("hidden") &&
+            !volumePopover.contains(e.target) &&
+            !volumeToggle.contains(e.target)
+          ) {
+            closeVolumePopover();
+          }
         });
 
         bgMusic.addEventListener("play", syncMusicUI);
