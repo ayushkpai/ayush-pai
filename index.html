@@ -55,6 +55,12 @@
         background-color: #eb58e3;
         color: #141225;
       }
+      .card-copy {
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+      }
+      .dark .card-copy {
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+      }
       .drop-in-sm {
         animation: drop-in-sm 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
       }
@@ -308,16 +314,16 @@
                       <a
                         href="retro-grand-prix.html"
                         id="retroOpenBtn"
-                        class="group block rounded-2xl border border-zinc-100 bg-white/60 p-6 shadow-[0_12px_35px_rgba(0,0,0,0.05)] backdrop-blur-md transition hover:-translate-y-1 hover:border-[#5966cc]/60 hover:shadow-[0_20px_45px_rgba(0,0,0,0.1)] dark:border-[#5966cc]/25 dark:bg-[#141225]/70 dark:shadow-[0_12px_35px_rgba(0,0,0,0.25)] dark:hover:border-[#8c97ea]/50 dark:hover:shadow-[0_20px_45px_rgba(0,0,0,0.35)]"
+                        class="group block rounded-2xl card-copy border border-black bg-transparent p-6 shadow-[0_12px_35px_rgba(0,0,0,0.05)] transition hover:-translate-y-1 hover:border-[#5966cc]/60 hover:shadow-[0_20px_45px_rgba(0,0,0,0.1)] dark:bg-transparent dark:shadow-[0_12px_35px_rgba(0,0,0,0.25)] dark:hover:border-[#8c97ea]/50 dark:hover:shadow-[0_20px_45px_rgba(0,0,0,0.35)]"
                       >
                         <div class="flex items-start gap-4">
                           <span class="text-4xl" aria-hidden="true">🏎️</span>
                           <div class="min-w-0 flex-1">
-                            <p class="text-sm text-zinc-400 dark:text-zinc-500">Racing · Arcade</p>
+                            <p class="text-sm text-zinc-600 dark:text-zinc-300">Racing · Arcade</p>
                             <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
                               Retro Grand Prix
                             </h2>
-                            <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                            <p class="mt-2 text-sm text-zinc-700 dark:text-zinc-200">
                               An arcade F1-style racing game — qualifying, pit stops, slipstream boost, and 3 laps to prove yourself.
                             </p>
                             <div class="mt-4 flex items-center text-sm font-medium text-[#5966cc] dark:text-[#8c97ea]">
@@ -332,7 +338,7 @@
                     </div>
 
                     <div class="in-right space-y-10 lg:pl-16 xl:pl-24" style="animation-delay: 0.12s">
-                      <div class="rounded-2xl border border-zinc-100 bg-white/60 p-6 backdrop-blur-md dark:border-[#5966cc]/25 dark:bg-[#141225]/70">
+                      <div class="rounded-2xl card-copy border border-black bg-transparent p-6 dark:bg-transparent">
                         <h2 class="flex items-center gap-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                           <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 flex-none fill-zinc-800 dark:fill-zinc-200">
                             <path
@@ -357,12 +363,12 @@
                         </div>
                       </div>
 
-                      <div class="rounded-2xl border border-zinc-100 bg-white/60 p-6 backdrop-blur-md dark:border-[#5966cc]/25 dark:bg-[#141225]/70">
+                      <div class="rounded-2xl card-copy border border-black bg-transparent p-6 dark:bg-transparent">
                         <div class="flex items-center gap-4">
                           <img src="images/paiandco.png" alt="Pai &amp; Co" class="h-10 w-10 flex-none rounded-xl object-contain" />
                           <div class="min-w-0 flex-1">
                             <h2 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Pai &amp; Co</h2>
-                            <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                            <p class="mt-1 text-sm text-zinc-700 dark:text-zinc-200">
                               Building small, useful things.
                             </p>
                           </div>
@@ -381,7 +387,7 @@
                         </div>
                       </div>
 
-                      <div class="rounded-2xl border border-zinc-100 bg-white/60 p-6 backdrop-blur-md dark:border-[#5966cc]/25 dark:bg-[#141225]/70">
+                      <div class="rounded-2xl card-copy border border-black bg-transparent p-6 dark:bg-transparent">
                         <h2 class="flex items-center gap-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="h-6 w-6 flex-none stroke-zinc-500 dark:stroke-[#8c97ea]">
                             <path d="m6 8-4 4 4 4" />
@@ -390,7 +396,7 @@
                           </svg>
                           <span>ap cli</span>
                         </h2>
-                        <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                        <p class="mt-2 text-sm text-zinc-700 dark:text-zinc-200">
                           cli of ayushpai.com
                         </p>
                         <div class="mt-6">
@@ -407,7 +413,7 @@
                         </div>
                       </div>
 
-                      <div class="rounded-2xl border border-zinc-100 bg-white/60 p-6 backdrop-blur-md dark:border-[#5966cc]/25 dark:bg-[#141225]/70">
+                      <div class="rounded-2xl card-copy border border-black bg-transparent p-6 dark:bg-transparent">
                         <h2 class="flex items-center gap-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                           <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="h-6 w-6 flex-none">
                             <path
@@ -421,7 +427,7 @@
                           </svg>
                           <span>The Cake Lover</span>
                         </h2>
-                        <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                        <p class="mt-2 text-sm text-zinc-700 dark:text-zinc-200">
                           Science fiction · 37 pages
                         </p>
                         <div class="mt-6">
@@ -450,8 +456,8 @@
         <div class="sm:px-8">
           <div class="mx-auto w-full max-w-7xl lg:px-8">
             <div class="relative px-4 pb-16 pt-10 sm:px-8 lg:px-12">
-              <div class="rounded-2xl border border-zinc-100 bg-white/60 py-8 text-center backdrop-blur-md dark:border-[#5966cc]/25 dark:bg-[#141225]/70">
-                <p class="text-sm text-zinc-400 dark:text-zinc-500">
+              <div class="rounded-2xl card-copy border border-black bg-transparent py-8 text-center dark:bg-transparent">
+                <p class="text-sm text-zinc-600 dark:text-zinc-300">
                   © 2026 Ayush Pai. All rights reserved.
                 </p>
               </div>
@@ -808,7 +814,7 @@ bin/ap</code></pre>
           />
           <div>
             <p class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Pai &amp; Co</p>
-            <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+            <p class="mt-1 text-sm text-zinc-700 dark:text-zinc-200">
               Building small, useful things.
             </p>
           </div>
