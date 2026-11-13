@@ -87,9 +87,22 @@
           opacity: 1;
         }
       }
+      @keyframes scroll-cue {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(3px);
+        }
+      }
+      .scroll-cue {
+        animation: scroll-cue 1.8s ease-in-out infinite;
+      }
       @media (prefers-reduced-motion: reduce) {
         .drop-in-sm,
-        .in-bottom {
+        .in-bottom,
+        .scroll-cue {
           animation: none;
         }
       }
@@ -701,6 +714,16 @@
         </div>
       </div>
 
+      <div
+        id="scrollHint"
+        aria-hidden="true"
+        class="pointer-events-none fixed bottom-5 left-1/2 z-50 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full border-2 border-[#5966cc]/60 bg-white/90 text-[#5966cc] shadow-[0_0_0_4px_rgba(89,102,204,0.08),0_8px_20px_rgba(89,102,204,0.1)] backdrop-blur-sm transition dark:border-[#8c97ea]/50 dark:bg-[#16122b]/80 dark:text-[#8c97ea]"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="scroll-cue h-5 w-5">
+          <path d="M12 5v14M6 13l6 6 6-6" />
+        </svg>
+      </div>
+
       <div class="pointer-events-none fixed right-5 bottom-5 z-50 flex flex-col items-end gap-3">
         <div
           id="volumePopover"
@@ -1053,6 +1076,16 @@
           localStorage.setItem("theme", isDark ? "dark" : "light");
           showToast(isDark ? "Dark mode on" : "Light mode on");
         });
+
+        const scrollHint = document.getElementById("scrollHint");
+
+        function updateScrollHint() {
+          const atTop = window.scrollY < 80;
+          scrollHint.classList.toggle("opacity-0", !atTop);
+        }
+
+        window.addEventListener("scroll", updateScrollHint, { passive: true });
+        updateScrollHint();
 
         document.body.style.overflow = "hidden";
         setTimeout(restoreScrollIfIdle, 800);
